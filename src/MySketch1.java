@@ -24,7 +24,10 @@ public class MySketch1 extends PApplet {
     }
 
     public void setup() {
-        background(255);
+        //background(255);
+
+        PImage ocean = loadImage("src/main/resources/ocean.png");
+        image(ocean, 0, 0);
         
         // Load open images
         africa = loadImage("src/main/resources/africa_open.png");
@@ -54,7 +57,7 @@ public class MySketch1 extends PApplet {
 
     public void draw() {
         // Clear the background
-        background(255);
+        //background(255);
         // Draw all continents in their current state
         drawContinents();
     }
