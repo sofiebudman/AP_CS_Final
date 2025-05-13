@@ -54,9 +54,12 @@ public class MySketch1 extends PApplet {
 
         // Draw initial state
         drawContinents();
+        textSize(120);
+        text("Epidemic Simulator", 40, 120); 
     }
 
     public void draw() {
+        
         // Clear the background
         //background(255);
         // Draw all continents in their current state
