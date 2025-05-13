@@ -28,6 +28,7 @@ public class MySketch1 extends PApplet {
 
         PImage ocean = loadImage("src/main/resources/ocean.png");
         image(ocean, 0, 0);
+        ocean.resize(500,0);
         
         // Load open images
         africa = loadImage("src/main/resources/africa_open.png");
