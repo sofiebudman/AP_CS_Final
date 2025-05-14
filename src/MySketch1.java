@@ -1,5 +1,6 @@
 package src;
 import java.util.ArrayList;
+import static src.main.java.code.Constants.*;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -10,15 +11,18 @@ import controlP5.*;  // Add ControlP5 import
 public class MySketch1 extends PApplet {
     Instructions instructionScreen;
 
-    ControlP5 instructions;  // Declare ControlP5 object
-   // ButtonBar buttonBar;  // Declare ButtonBar object
+    //set up button objects
+
+    ControlP5 instructions;  
+    ControlP5 virusControl;
+ 
     ArrayList<CountryImage> countryImages = new ArrayList<>();
 
 
-    CountryImage africa = new CountryImage("src/main/resources/africa_open.png", "src/main/resources/africa_closed.png");
-    CountryImage northAmerica = new CountryImage("src/main/resources/northamerica_open.png", "src/main/resources/northamerica_closed.png");
-    CountryImage southAmerica = new CountryImage("src/main/resources/southamerica_open.png", "src/main/resources/southamerica_closed.png");
-    CountryImage eurasia = new CountryImage("src/main/resources/eurasia_open.png", "src/main/resources/eurasia_closed.png");
+    CountryImage africa = new CountryImage(AFRICA_OPEN_PATH, AFRICA_CLOSED_PATH);
+    CountryImage northAmerica = new CountryImage(NORTH_AMERICA_OPEN_PATH, NORTH_AMERICA_CLOSED_PATH);
+    CountryImage southAmerica = new CountryImage(SOUTH_AMERICA_OPEN_PATH, SOUTH_AMERICA_CLOSED_PATH);
+    CountryImage eurasia = new CountryImage(EURASIA_OPEN_PATH, EURASIA_CLOSED_PATH);
   
     
     PImage africaOpen;
@@ -31,13 +35,7 @@ public class MySketch1 extends PApplet {
     PImage southAmericaClosed;
     PImage eurasiaClosed;
     PImage ocean;
-    /* 
-
-    // Track the current state of each continent
-    boolean isAfricaClosed = false;
-    boolean isNorthAmericaClosed = false;
-    boolean isSouthAmericaClosed = false;
-    boolean isEurasiaClosed = false; */
+   
 
     public void settings() {
         size(1000, 600);
@@ -48,46 +46,38 @@ public class MySketch1 extends PApplet {
         instructionScreen = new Instructions(this);
 
         
+
+        
        
         countryImages.add(africa);
         countryImages.add(northAmerica);
         countryImages.add(southAmerica);
         countryImages.add(eurasia);
-        //background(255);
-        instructions = new ControlP5(this);  // Initialize ControlP5
-       /* 
-        buttonBar = cp5.addButtonBar("buttonBar")
-            .setPosition(0, 0)
-            .setSize(200, 40)
-            .addItems(split("Instructions", ","))
-            .addItems(split("Graph", ","))
+       
+
+        instructions = new ControlP5(this); 
+        virusControl = new ControlP5(this);
         
-            /* .addItems(split("Africa,North America,South America,Eurasia", ","))*/
-           
 
-        // Optional: set default selection
-        //buttonBar.setValue(0); // Selects "Africa" by default  // Initialize ButtonBar (remove the String argument)
+        //arraylist
 
-        // Add countries to the ArrayList
         countryImages.add(africa);
         countryImages.add(northAmerica);
         countryImages.add(southAmerica);
         countryImages.add(eurasia);
 
-        ocean = loadImage("src/main/resources/ocean.png");
-        
-        
-        // Load open images
+       //load images
+        ocean = loadImage("src/main/resources/images/ocean.png");
+
         africaOpen = loadImage(africa.getOpenPath());
         northAmericaOpen = loadImage(northAmerica.getOpenPath());
         southAmericaOpen = loadImage(southAmerica.getOpenPath());
         eurasiaOpen = loadImage(eurasia.getOpenPath());
 
-        // Load closed images
         africaClosed = loadImage(africa.getClosedPath());
-        northAmericaClosed = loadImage("src/main/resources/northamerica_closed.png");
-        southAmericaClosed = loadImage("src/main/resources/southamerica_closed.png");
-        eurasiaClosed = loadImage("src/main/resources/eurasia_closed.png");
+        northAmericaClosed = loadImage("src/main/resources/images/northamerica_closed.png");
+        southAmericaClosed = loadImage("src/main/resources/images/southamerica_closed.png");
+        eurasiaClosed = loadImage("src/main/resources/images/eurasia_closed.png");
 
         // Resize all images
         africaOpen.resize(1000, 0);
@@ -112,16 +102,21 @@ public class MySketch1 extends PApplet {
                 instructionScreen.toggle();
                 
             });
+
+        virusControl.addButton("virusControl")
+            .setPosition(100,0)
+            .setSize(100,50)
+            .setLabel("Virus Control" );
+        
+            
     }
 
     public void draw() {
         background(255); 
-        image(ocean, 0, 0);
+        image(ocean, 0, 50);
         ocean.resize(1000,0);
         
-        // Clear the background
-        //background(255);
-        // Draw all continents in their current state
+      
         drawContinents();
         
         // Display instructions if they are toggled on
@@ -131,23 +126,23 @@ public class MySketch1 extends PApplet {
     public void drawContinents() {
         for(CountryImage c: countryImages){
             if(c.isOpen()){
-                if(c == africa) image(africaOpen, 50, 0);
-                else if(c == northAmerica) image(northAmericaOpen, 50, 0);
-                else if(c == southAmerica) image(southAmericaOpen, 50, 0);
-                else if(c == eurasia) image(eurasiaOpen, 50, 0);
+                if(c == africa) image(africaOpen, 0, 50);
+                else if(c == northAmerica) image(northAmericaOpen, 0, 50);
+                else if(c == southAmerica) image(southAmericaOpen, 0, 50);
+                else if(c == eurasia) image(eurasiaOpen, 0, 50);
             }
             else {
-                if(c == africa) image(africaClosed, 50, 0);
-                else if(c == northAmerica) image(northAmericaClosed, 50, 0);
-                else if(c == southAmerica) image(southAmericaClosed, 50, 0);
-                else if(c == eurasia) image(eurasiaClosed, 50, 0);
+                if(c == africa) image(africaClosed, 0, 50);
+                else if(c == northAmerica) image(northAmericaClosed, 0, 50);
+                else if(c == southAmerica) image(southAmericaClosed, 0, 50);
+                else if(c == eurasia) image(eurasiaClosed, 0, 50);
             }
         }
     }
 
     public void mousePressed() {
-        int x = mouseX - 50; // Adjust for the 50px offset
-        int y = mouseY;
+        int x = mouseX ; // Adjust for the 50px offset
+        int y = mouseY- 50;
 
         // Check each continent
         checkContinentClick(x, y, africaOpen, africa);

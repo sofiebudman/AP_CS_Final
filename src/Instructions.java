@@ -1,10 +1,11 @@
 package src;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 
 public class Instructions{
     PApplet p;
-    public boolean showInstructions = false;
+    public boolean showInstructions = true;
     public Instructions(PApplet p) {
         this.p = p;
     }
@@ -17,14 +18,16 @@ public class Instructions{
     public void toggle() {
         showInstructions = !showInstructions;
     }
-  
+    
     public void draw(){
         if (!showInstructions)return;
-        p.fill(50, 50, 200, 200);
-        p.rect(40, 140, 520, 220);
-        p.fill(255);
-        p.textSize(16);
-        p.text("Instructions:\n1. Click continents.\n2. Track infection.\n3. Use buttons to toggle borders.", 60, 180);
+        p.fill(229, 229, 229, 250);
+        p.rect(0, 50, 520, 220);
+        p.fill(0);
+        //p.textSize(5);
+        PFont mono = p.createFont("src/main/resources/fonts/roboto.ttf", 20);
+        p.textFont(mono);
+        p.text("Instructions:\n1. Click continents.\n2. Track infection.\n3. Use buttons to toggle borders.", 20, 120);
 
 
     }
