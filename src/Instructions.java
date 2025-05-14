@@ -1,5 +1,9 @@
 package src;
 
+import static src.main.java.code.Constants.BYTE_BOUNCE_FONT_PATH;
+import static src.main.java.code.Constants.ELECTROLIZ_FONT_PATH;
+import static src.main.java.code.Constants.GEO_REGULAR_FONT_PATH;
+
 import processing.core.PApplet;
 import processing.core.PFont;
 
@@ -18,14 +22,14 @@ public class Instructions{
     public void toggle() {
         showInstructions = !showInstructions;
     }
-    
+    //
     public void draw(){
         if (!showInstructions)return;
         p.fill(229, 229, 229, 250);
         p.rect(0, 50, 520, 220);
         p.fill(0);
         //p.textSize(5);
-        PFont mono = p.createFont("src/main/resources/fonts/roboto.ttf", 20);
+        PFont mono = p.createFont(ELECTROLIZ_FONT_PATH, 30);
         p.textFont(mono);
         p.text("Instructions:\n1. Click continents.\n2. Track infection.\n3. Use buttons to toggle borders.", 20, 120);
 
