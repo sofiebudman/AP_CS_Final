@@ -16,10 +16,16 @@ public class CountryImage  {
 
         isOpen = true;
     }
-    public String getPath(){
-        return isOpen ? openPath : closedPath;
+    public String getOpenPath(){
+        return openPath;
+    }
+    public String getClosedPath(){
+        return closedPath;
     }
     public boolean isOpen() {
         return isOpen;
+    }
+    public void switchState(){
+        isOpen = !isOpen;
     }
 }
