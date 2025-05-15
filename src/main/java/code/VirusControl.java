@@ -13,6 +13,7 @@ public class VirusControl {
     ControlP5 deathRateSlider;
     ControlP5 recoveryRateSlider;
     ControlP5 transmissionRateSlider;
+    ControlP5 countryStart; 
     String virusName = "";
     private boolean show;
     
@@ -22,6 +23,7 @@ public class VirusControl {
         deathRateSlider = new ControlP5(p);
         recoveryRateSlider = new ControlP5(p);
         transmissionRateSlider = new ControlP5(p);
+        countryStart = new ControlP5(p);
         show = true;
 
         virusNameField.addTextfield("virusName")
@@ -50,6 +52,13 @@ public class VirusControl {
                 .setSize(200,20)
                 .setRange(0,100)
                 .setValue(50);
+
+        countryStart.addDropdownList("countryStart")
+                .setPosition(540,210)
+                .setItems(new String[]{"North America", "South America", "Europe", "Africa", "Asia", "Australia"})
+                .setSize(200, 100)  // dropdown height; each item height is set below
+                .setItemHeight(20)  // height of each dropdown item
+                .setBarHeight(30) ;
 
         
     }

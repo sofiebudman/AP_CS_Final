@@ -1,2 +1,4 @@
 # AP_CS_Final
-dskldjfkldsfj
+Epidemic Simulator 
+Sofie Budman & Tyler Tachiki
+AP CS period 5
