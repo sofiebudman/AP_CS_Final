@@ -6,16 +6,18 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
 import src.main.java.code.CountryImage;
+import src.main.java.code.Virus;
 import controlP5.*;  // Add ControlP5 import
 
 
 public class MySketch1 extends PApplet {
     Instructions instructionScreen;
+    VirusControl virusControlScreen;
 
     //set up button objects
 
     ControlP5 instructions;  
-    ControlP5 virusControl;
+    ControlP5 virusControlButton;
  
     ArrayList<CountryImage> countryImages = new ArrayList<>();
 
@@ -43,31 +45,28 @@ public class MySketch1 extends PApplet {
     }
 
     //load all country images
+    void controlEvent(ControlEvent e) {
+        if (e.isFrom("virusName")) {
+            System.out.println("Event from virusName field");
+            virusControlScreen.handleEvent(e);
+        }
+    }
+
     public void setup() {
         instructionScreen = new Instructions(this);
+        virusControlScreen  = new VirusControl(this);
 
-        
-
-        
-       
-        countryImages.add(africa);
-        countryImages.add(northAmerica);
-        countryImages.add(southAmerica);
-        countryImages.add(eurasia);
-       
-
+        // Initialize ControlP5 first
         instructions = new ControlP5(this); 
-        virusControl = new ControlP5(this);
+        virusControlButton = new ControlP5(this);
         
-
-        //arraylist
-
         countryImages.add(africa);
         countryImages.add(northAmerica);
         countryImages.add(southAmerica);
         countryImages.add(eurasia);
+       
 
-       //load images
+        //load images
         ocean = loadImage("src/main/resources/images/ocean.png");
 
         africaOpen = loadImage(africa.getOpenPath());
@@ -104,7 +103,7 @@ public class MySketch1 extends PApplet {
                 
             });
 
-        virusControl.addButton("virusControl")
+        virusControlButton.addButton("virusControl")
             .setPosition(100,0)
             .setSize(100,50)
             .setLabel("Virus Control" );
@@ -113,6 +112,7 @@ public class MySketch1 extends PApplet {
     }
 
     public void draw() {
+        
         
 
         background(255); 
@@ -134,6 +134,7 @@ public class MySketch1 extends PApplet {
         
         // Display instructions if they are toggled on
         instructionScreen.draw();
+        virusControlScreen.draw();
     }
 
     public void drawContinents() {
