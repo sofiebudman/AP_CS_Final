@@ -14,6 +14,7 @@ public class VirusControl {
     ControlP5 recoveryRateSlider;
     ControlP5 transmissionRateSlider;
     String virusName = "";
+    private boolean show;
     
     public VirusControl(PApplet p) {
         this.p = p;
@@ -21,6 +22,7 @@ public class VirusControl {
         deathRateSlider = new ControlP5(p);
         recoveryRateSlider = new ControlP5(p);
         transmissionRateSlider = new ControlP5(p);
+        show = true;
 
         virusNameField.addTextfield("virusName")
                 .setPosition(540, 60)
@@ -48,6 +50,18 @@ public class VirusControl {
                 .setSize(200,20)
                 .setRange(0,100)
                 .setValue(50);
+
+        
+    }
+    public void show(){
+        show = true;
+    }
+    public void hide()
+    {
+        show = false;
+    }
+    public void toggle() {
+        show = !show;
     }
 
     public void handleEvent(ControlEvent e) {
@@ -59,7 +73,9 @@ public class VirusControl {
     }
 
     public void draw() {
+        if(!show) return;
         p.fill(229, 229, 229, 250);
         p.rect(520, 50, 520, 220);
+        
     }
 }

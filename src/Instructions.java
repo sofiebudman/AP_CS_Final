@@ -9,9 +9,10 @@ import processing.core.PFont;
 
 public class Instructions{
     PApplet p;
-    public boolean showInstructions = true;
+    private boolean showInstructions;
     public Instructions(PApplet p) {
         this.p = p;
+        showInstructions = true;
     }
     public void show(){
         showInstructions = true;

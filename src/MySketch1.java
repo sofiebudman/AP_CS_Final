@@ -18,6 +18,7 @@ public class MySketch1 extends PApplet {
 
     ControlP5 instructions;  
     ControlP5 virusControlButton;
+    ControlP5 graphButton;
  
     ArrayList<CountryImage> countryImages = new ArrayList<>();
 
@@ -59,6 +60,7 @@ public class MySketch1 extends PApplet {
         // Initialize ControlP5 first
         instructions = new ControlP5(this); 
         virusControlButton = new ControlP5(this);
+        graphButton = new ControlP5(this);
         
         countryImages.add(africa);
         countryImages.add(northAmerica);
@@ -106,7 +108,17 @@ public class MySketch1 extends PApplet {
         virusControlButton.addButton("virusControl")
             .setPosition(100,0)
             .setSize(100,50)
-            .setLabel("Virus Control" );
+            .setLabel("Virus Control" )
+            .onClick(e -> {
+                virusControlScreen.toggle();
+            });
+
+        graphButton.addButton("graphButton")
+            .setPosition(200,0)
+            .setSize(100,50)
+            .setLabel("Graph");
+            
+        
         
             
     }
