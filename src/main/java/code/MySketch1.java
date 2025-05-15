@@ -13,6 +13,7 @@ import g4p_controls.*;
 public class MySketch1 extends PApplet {
     Instructions instructionScreen;
     VirusControl virusControlScreen;
+    Notification notification;
 
 
     //set up button objects
@@ -55,6 +56,7 @@ public class MySketch1 extends PApplet {
     }
 
     public void setup() {
+        notification = new Notification(this);
         instructionScreen = new Instructions(this);
         virusControlScreen  = new VirusControl(this);
 
@@ -125,6 +127,8 @@ public class MySketch1 extends PApplet {
     }
 
     public void draw() {
+       
+        
         
         
 
@@ -148,6 +152,7 @@ public class MySketch1 extends PApplet {
         // Display instructions if they are toggled on
         instructionScreen.draw();
         virusControlScreen.draw();
+        notification.newNotification("sofie is so smart");
     }
 
     public void drawContinents() {
