@@ -6,11 +6,14 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
 import controlP5.*;  // Add ControlP5 import
+import g4p_controls.*;
+
 
 
 public class MySketch1 extends PApplet {
     Instructions instructionScreen;
     VirusControl virusControlScreen;
+
 
     //set up button objects
 
