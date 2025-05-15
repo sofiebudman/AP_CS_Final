@@ -23,5 +23,10 @@ public class Constants {
     public static final String EURASIA_CLOSED_PATH = "src/main/resources/images/eurasia_closed.png";
 
     public static final String OCEAN_PATH = "src/main/resources/images/ocean.png";
+
+
+    //formatting
+    public static final int HORIZONTAL_SHIFT = 20;
+    public static final int VERTICAL_SHIFT = 50;
     
 }

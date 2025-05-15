@@ -1,4 +1,4 @@
-package src;
+package src.main.java.code;
 
 import static src.main.java.code.Constants.BYTE_BOUNCE_FONT_PATH;
 import static src.main.java.code.Constants.ELECTROLIZ_FONT_PATH;

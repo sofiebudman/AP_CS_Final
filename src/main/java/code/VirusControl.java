@@ -1,4 +1,4 @@
-package src;
+package src.main.java.code;
 
 import processing.core.PApplet;
 import processing.core.PFont;

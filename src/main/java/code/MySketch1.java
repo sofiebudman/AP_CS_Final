@@ -1,12 +1,10 @@
-package src;
+package src.main.java.code;
 import java.util.ArrayList;
 import static src.main.java.code.Constants.*;
 
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
-import src.main.java.code.CountryImage;
-import src.main.java.code.Virus;
 import controlP5.*;  // Add ControlP5 import
 
 
@@ -69,7 +67,7 @@ public class MySketch1 extends PApplet {
        
 
         //load images
-        ocean = loadImage("src/main/resources/images/ocean.png");
+        ocean = loadImage(OCEAN_PATH);
 
         africaOpen = loadImage(africa.getOpenPath());
         northAmericaOpen = loadImage(northAmerica.getOpenPath());
@@ -77,9 +75,9 @@ public class MySketch1 extends PApplet {
         eurasiaOpen = loadImage(eurasia.getOpenPath());
 
         africaClosed = loadImage(africa.getClosedPath());
-        northAmericaClosed = loadImage("src/main/resources/images/northamerica_closed.png");
-        southAmericaClosed = loadImage("src/main/resources/images/southamerica_closed.png");
-        eurasiaClosed = loadImage("src/main/resources/images/eurasia_closed.png");
+        northAmericaClosed = loadImage(northAmerica.getClosedPath());
+        southAmericaClosed = loadImage(southAmerica.getClosedPath());
+        eurasiaClosed = loadImage(eurasia.getClosedPath());
 
         // Resize all images
         africaOpen.resize(WIDTH_SCALE, 0);
@@ -167,8 +165,8 @@ public class MySketch1 extends PApplet {
     }
 
     public void mousePressed() {
-        int x = mouseX -20; // Adjust for the 50px offset
-        int y = mouseY- 50;
+        int x = mouseX - HORIZONTAL_SHIFT; // Adjust for offsets
+        int y = mouseY- VERTICAL_SHIFT;
 
         // Check each continent
         checkContinentClick(x, y, africaOpen, africa);
@@ -193,6 +191,6 @@ public class MySketch1 extends PApplet {
     
 
     public static void main(String[] args) {
-        PApplet.main("src.MySketch1");
+        PApplet.main("src.main.java.code.MySketch1");
     }
 }
