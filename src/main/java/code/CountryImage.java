@@ -3,7 +3,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class CountryImage  {
-   
+   /* 
     private String openPath;
     private String closedPath;
     private boolean isOpen;
@@ -28,4 +28,5 @@ public class CountryImage  {
     public void switchState(){
         isOpen = !isOpen;
     }
+    */
 }
