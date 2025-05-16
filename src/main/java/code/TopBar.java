@@ -2,6 +2,8 @@ package src.main.java.code;
 
 import controlP5.ControlP5;
 import processing.core.PApplet;
+import processing.core.PFont;
+import static src.main.java.code.Constants.*;
 
 public class TopBar {
     private PApplet p;
@@ -42,8 +44,22 @@ public class TopBar {
             .setSize(100,50)
             .setLabel("Graph");
 
-        p.textSize(120);
-        p.text("Epidemic Simulator", 40, 120); 
+        //p.textSize(120);
+        //p.text("Epidemic Simulator", 40, 120); 
+
+
+        
+
+        
             
     }
+    /* 
+    public void draw() {
+        p.fill(51,94,200,250);
+        p.rect(200, 0, 1000, 50);
+        p.fill(255);
+        PFont mono = p.createFont(GEO_REGULAR_FONT_PATH, 40);
+        p.textFont(mono);
+        p.text("Epidemic Simulator", 400, 40);
+    }*/
 }

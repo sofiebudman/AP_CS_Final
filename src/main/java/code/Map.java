@@ -32,9 +32,12 @@ public class Map {
     private CountryImage australia;
     ArrayList<CountryImage> countryImages;
 
-    public Map(PApplet p) {
+   
+
+    public Map(PApplet p, Notification notification) {
         this.p = p;
         show = false;
+       
 
         ocean = p.loadImage(OCEAN_PATH);
 
@@ -124,8 +127,18 @@ public class Map {
 
             if (a > 0) {
                 c.switchState();
-    
+                String countryName = "";
+                if (c == africa) countryName = "Africa";
+                else if (c == northAmerica) countryName = "North America";
+                else if (c == southAmerica) countryName = "South America";
+                else if (c == eurasia) countryName = "Eurasia";
+                else if (c == australia) countryName = "Australia";
                 
+                if (c.isOpen()) {
+                    Notification.newNotification(countryName + " borders are now open");
+                } else {
+                    Notification.newNotification(countryName + " borders are now closed");
+                }
             }
         }
     }

@@ -12,6 +12,9 @@ public class Constants {
     public static final String BYTE_BOUNCE_FONT_PATH = "src/main/resources/fonts/ByteBounce.ttf";
     public static final String ELECTROLIZ_FONT_PATH = "src/main/resources/fonts/Electrolize-Regular.ttf";
 
+    public static final String JOSEFIN_FONT_PATH = "src/main/resources/fonts/josefin.ttf";
+    public static final String JOSEFIN_I_FONT_PATH = "src/main/resources/fonts/josefin_i.ttf";
+
     //File paths for image
     public static final String AFRICA_OPEN_PATH = "src/main/resources/images/africa_open.png";
     public static final String AFRICA_CLOSED_PATH = "src/main/resources/images/africa_closed.png";

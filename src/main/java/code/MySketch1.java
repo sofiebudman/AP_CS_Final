@@ -46,7 +46,7 @@ public class MySketch1 extends PApplet {
         instructionScreen = new Instructions(this);
         virusControlScreen  = new VirusControl(this);
         welcomeScreen = new WelcomeScreen(this);
-        map = new Map(this);
+        map = new Map(this, notification);
 
         topBar = new TopBar(this, instructionScreen, virusControlScreen);
         
@@ -71,23 +71,7 @@ public class MySketch1 extends PApplet {
     }
 
     public void draw() {
-       
-        
-        
-        
-
         background(255); 
-
-      
-        fill(51,94,200,250);
-        rect(200, 0, 1000, 50);
-
-        fill(255);
-        PFont mono = createFont(GEO_REGULAR_FONT_PATH, 40);
-        textFont(mono);
-        text("Epidemic Simulator", 400, 40);
-
-        
         
         map.drawOcean();
         map.drawContinents();
@@ -95,9 +79,11 @@ public class MySketch1 extends PApplet {
         // Display instructions if they are toggled on
         instructionScreen.draw();
         virusControlScreen.draw();
-        notification.newNotification("example notification");
         welcomeScreen.display();
+        //topBar.draw();
         
+        // Display notifications last so they appear on top
+        Notification.display();
     }
 
    
