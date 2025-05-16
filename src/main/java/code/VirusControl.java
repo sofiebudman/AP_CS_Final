@@ -8,12 +8,12 @@ import java.util.ResourceBundle.Control;
 import controlP5.*;
 
 public class VirusControl {
-    PApplet p;
-    ControlP5 virusNameField;
-    ControlP5 deathRateSlider;
-    ControlP5 recoveryRateSlider;
-    ControlP5 transmissionRateSlider;
-    ControlP5 countryStart; 
+    private PApplet p;
+    private ControlP5 virusNameField;
+    private ControlP5 deathRateSlider;
+    private ControlP5 recoveryRateSlider;
+    private ControlP5 transmissionRateSlider;
+    private ControlP5 countryStart; 
     String virusName = "";
     private boolean show;
     
@@ -24,7 +24,8 @@ public class VirusControl {
         recoveryRateSlider = new ControlP5(p);
         transmissionRateSlider = new ControlP5(p);
         countryStart = new ControlP5(p);
-        show = true;
+        show = false;
+         
 
         virusNameField.addTextfield("virusName")
                 .setPosition(540, 60)
@@ -84,7 +85,7 @@ public class VirusControl {
     public void draw() {
         if(!show) return;
         p.fill(229, 229, 229, 250);
-        p.rect(520, 50, 520, 220);
+        p.rect(0, 350, 300, 220);
         
     }
 }

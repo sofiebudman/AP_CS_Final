@@ -21,12 +21,14 @@ public class Constants {
     public static final String SOUTH_AMERICA_CLOSED_PATH = "src/main/resources/images/southamerica_closed.png";
     public static final String EURASIA_OPEN_PATH = "src/main/resources/images/eurasia_open.png";
     public static final String EURASIA_CLOSED_PATH = "src/main/resources/images/eurasia_closed.png";
+    public static final String AUSTRALIA_OPEN_PATH = "src/main/resources/images/australia_open.png";
+    public static final String AUSTRALIA_CLOSED_PATH = "src/main/resources/images/australia_closed.png";
 
     public static final String OCEAN_PATH = "src/main/resources/images/ocean.png";
 
 
     //formatting
-    public static final int HORIZONTAL_SHIFT = 20;
+    public static final int HORIZONTAL_SHIFT = 300;
     public static final int VERTICAL_SHIFT = 50;
     
 }

@@ -8,11 +8,11 @@ import processing.core.PApplet;
 import processing.core.PFont;
 
 public class Instructions{
-    PApplet p;
+    private PApplet p;
     private boolean showInstructions;
     public Instructions(PApplet p) {
         this.p = p;
-        showInstructions = true;
+        showInstructions = false;
     }
     public void show(){
         showInstructions = true;
@@ -27,7 +27,7 @@ public class Instructions{
     public void draw(){
         if (!showInstructions)return;
         p.fill(229, 229, 229, 250);
-        p.rect(0, 50, 520, 220);
+        p.rect(0, 50, 300, 220);
         p.fill(0);
         //p.textSize(5);
         PFont mono = p.createFont(ELECTROLIZ_FONT_PATH, 30);

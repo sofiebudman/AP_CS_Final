@@ -1,6 +1,9 @@
+
 package src.main.java.code;
+import static src.main.java.code.Constants.*;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 
 public class Notification {
     private PApplet p;
@@ -11,9 +14,12 @@ public class Notification {
 
     public void newNotification(String message){
         p.fill(0,0,0,180);
-        p.rect(900,50,200,30);
+        p.rect(900,55,260,30);
         p.fill(255, 255, 255);
-        p.text(message, 800, 80);
+
+        PFont mono = p.createFont(ELECTROLIZ_FONT_PATH, 20);
+        p.textFont(mono);
+        p.text(message, 905, 80);
 
 
     }
