@@ -1,8 +1,6 @@
 package src.main.java.code;
 
-import static src.main.java.code.Constants.HORIZONTAL_SHIFT;
-import static src.main.java.code.Constants.VERTICAL_SHIFT;
-import static src.main.java.code.Constants.WIDTH_SCALE;
+import static src.main.java.code.Constants.Scale.*;
 
 import processing.core.PApplet;
 import processing.core.PImage;

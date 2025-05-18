@@ -1,10 +1,5 @@
 package src.main.java.code;
-
-import static src.main.java.code.Constants.BYTE_BOUNCE_FONT_PATH;
-import static src.main.java.code.Constants.ELECTROLIZ_FONT_PATH;
-import static src.main.java.code.Constants.GEO_REGULAR_FONT_PATH;
-
-import static src.main.java.code.Constants.JOSEFIN_FONT_PATH;
+import static src.main.java.code.Constants.Fonts.*;
 
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -32,7 +27,7 @@ public class Instructions{
         p.rect(0, 50, 300, 220);
         p.fill(0);
         //p.textSize(5);
-        PFont mono = p.createFont(JOSEFIN_FONT_PATH, 30);
+        PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 30);
         p.textFont(mono);
         p.text("Instructions:\n1. Click continents.\n2. Track infection.\n3. Use buttons to toggle borders.", 20, 120);
 

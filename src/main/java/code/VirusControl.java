@@ -9,57 +9,19 @@ import controlP5.*;
 
 public class VirusControl {
     private PApplet p;
-    private ControlP5 virusNameField;
-    private ControlP5 deathRateSlider;
-    private ControlP5 recoveryRateSlider;
-    private ControlP5 transmissionRateSlider;
-    private ControlP5 countryStart; 
+   
     String virusName = "";
     private boolean show;
+    private ControlP5 cp5;
     
     public VirusControl(PApplet p) {
+        cp5 = new ControlP5(p);
         this.p = p;
-        virusNameField = new ControlP5(p);
-        deathRateSlider = new ControlP5(p);
-        recoveryRateSlider = new ControlP5(p);
-        transmissionRateSlider = new ControlP5(p);
-        countryStart = new ControlP5(p);
+       
         show = false;
-         
 
-        virusNameField.addTextfield("virusName")
-                .setPosition(540, 60)
-                .setSize(200, 40)
-                .setFont(p.createFont("Arial", 20))
-                .setColorBackground(p.color(255, 255, 255))
-                .setColorForeground(p.color(0, 0, 0))
-                .setColorActive(p.color(0, 0, 0))
-                .setColorValue(p.color(0, 0, 0));
 
-        deathRateSlider.addSlider("deathRateSlider")
-                .setPosition(540,120)
-                .setSize(200,20)
-                .setRange(0,100)
-                .setValue(50);
-
-        recoveryRateSlider.addSlider("recoveryRateSlider")
-                .setPosition(540,150)
-                .setSize(200,20)
-                .setRange(0,100)
-                .setValue(50);
-
-        transmissionRateSlider.addSlider("transmissionRateSlider")
-                .setPosition(540,180)
-                .setSize(200,20)
-                .setRange(0,100)
-                .setValue(50);
-
-        countryStart.addDropdownList("countryStart")
-                .setPosition(540,210)
-                .setItems(new String[]{"North America", "South America", "Europe", "Africa", "Asia", "Australia"})
-                .setSize(200, 100)  // dropdown height; each item height is set below
-                .setItemHeight(20)  // height of each dropdown item
-                .setBarHeight(30) ;
+        
 
         
     }

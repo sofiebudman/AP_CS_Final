@@ -17,16 +17,6 @@ public class MySketch1 extends PApplet {
     WelcomeScreen welcomeScreen;
     TopBar topBar;
     Map map;
-
-
-    //set up button objects
-
-    
- 
-    
-  
-    
-    
    
 
     public void settings() {
@@ -49,24 +39,9 @@ public class MySketch1 extends PApplet {
         map = new Map(this, notification);
 
         topBar = new TopBar(this, instructionScreen, virusControlScreen);
-        
-
-        // Initialize ControlP5 first
-        
-        
-        
-       
-
-        //load images
-        
-
-        // Draw initial state
+   
         map.drawContinents();
-        
 
-        
-        
-        
             
     }
 
@@ -78,7 +53,7 @@ public class MySketch1 extends PApplet {
         
         // Display instructions if they are toggled on
         instructionScreen.draw();
-        virusControlScreen.draw();
+        //virusControlScreen.draw();
         welcomeScreen.display();
         //topBar.draw();
         

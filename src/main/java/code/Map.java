@@ -1,6 +1,6 @@
 package src.main.java.code;
-
-import static src.main.java.code.Constants.*;
+import static src.main.java.code.Constants.Scale.*;
+import static src.main.java.code.Constants.FilePaths.*;
 
 import java.util.ArrayList;
 
@@ -11,6 +11,7 @@ public class Map {
     private PApplet p;
 
     private boolean showMap;
+  
 
     Country africa;
     Country northAmerica;

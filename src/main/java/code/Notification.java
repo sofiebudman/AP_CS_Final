@@ -1,5 +1,5 @@
 package src.main.java.code;
-import static src.main.java.code.Constants.*;
+import static src.main.java.code.Constants.Fonts.*;
 
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -26,12 +26,12 @@ public class Notification {
             long currentTime = System.currentTimeMillis();
             if (currentTime - displayStartTime < DISPLAY_DURATION) {
                 p.fill(0, 0, 0, 180);
-                p.rect(1150, 55, 260, 30);
+                p.rect(1100, 55, 330, 30);
                 p.fill(255, 255, 255);
 
-                PFont mono = p.createFont(ELECTROLIZ_FONT_PATH, 20);
+                PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 16);
                 p.textFont(mono);
-                p.text(currentMessage, 1115, 80);
+                p.text(currentMessage, 1115, 77);
             } else {
                 currentMessage = ""; // Clear the message after duration
             }
