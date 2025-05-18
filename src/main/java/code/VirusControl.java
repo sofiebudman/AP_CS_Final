@@ -13,6 +13,8 @@ public class VirusControl {
     String virusName = "";
     private boolean show;
     private ControlP5 cp5;
+
+   
     
     public VirusControl(PApplet p) {
         cp5 = new ControlP5(p);
