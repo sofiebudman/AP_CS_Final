@@ -8,6 +8,7 @@ import controlP5.DropdownList;
 import controlP5.Slider;
 import controlP5.Textfield;
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PImage;
 
 public class WelcomeScreen {
@@ -60,7 +61,7 @@ public class WelcomeScreen {
             // Update animation values
             titleScale = Math.min(1.0, titleScale + ZOOM_SPEED);
             titleAlpha = Math.min(255, titleAlpha + ANIMATION_SPEED * 255);
-            titleY = p.lerp(-100, 0, (float)titleScale);
+            titleY = PApplet.lerp(-100, 0, (float)titleScale);
             
             // Check if animation is complete
             if (titleScale >= 1.0 && titleAlpha >= 255) {
@@ -79,7 +80,7 @@ public class WelcomeScreen {
         p.popMatrix();
         
         // Reset image mode
-        p.imageMode(p.CORNER);
+        p.imageMode(PConstants.CORNER);
         p.noTint();
     }
 
