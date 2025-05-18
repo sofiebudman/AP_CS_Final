@@ -1,4 +1,4 @@
-package src.main.java.code;
+package main.java.code;
 public class City {
     
 }

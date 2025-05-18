@@ -1,6 +1,6 @@
-package src.main.java.code;
-import static src.main.java.code.Constants.Scale.*;
-import static src.main.java.code.Constants.FilePaths.*;
+package main.java.code;
+import static main.java.code.Constants.Scale.*;
+import static main.java.code.Constants.FilePaths.*;
 
 import java.util.ArrayList;
 

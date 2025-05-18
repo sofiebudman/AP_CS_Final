@@ -1,6 +1,6 @@
-package src.main.java.code;
+package main.java.code;
 
-import static src.main.java.code.Constants.Scale.*;
+import static main.java.code.Constants.Scale.*;
 
 import controlP5.Button;
 import controlP5.ControlP5;

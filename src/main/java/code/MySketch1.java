@@ -1,6 +1,6 @@
-package src.main.java.code;
+package main.java.code;
 import java.util.ArrayList;
-import static src.main.java.code.Constants.*;
+import static main.java.code.Constants.*;
 
 import processing.core.PApplet;
 import processing.core.PFont;

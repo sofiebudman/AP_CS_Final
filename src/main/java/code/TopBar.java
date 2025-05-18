@@ -1,9 +1,9 @@
-package src.main.java.code;
+package main.java.code;
 
 import controlP5.ControlP5;
 import processing.core.PApplet;
 import processing.core.PFont;
-import static src.main.java.code.Constants.*;
+import static main.java.code.Constants.*;
 
 public class TopBar {
     private PApplet p;

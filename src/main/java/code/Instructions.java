@@ -1,5 +1,5 @@
-package src.main.java.code;
-import static src.main.java.code.Constants.Fonts.*;
+package main.java.code;
+import static main.java.code.Constants.Fonts.*;
 
 import processing.core.PApplet;
 import processing.core.PFont;
