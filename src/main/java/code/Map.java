@@ -9,24 +9,30 @@ import processing.core.PImage;
 
 public class Map {
     private PApplet p;
-
-    private boolean showMap;
-  
-
+    //private boolean showMap;
     Country africa;
     Country northAmerica;
     Country southAmerica;
     Country eurasia;
     Country australia;
-   
     private PImage ocean;
 
-   
-
     public Map(PApplet p, Notification notification) {
-
         this.p = p;
-        showMap = false;
+        //showMap = false;
+        
+        // Load all images in constructor
+        try {
+            ocean = p.loadImage(OCEAN_PATH);
+            if (ocean == null) {
+                System.err.println("Failed to load ocean image from: " + OCEAN_PATH);
+            } else {
+                ocean.resize(WIDTH_SCALE, 0);
+            }
+        } catch (Exception e) {
+            System.err.println("Error loading ocean image: " + e.getMessage());
+        }
+        
         africa = new Country("Africa", AFRICA_OPEN_PATH, AFRICA_CLOSED_PATH, p);
         northAmerica = new Country("North America", NORTH_AMERICA_OPEN_PATH, NORTH_AMERICA_CLOSED_PATH, p);
         southAmerica = new Country("South America", SOUTH_AMERICA_OPEN_PATH, SOUTH_AMERICA_CLOSED_PATH, p);
@@ -34,29 +40,25 @@ public class Map {
         australia = new Country("Australia", AUSTRALIA_OPEN_PATH, AUSTRALIA_CLOSED_PATH, p);
     }
 
-    public void drawContinents(){
-        ocean = p.loadImage(OCEAN_PATH);
+    public void drawContinents() {
         africa.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
         northAmerica.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
         southAmerica.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
         eurasia.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
         australia.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
-       
-    }
-    public void drawOcean(){
-        p.image(ocean, HORIZONTAL_SHIFT, 50);
-        ocean.resize(WIDTH_SCALE,0);
     }
 
-   public void handleMousePressed(int mouseX, int mouseY) {
+    public void drawOcean() {
+       
+        p.image(ocean, HORIZONTAL_SHIFT, 50);
+        
+    }
+
+    public void handleMousePressed(int mouseX, int mouseY) {
         africa.handleMousePressed(mouseX, mouseY);
         northAmerica.handleMousePressed(mouseX, mouseY);
         southAmerica.handleMousePressed(mouseX, mouseY);
         eurasia.handleMousePressed(mouseX, mouseY);
         australia.handleMousePressed(mouseX, mouseY);
-
-   }
-
-
-
+    }
 }

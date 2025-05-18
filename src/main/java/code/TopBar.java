@@ -7,59 +7,46 @@ import static src.main.java.code.Constants.*;
 
 public class TopBar {
     private PApplet p;
-    private ControlP5 instructions;  
-    private ControlP5 virusControlButton;
-    private ControlP5 graphButton;
+    private ControlP5 cp5;  // Single ControlP5 instance
     private Instructions instructionsScreen;
     private VirusControl virusControlScreen;
    
     public TopBar(PApplet p, Instructions instructionScreen, VirusControl virusControlScreen) {
         this.p = p;
-        instructions = new ControlP5(p); 
-        virusControlButton = new ControlP5(p);
-        graphButton = new ControlP5(p);
+        this.cp5 = new ControlP5(p);
         this.instructionsScreen = instructionScreen;
         this.virusControlScreen = virusControlScreen;
 
-
-        instructions.addButton("instructions")
+        // Create buttons once in constructor
+        cp5.addButton("instructions")
             .setPosition(0, 0)
             .setSize(100, 50)
             .setLabel("Instructions")
-            .onClick(e -> {
+            .onPress(e -> {
                 this.instructionsScreen.toggle();
-                
             });
 
-        virusControlButton.addButton("virusControl")
-            .setPosition(100,0)
-            .setSize(100,50)
-            .setLabel("Virus Control" )
-            .onClick(e -> {
+        cp5.addButton("virusControl")
+            .setPosition(100, 0)
+            .setSize(100, 50)
+            .setLabel("Virus Control")
+            .onPress(e -> {
                 this.virusControlScreen.toggle();
             });
 
-        graphButton.addButton("graphButton")
-            .setPosition(200,0)
-            .setSize(100,50)
+        cp5.addButton("graphButton")
+            .setPosition(200, 0)
+            .setSize(100, 50)
             .setLabel("Graph");
-
-        //p.textSize(120);
-        //p.text("Epidemic Simulator", 40, 120); 
-
-
-        
-
-        
-            
     }
-    /* 
+     
     public void draw() {
-        p.fill(51,94,200,250);
+        // Draw any additional UI elements here if needed
+        p.fill(51, 94, 200, 250);
         p.rect(200, 0, 1000, 50);
         p.fill(255);
-        PFont mono = p.createFont(GEO_REGULAR_FONT_PATH, 40);
-        p.textFont(mono);
-        p.text("Epidemic Simulator", 400, 40);
-    }*/
+        //PFont mono = p.createFont(GEO_REGULAR_FONT_PATH, 40);
+        //p.textFont(mono);
+        //p.text("Epidemic Simulator", 400, 40);
+    }
 }

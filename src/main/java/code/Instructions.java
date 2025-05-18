@@ -29,7 +29,7 @@ public class Instructions{
         //p.textSize(5);
         PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 30);
         p.textFont(mono);
-        p.text("Instructions:\n1. Click continents.\n2. Track infection.\n3. Use buttons to toggle borders.", 20, 120);
+        p.text("Instructions:\n1. Click continents.\n2. Track infection.\n3. Use buttons to\n toggle borders.", 20, 120);
 
 
     }

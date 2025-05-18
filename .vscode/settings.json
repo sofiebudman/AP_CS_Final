@@ -1,6 +1,9 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "core.jar"
+        "lib/core.jar",
+        "lib/controlP5.jar",
+        "lib/G4P.jar",
+        "lib/sound.jar",
+        "lib/jsyn.jar"
     ]
 }

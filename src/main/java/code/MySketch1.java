@@ -8,8 +8,6 @@ import processing.core.PImage;
 import controlP5.*;  // Add ControlP5 import
 import g4p_controls.*;
 
-
-
 public class MySketch1 extends PApplet {
     Instructions instructionScreen;
     VirusControl virusControlScreen;
@@ -17,7 +15,7 @@ public class MySketch1 extends PApplet {
     WelcomeScreen welcomeScreen;
     TopBar topBar;
     Map map;
-   
+    private boolean topBarCreated = false;
 
     public void settings() {
         size(1440, 700);
@@ -37,39 +35,39 @@ public class MySketch1 extends PApplet {
         virusControlScreen  = new VirusControl(this);
         welcomeScreen = new WelcomeScreen(this);
         map = new Map(this, notification);
-
-        topBar = new TopBar(this, instructionScreen, virusControlScreen);
-   
-        map.drawContinents();
-
-            
     }
 
     public void draw() {
         background(255); 
         
-        map.drawOcean();
-        map.drawContinents();
-        
-        // Display instructions if they are toggled on
-        instructionScreen.draw();
-        //virusControlScreen.draw();
-        welcomeScreen.display();
-        //topBar.draw();
+        // Check if we're past the welcome screen
+        if (welcomeScreen.getCurrentPage() >= 3) {
+            // Create TopBar only once when we reach this point
+            if (!topBarCreated) {
+                topBar = new TopBar(this, instructionScreen, virusControlScreen);
+                topBarCreated = true;
+            }
+            
+            // Draw map and UI elements
+            map.drawOcean();
+            map.drawContinents();
+            instructionScreen.draw();
+            topBar.draw();
+        } else {
+            // Show welcome screen
+            welcomeScreen.display();
+        }
         
         // Display notifications last so they appear on top
         Notification.display();
     }
 
-   
-
     public void mousePressed() {
-        map.handleMousePressed(mouseX, mouseY);
+        // Only handle map clicks if we're past the welcome screen
+        if (welcomeScreen.getCurrentPage() >= 3) {
+            map.handleMousePressed(mouseX, mouseY);
+        }
     }
-
-    
-    
-    
 
     public static void main(String[] args) {
         PApplet.main("src.main.java.code.MySketch1");
