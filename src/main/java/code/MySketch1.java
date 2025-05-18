@@ -70,6 +70,6 @@ public class MySketch1 extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.main("src.main.java.code.MySketch1");
+        PApplet.main(new String[] { "--present", "src.main.java.code.MySketch1" });
     }
 } 
