@@ -11,18 +11,17 @@ public class Country {
     //private ArrayList<City> cities;
     private boolean hasVaccine;
     // Each city is max 10 million people
-    private int maxCities = 20;
-    private boolean infected;
-    private int xPos;
-    private int yPos;
+    //private int maxCities = 20;
+    //private boolean infected;
+   
 
     private PApplet p;
 
 
     private PImage imageOpen;
     private PImage imageClosed; 
-    private String openPath;
-    private String closedPath;
+    //private String openPath;
+    //private String closedPath;
     
     
     
@@ -31,9 +30,9 @@ public class Country {
         this.name = name;
         openBorder = true;
         hasVaccine = false;
-        infected = false;
-        this.openPath = openPath;
-        this.closedPath = closedPath;
+       //infected = false;
+        //this.openPath = openPath;
+        //this.closedPath = closedPath;
         
         // Load and resize images once
         imageOpen = p.loadImage(openPath);
@@ -112,32 +111,9 @@ public class Country {
         hasVaccine = false;
     }
     
-    public void update(Virus virus) {
-        
-        //Infect cities
-        //TODO Detect if city is near and then infect
-        
-        // Update cities
-        
-        //for (City c : cities) {
-       //     c.update(virus, hasVaccine);
-            
-            
-        //}
-        
-
-      
-        
-        
-        
-    }
     
-    public void renderCountry() {
-        //load image depending on openBorder, xPos, yPos
-        
-        //Render sidebar statistics
-        
-    }
+    
+ 
     
   public static void main(String args[]) {
 

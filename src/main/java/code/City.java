@@ -6,7 +6,7 @@ public class City {
     private int populationVulnerable;
     private int populationInfected;
     private int populationImmune;
-    private int populationRecovered; // tyler shoudl imake this
+
     private int posX;
     private int posY;
     private int countryNum;
@@ -120,7 +120,7 @@ public class City {
                 change = populationInfected;
             }
             populationInfected -= change;
-            populationRecovered += change;
+            populationImmune += change;
         }
         //Immunity from vaccination
         if (populationVulnerable > 0 && hasVaccine) {
@@ -131,11 +131,11 @@ public class City {
         }
         //increase population
         populationVulnerable = (int) (populationVulnerable * 1.01); // is this what you meant tyler
-        populationVulnerable += (int) populationRecovered * 1.01;
+        populationVulnerable += (int) populationImmune * 1.01;
         //Keep max pop at 10000000
-        if (populationVulnerable + populationRecovered + populationInfected > 10000000) {
+        if (populationVulnerable + populationImmune + populationInfected > 10000000) {
             
-            populationVulnerable = 10000000 - (populationRecovered+populationInfected);
+            populationVulnerable = 10000000 - (populationImmune+populationInfected);
         }
         
         
