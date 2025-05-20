@@ -49,6 +49,8 @@ public class Country {
         xPos = x;
         yPos = y;*/
     }
+
+
     public PImage getOpenImage(){
         return imageOpen;
     }

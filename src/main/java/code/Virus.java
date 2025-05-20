@@ -3,11 +3,11 @@ package main.java.code;
 
 
 public class Virus {
-    private int deathRate;
-    private int recoveryRate;
-    private int transmissionRate;
-    private int mutationRate;
-    private String name;
+    private static int deathRate;
+    private static int recoveryRate;
+    private static int transmissionRate;
+    private static int mutationRate;
+    private static String name;
     
     public Virus (String n, int d, int r, int t, int v, int m) {
         name = n;
@@ -22,26 +22,37 @@ public class Virus {
         transmissionRate = t;
         mutationRate = m;
     }
+
+    //Settet methods
+    public static void setName(String n) {
+        name = n;
+        if (name.length() > 20) {
+            name = name.substring(0, 20);
+        }
+        if(name.equals("")) {
+            name = "Virus";
+        }
+    }
     
-    public int getDeathRate() {
+    public static int getDeathRate() {
         return deathRate;
     }
     
-    public int getRecoveryRate() {
+    public static int getRecoveryRate() {
         return recoveryRate;
     }
     
-    public int getTransmissionRate() {
+    public static int getTransmissionRate() {
         return transmissionRate;
     }
     
-    public int getMutationRate() {
+    public static int getMutationRate() {
         return mutationRate;
     }
-    public String getName() {
+    public static String getName() {
         return name;
     }
-    public void mutate() {
+    public static void mutate() {
         int change = (int) (Math.random()*41)-20;
         deathRate += change;
         if (deathRate < 1) {
@@ -67,6 +78,9 @@ public class Virus {
             transmissionRate = 100;
         }
     }
+    public String toString() {
+        return "Virus: " + name + "\nDeath Rate: " + deathRate + "\nRecovery Rate: " + recoveryRate + "\nTransmission Rate: " + transmissionRate + "\nMutation Rate: " + mutationRate;
+    }   
     
   public static void main(String args[]) {
    

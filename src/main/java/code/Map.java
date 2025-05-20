@@ -16,6 +16,7 @@ public class Map {
     Country eurasia;
     Country australia;
     private PImage ocean;
+    private ArrayList<Country> countries = new ArrayList<Country>();
 
     public Map(PApplet p, Notification notification) {
         this.p = p;
@@ -38,14 +39,25 @@ public class Map {
         southAmerica = new Country("South America", SOUTH_AMERICA_OPEN_PATH, SOUTH_AMERICA_CLOSED_PATH, p);
         eurasia = new Country("Eurasia", EURASIA_OPEN_PATH, EURASIA_CLOSED_PATH, p);
         australia = new Country("Australia", AUSTRALIA_OPEN_PATH, AUSTRALIA_CLOSED_PATH, p);
+        countries.add(africa);
+        countries.add(northAmerica);
+        countries.add(southAmerica);
+        countries.add(eurasia);
+        countries.add(australia);
     }
 
     public void drawContinents() {
+        for (Country c : countries) {
+            c.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
+
+        }
+        // draw city
+        /* 
         africa.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
         northAmerica.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
         southAmerica.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
         eurasia.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
-        australia.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);
+        australia.drawImage(HORIZONTAL_SHIFT, VERTICAL_SHIFT);*/
     }
 
     public void drawOcean() {

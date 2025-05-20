@@ -36,6 +36,8 @@ public class WelcomeScreen {
     private Slider transmissionRateSlider; 
     private DropdownList countryStart;
 
+   //private String virusNameText;
+
     public WelcomeScreen(PApplet p) {
         this.p = p;
         cp5 = new ControlP5(p);
@@ -113,7 +115,13 @@ public class WelcomeScreen {
                 .setColorBackground(p.color(255, 255, 255))
                 .setColorForeground(p.color(0, 0, 0))
                 .setColorActive(p.color(0, 0, 0))
-                .setColorValue(p.color(0, 0, 0));
+                .setColorValue(p.color(0, 0, 0))
+                .onChange((event) -> {
+                    String text = event.getController().getStringValue();
+                    Virus.setName(text);
+                    //System.out.println(text);
+                    
+                });
 
         deathRateSlider = cp5.addSlider("deathRateSlider")
                 .setPosition(540,120)
@@ -183,6 +191,14 @@ public class WelcomeScreen {
     public int getCurrentPage() {
         return currentPage;
     }
+
+    /*public void keyPressed() {
+        if (p.keyCode == p.ENTER && currentPage == 2) {
+            Virus.setName()
+            virusNameText = virusName.getText();
+            System.out.println("Virus Name: " + virusNameText);
+        }
+    }*/
 }
    
 

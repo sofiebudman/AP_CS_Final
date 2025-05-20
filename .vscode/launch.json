@@ -5,6 +5,13 @@
             "type": "java",
             "name": "MySketch1",
             "request": "launch",
+            "mainClass": "main.java.code.MySketch1",
+            "projectName": "AP_CS_Final"
+        },
+        {
+            "type": "java",
+            "name": "MySketch1",
+            "request": "launch",
             "mainClass": "src.main.java.code.MySketch1",
             "projectName": "AP_CS_Final_28ceed8"
         },

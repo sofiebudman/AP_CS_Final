@@ -8,6 +8,7 @@ import java.util.ResourceBundle.Control;
 import controlP5.*;
 
 public class VirusControl {
+    /* 
     private PApplet p;
    
     String virusName = "";
@@ -38,7 +39,7 @@ public class VirusControl {
         show = !show;
     }
 
-    public void handleEvent(ControlEvent e) {
+    //public void handleEvent(ControlEvent e) {
         if (e.isAssignableFrom(Textfield.class)) {
             String text = e.getController().getStringValue();
             System.out.println("Text entered: " + text);
@@ -51,5 +52,5 @@ public class VirusControl {
         p.fill(229, 229, 229, 250);
         p.rect(0, 350, 300, 220);
         
-    }
+    }*/
 }

@@ -15,6 +15,8 @@ public class MySketch1 extends PApplet {
     WelcomeScreen welcomeScreen;
     TopBar topBar;
     Map map;
+    
+
     private boolean topBarCreated = false;
 
     public void settings() {
@@ -22,23 +24,25 @@ public class MySketch1 extends PApplet {
     }
 
     //load all country images
+    /* 
     void controlEvent(ControlEvent e) {
         if (e.isFrom("virusName")) {
             System.out.println("Event from virusName field");
             virusControlScreen.handleEvent(e);
         }
-    }
+    }*/
 
     public void setup() {
         notification = new Notification(this);
         instructionScreen = new Instructions(this);
-        virusControlScreen  = new VirusControl(this);
+        //virusControlScreen  = new VirusControl(this); //TODO: uncomment this if we decide we want to see
         welcomeScreen = new WelcomeScreen(this);
         map = new Map(this, notification);
     }
 
     public void draw() {
-        background(255); 
+        // Clear the screen with white background on every frame
+        background(255);
         
         // Check if we're past the welcome screen
         if (welcomeScreen.getCurrentPage() >= 3) {
@@ -53,6 +57,9 @@ public class MySketch1 extends PApplet {
             map.drawContinents();
             instructionScreen.draw();
             topBar.draw();
+
+            //Draw Cities
+
         } else {
             // Show welcome screen
             welcomeScreen.display();
@@ -70,6 +77,6 @@ public class MySketch1 extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.main(new String[] { "--present", "src.main.java.code.MySketch1" });
+        PApplet.main(new String[] { "main.java.code.MySketch1" });
     }
 } 

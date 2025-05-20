@@ -26,14 +26,14 @@ public class TopBar {
                 this.instructionsScreen.toggle();
             });
 
-        cp5.addButton("virusControl")
+        /*cp5.addButton("virusControl")
             .setPosition(100, 0)
             .setSize(100, 50)
             .setLabel("Virus Control")
             .onPress(e -> {
                 this.virusControlScreen.toggle();
             });
-
+*/
         cp5.addButton("graphButton")
             .setPosition(200, 0)
             .setSize(100, 50)

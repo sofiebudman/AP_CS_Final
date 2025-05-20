@@ -1,4 +1,4 @@
-package src.main.java.code;
+package main.java.code;
 import processing.core.PApplet;
 import processing.core.PImage;
 
