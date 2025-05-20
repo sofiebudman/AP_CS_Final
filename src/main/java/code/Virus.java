@@ -8,8 +8,10 @@ public class Virus {
     private static int transmissionRate;
     private static int mutationRate;
     private static String name;
+    private static String startingCountry;
     
-    public Virus (String n, int d, int r, int t, int v, int m) {
+    public Virus (/*String n, int d, int r, int t, int v, int m*/) {
+        /* 
         name = n;
         if (name.length() > 20) {
             name = name.substring(0, 20);
@@ -20,7 +22,7 @@ public class Virus {
         deathRate = d;
         recoveryRate = r;
         transmissionRate = t;
-        mutationRate = m;
+        mutationRate = m;*/
     }
 
     //Settet methods
@@ -32,6 +34,21 @@ public class Virus {
         if(name.equals("")) {
             name = "Virus";
         }
+    }
+    public static void setDeathRate(int d) {
+        deathRate = d;
+    }
+    public static void setRecoveryRate(int r) {
+        recoveryRate = r;
+    }
+    public static void setTransmissionRate(int t) {
+        transmissionRate = t;
+    }
+    public static void setMutationRate(int m) {
+        mutationRate = m;
+    }
+    public static void setStartingCountry(String c) {
+        startingCountry = c;
     }
     
     public static int getDeathRate() {

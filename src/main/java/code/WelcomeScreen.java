@@ -1,6 +1,7 @@
 package main.java.code;
 
 import static main.java.code.Constants.Scale.*;
+import static main.java.code.Constants.Fonts.*;
 
 import controlP5.Button;
 import controlP5.ControlP5;
@@ -10,6 +11,7 @@ import controlP5.Textfield;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PImage;
+import processing.core.PFont;
 
 public class WelcomeScreen {
 
@@ -36,11 +38,25 @@ public class WelcomeScreen {
     private Slider transmissionRateSlider; 
     private DropdownList countryStart;
 
+    private String feedbackMessage = "";
+    private boolean virusNameValid = false;
+    private int storedDeathRate = 50;
+    private int storedRecoveryRate = 50;
+    private int storedTransmissionRate = 50;
+    private String storedCountry = "North America";
+
+    private PFont mainFont;
+    private static final int TITLE_SIZE = 24;
+    private static final int HEADER_SIZE = 20;
+    private static final int BODY_SIZE = 16;
+    private static final int FEEDBACK_SIZE = 14;
+
    //private String virusNameText;
 
     public WelcomeScreen(PApplet p) {
         this.p = p;
         cp5 = new ControlP5(p);
+        mainFont = p.createFont(FARRO_REGULAR_FONT_PATH, 16);
         titleImage = p.loadImage("src/main/resources/elements/title.png");
         backgroundImage = p.loadImage("src/main/resources/elements/background.png");
         virusControlImage = p.loadImage("src/main/resources/elements/virusControl.png");
@@ -90,11 +106,25 @@ public class WelcomeScreen {
         nextButton = cp5.addButton("Next")
                 .setPosition(600, 550)
                 .setSize(200, 50)
+                .setLabel("Next")
                 .setColorBackground(p.color(0, 0, 0))
                 .setColorForeground(p.color(100, 100, 100))
                 .setColorActive(p.color(150, 150, 150))
                 .onPress((event) -> {
-                    System.out.println("Button pressed - current page: " + currentPage);
+                    if (currentPage == 2) {
+                        // Store all values when moving to the next page
+                        storedDeathRate = (int) deathRateSlider.getValue();
+                        storedRecoveryRate = (int) recoveryRateSlider.getValue();
+                        storedTransmissionRate = (int) transmissionRateSlider.getValue();
+                        storedCountry = countryStart.getLabel();
+                        
+                        // Set the values in the Virus class
+                        Virus.setDeathRate(storedDeathRate);
+                        Virus.setRecoveryRate(storedRecoveryRate);
+                        Virus.setTransmissionRate(storedTransmissionRate);
+                        Virus.setStartingCountry(storedCountry);
+                    }
+                    
                     currentPage++;
                     if (currentPage == 3) {
                         cp5.remove("virusName");
@@ -108,45 +138,74 @@ public class WelcomeScreen {
     }
 
     public void addButtons() {
+        // Add labels for the controls with improved styling
+        p.textAlign(PConstants.LEFT);
+        p.fill(0);
+        p.textFont(mainFont, HEADER_SIZE);
+        p.text("Virus Configuration", 540, 30);
+        
+        p.textFont(mainFont, BODY_SIZE);
+        p.text("Enter Virus Name:", 540, 60);
+        
         virusName = cp5.addTextfield("virusName")
-                .setPosition(540, 60)
+                .setPosition(540, 70)
                 .setSize(200, 40)
-                .setFont(p.createFont("Arial", 20))
+                .setFont(p.createFont(FARRO_REGULAR_FONT_PATH, 16))
                 .setColorBackground(p.color(255, 255, 255))
                 .setColorForeground(p.color(0, 0, 0))
                 .setColorActive(p.color(0, 0, 0))
                 .setColorValue(p.color(0, 0, 0))
                 .onChange((event) -> {
                     String text = event.getController().getStringValue();
-                    Virus.setName(text);
-                    //System.out.println(text);
-                    
+                    if (text.length() > 20) {
+                        feedbackMessage = "Virus name must be 20 characters or less";
+                        virusNameValid = false;
+                    } else if (text.length() > 0) {
+                        feedbackMessage = "Virus name entered: " + text;
+                        virusNameValid = true;
+                        Virus.setName(text);
+                    } else {
+                        feedbackMessage = "Please enter a virus name";
+                        virusNameValid = false;
+                    }
                 });
 
+        p.text("Death Rate (%):", 540, 130);
         deathRateSlider = cp5.addSlider("deathRateSlider")
-                .setPosition(540,120)
-                .setSize(200,20)
-                .setRange(0,100)
-                .setValue(50);
+                .setPosition(540, 140)
+                .setSize(200, 20)
+                .setRange(0, 100)
+                .setValue(50)
+                .setDecimalPrecision(0)
+                .setLabel("Death Rate");
+               
 
+        p.text("Recovery Rate (%):", 540, 180);
         recoveryRateSlider = cp5.addSlider("recoveryRateSlider")
-                .setPosition(540,150)
-                .setSize(200,20)
-                .setRange(0,100)
-                .setValue(50);
+                .setPosition(540, 190)
+                .setSize(200, 20)
+                .setRange(0, 100)
+                .setValue(50)
+                .setLabel("Recovery Rate");
+             
 
+        p.text("Transmission Rate (%):", 540, 230);
         transmissionRateSlider = cp5.addSlider("transmissionRateSlider")
-                .setPosition(540,180)
-                .setSize(200,20)
-                .setRange(0,100)
-                .setValue(50);
+                .setPosition(540, 240)
+                .setSize(200, 20)
+                .setRange(0, 100)
+                .setValue(50)
+                .setLabel("Transmission Rate");
+                
 
+        p.text("Starting Country:", 540, 280);
         countryStart = cp5.addDropdownList("countryStart")
-                .setPosition(540,210)
+                .setPosition(540, 290)
                 .setItems(new String[]{"North America", "South America", "Europe", "Africa", "Asia", "Australia"})
-                .setSize(200, 100)
+                .setSize(200, 120)
                 .setItemHeight(20)
-                .setBarHeight(30);
+                .setBarHeight(30)
+                .setLabel("Select Country");
         controlsCreated = true;
     }
 
@@ -164,6 +223,21 @@ public class WelcomeScreen {
         if(!controlsCreated) {
             addButtons();
         }
+
+        // Display feedback message with improved styling
+        p.fill(0);
+        p.textFont(mainFont, FEEDBACK_SIZE);
+        p.textAlign(PConstants.LEFT);
+        p.text(feedbackMessage, 540, 430);
+
+        // Display current values with improved styling
+        p.textFont(mainFont, BODY_SIZE);
+        p.text("Current Configuration:", 540, 460);
+        p.textFont(mainFont, FEEDBACK_SIZE);
+        p.text("Death Rate: " + (int)deathRateSlider.getValue() + "%", 540, 480);
+        p.text("Recovery Rate: " + (int)recoveryRateSlider.getValue() + "%", 540, 500);
+        p.text("Transmission Rate: " + (int)transmissionRateSlider.getValue() + "%", 540, 520);
+        p.text("Starting Country: " + countryStart.getValue(), 540, 540);
     }
 
     public void display() {
@@ -175,15 +249,18 @@ public class WelcomeScreen {
         }
         else if (currentPage == 2) {
             virusControlScreen();
+            Virus.setDeathRate((int) deathRateSlider.getValue());
         }
         else if(currentPage == 3) {
             // Remove all controls when transitioning to map
+            
             cp5.remove("virusName");
             cp5.remove("deathRateSlider");
             cp5.remove("recoveryRateSlider");
             cp5.remove("transmissionRateSlider");
             cp5.remove("countryStart");
             cp5.remove("Next");
+            
             // Don't display anything on page 3, let the map show
         }
     }

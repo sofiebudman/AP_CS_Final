@@ -41,8 +41,7 @@ public class MySketch1 extends PApplet {
     }
 
     public void draw() {
-        // Clear the screen with white background on every frame
-        background(255);
+        background(255); 
         
         // Check if we're past the welcome screen
         if (welcomeScreen.getCurrentPage() >= 3) {
