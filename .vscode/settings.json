@@ -1,9 +1,14 @@
 {
     "java.project.referencedLibraries": [
-        "lib/core.jar",
-        "lib/controlP5.jar",
-        "lib/G4P.jar",
-        "lib/sound.jar",
-        "lib/jsyn.jar"
-    ]
+        "${workspaceFolder}/lib/core.jar",
+        "${workspaceFolder}/lib/controlP5.jar",
+        "${workspaceFolder}/lib/G4P.jar",
+        "${workspaceFolder}/lib/sound.jar",
+        "${workspaceFolder}/lib/jsyn.jar"
+    ],
+    "java.project.sourcePaths": [
+        "src/main/java"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.exportJar.targetPath": "${workspaceFolder}/build/${workspaceFolderBasename}.jar"
 }
