@@ -6,28 +6,12 @@
             "name": "MySketch1",
             "request": "launch",
             "mainClass": "main.java.code.MySketch1",
-            "projectName": "AP_CS_Final"
-        },
-        {
-            "type": "java",
-            "name": "MySketch1",
-            "request": "launch",
-            "mainClass": "src.main.java.code.MySketch1",
-            "projectName": "AP_CS_Final_28ceed8"
-        },
-        {
-            "type": "java",
-            "name": "Launch MySketch1",
-            "request": "launch",
-            "mainClass": "src.main.java.code.MySketch1",
             "projectName": "AP_CS_Final",
             "classpath": [
+                "${workspaceFolder}/bin",
                 "${workspaceFolder}/lib/core.jar",
                 "${workspaceFolder}/lib/controlP5.jar",
-                "${workspaceFolder}/lib/G4P.jar",
-                "${workspaceFolder}/lib/sound.jar",
-                "${workspaceFolder}/lib/jsyn.jar",
-                "${workspaceFolder}/bin"
+                "${workspaceFolder}/lib/G4P.jar"
             ]
         }
     ]

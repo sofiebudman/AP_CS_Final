@@ -9,7 +9,24 @@
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.compile.nullAnalysis.mode": "automatic",
   "java.project.defaultOutputPath": "bin",
-  "java.project.sourcePath": "src"
+  "java.project.sourcePath": "src",
+
+  "tasks": [
+    {
+      "label": "build sketch",
+      "type": "shell",
+      "command": "javac",
+      "args": [
+        "-cp",
+        "lib/core.jar;lib/controlP5.jar",
+        "-d",
+        "bin",
+        "src/main/java/code/MySketch1.java"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
 
 
 }
