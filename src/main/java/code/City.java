@@ -20,9 +20,10 @@ public class City {
 
     
     private PApplet p;
+    private String name;
 
-    public City (int x, int y, int c, int pop, PApplet p) {
-        
+    public City (String name, int x, int y, /*int c */int pop, PApplet p) {
+        this.name = name;
         populationVulnerable = pop;
         if (populationVulnerable > 10000000) {
             populationVulnerable = 10000000;
@@ -31,8 +32,13 @@ public class City {
         populationImmune = 0;
         posX = x;
         posY = y;
-        countryNum = c;
+        //countryNum = c;
         this.p = p;
+        
+        // Initialize radius values
+        cityRadius = 20; // Base size of the city
+        spreadRadius = cityRadius * 1.5; // Slightly larger than city radius
+        immunityRadius = cityRadius; // Same size as city radius
     }
 
     
@@ -45,20 +51,23 @@ public class City {
      * - Borders can only change state every 30 seconds (need a timer for each individual country)
      */
     public void render() {
-        p.circle(posX, posY, (float)spreadRadius);  //tODO: find a way to expand the radius every second with setter method, then also have way to change colro + opactiy
-        p.circle(posX, posY, (float) immunityRadius);
-        p.circle(posX, posY, (float) cityRadius);
-
-        //Render based on color
+        // Draw immunity circle (blue)
+        p.fill(0, 0, 255, 100);
+        p.circle(posX, posY, (float)immunityRadius);
         
-        //use posX posY
+        // Draw vulnerable population circle (white)
+        p.fill(255, 255, 255, 100);
+        p.circle(posX, posY, (float)cityRadius);
         
-        //At X, Y, draw a blue circle based on populationRecovered + populationVulnerable
-        //At X, Y, draw a white circle on top of the blue circle with populationVulnerable
-        //At X, Y, draw a transparent red circle based on population Infected. At 1 person infected, radius of this circle should be 
-        //slightly larger than the blue circle
+        // Draw infected population circle (red)
+        if (populationInfected > 0) {
+            p.fill(255, 0, 0, 100);
+            p.circle(posX, posY, (float)spreadRadius);
+        }
         
-        
+        // Draw city center point
+        p.fill(0);
+        p.circle(posX, posY, 5);
     }
 
     public void startInfectionSpread(){

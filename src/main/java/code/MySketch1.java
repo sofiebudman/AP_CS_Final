@@ -1,6 +1,7 @@
 package main.java.code;
 import java.util.ArrayList;
-import static main.java.code.Constants.*;
+import static main.java.code.Constants.Coordinates.*;
+import static main.java.code.Constants.Scale.*;
 
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -56,6 +57,7 @@ public class MySketch1 extends PApplet {
             map.drawContinents();
             instructionScreen.draw();
             topBar.draw();
+            map.drawCity(); // Draw cities
 
             //Draw Cities
 
@@ -66,13 +68,17 @@ public class MySketch1 extends PApplet {
         
         // Display notifications last so they appear on top
         Notification.display();
+
     }
 
+    
     public void mousePressed() {
         // Only handle map clicks if we're past the welcome screen
         if (welcomeScreen.getCurrentPage() >= 3) {
             map.handleMousePressed(mouseX, mouseY);
+            
         }
+        System.out.println("Coordinates - X: " + mouseX + ", Y: " + mouseY);
     }
 
     public static void main(String[] args) {

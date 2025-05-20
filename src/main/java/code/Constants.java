@@ -19,6 +19,26 @@ public class Constants {
         public static final String FARRO_LIGHT_FONT_PATH = "src/main/resources/fonts/Farro-Light.ttf";
 
     }
+    public static class Coordinates{
+        public static final int LA_HORIZONTAL_SHIFT = 445;
+        public static final int LA_VERTICAL_SHIFT = 248;
+
+        public static final int BUENOS_AIRES_HORIZONTAL_SHIFT = 634;
+        public static final int BUENOS_AIRES_VERTICAL_SHIFT = 514;
+
+        public static final int CAIRO_HORIZONTAL_SHIFT = 931;
+        public static final int CAIRO_VERTICAL_SHIFT = 268;
+
+        public static final int NEW_YORK_HORIZONTAL_SHIFT = 500;
+        public static final int NEW_YORK_VERTICAL_SHIFT = 200;
+
+
+       
+         
+
+
+
+    }
     public static class FilePaths{
         public static final String AFRICA_OPEN_PATH = "src/main/resources/images/africa_open.png";
         public static final String AFRICA_CLOSED_PATH = "src/main/resources/images/africa_closed.png";
