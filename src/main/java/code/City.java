@@ -1,4 +1,8 @@
-package main.java.code;public class City {
+package main.java.code;
+
+import processing.core.PApplet;
+
+public class City {
     private int populationVulnerable;
     private int populationInfected;
     private int populationImmune;
@@ -6,7 +10,18 @@ package main.java.code;public class City {
     private int posX;
     private int posY;
     private int countryNum;
-    public City (int x, int y, int c, int pop) {
+
+    //TODO: notification when virus mutates
+
+    private double spreadRadius; // invisible circle that represents how far it can spread
+    private double immunityRadius; // blue circle that represents how immune a populaiton is
+    private double cityRadius; //radius that represents the size of a city
+
+
+    
+    private PApplet p;
+
+    public City (int x, int y, int c, int pop, PApplet p) {
         
         populationVulnerable = pop;
         if (populationVulnerable > 10000000) {
@@ -17,6 +32,37 @@ package main.java.code;public class City {
         posX = x;
         posY = y;
         countryNum = c;
+        this.p = p;
+    }
+
+    
+
+
+
+    //logic
+    /*
+     * - If a countries borders are open and its touchign the spread circle of another city, that city begins getting infected
+     * - Borders can only change state every 30 seconds (need a timer for each individual country)
+     */
+    public void render() {
+        p.circle(posX, posY, (float)spreadRadius);  //tODO: find a way to expand the radius every second with setter method, then also have way to change colro + opactiy
+        p.circle(posX, posY, (float) immunityRadius);
+        p.circle(posX, posY, (float) cityRadius);
+
+        //Render based on color
+        
+        //use posX posY
+        
+        //At X, Y, draw a blue circle based on populationRecovered + populationVulnerable
+        //At X, Y, draw a white circle on top of the blue circle with populationVulnerable
+        //At X, Y, draw a transparent red circle based on population Infected. At 1 person infected, radius of this circle should be 
+        //slightly larger than the blue circle
+        
+        
+    }
+
+    public void startInfectionSpread(){
+        //when a new city contracts the virus, this method contains the logic for it to start expanding 
     }
     //Getters
     public int getPopulationVulnerable() {
@@ -98,18 +144,7 @@ package main.java.code;public class City {
         render();
     }
     
-    public void render() {
-        //Render based on color
-        
-        //use posX posY
-        
-        //At X, Y, draw a blue circle based on populationRecovered + populationVulnerable
-        //At X, Y, draw a white circle on top of the blue circle with populationVulnerable
-        //At X, Y, draw a transparent red circle based on population Infected. At 1 person infected, radius of this circle should be 
-        //slightly larger than the blue circle
-        
-        
-    }
+    
     
   public static void main(String args[]) {
   }
