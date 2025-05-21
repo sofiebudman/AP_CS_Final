@@ -29,8 +29,96 @@ public class Constants {
         public static final int CAIRO_HORIZONTAL_SHIFT = 931;
         public static final int CAIRO_VERTICAL_SHIFT = 268;
 
-        public static final int NEW_YORK_HORIZONTAL_SHIFT = 500;
-        public static final int NEW_YORK_VERTICAL_SHIFT = 200;
+        public static final int MUMBAI_HORIZONTAL_SHIFT = 1080;
+        public static final int MUMBAI_VERTICAL_SHIFT = 304;
+
+        public static final int SYDNEY_HORIZONTAL_SHIFT = 1377;
+        public static final int SYDNEY_VERTICAL_SHIFT = 518;
+
+        public static final int MEXICO_CITY_HORIZONTAL_SHIFT = 1080;
+        public static final int MEXICO_CITY_VERTICAL_SHIFT = 304;
+
+        public static final int NEW_YORK_HORIZONTAL_SHIFT = 579;
+        public static final int NEW_YORK_VERTICAL_SHIFT = 237;
+
+        public static final int TORONTO_HORIZONTAL_SHIFT = 562;
+        public static final int TORONTO_VERTICAL_SHIFT = 223;
+
+        public static final int ANCHORAGE_HORIZONTAL_SHIFT = 363;
+        public static final int ANCHORAGE_VERTICAL_SHIFT = 151;
+
+        public static final int LIMA_HORIZONTAL_SHIFT = 553;
+        public static final int LIMA_VERTICAL_SHIFT = 426;
+
+        public static final int RIO_DJ_HORIZONTAL_SHIFT = 678;
+        public static final int RIO_DJ_VERTICAL_SHIFT = 469;
+
+        public static final int BOGOTA_HORIZONTAL_SHIFT = 569;
+        public static final int BOGOTA_VERTICAL_SHIFT = 386;
+
+        public static final int SANTIAGO_HORIZONTAL_SHIFT = 567;
+        public static final int SANTIAGO_VERTICAL_SHIFT = 508;
+
+        public static final int TOKYO_HORIZONTAL_SHIFT = 1299;
+        public static final int TOKYO_VERTICAL_SHIFT = 247;
+
+        public static final int DELHI_HORIZONTAL_SHIFT = 1089;
+        public static final int DELHI_VERTICAL_SHIFT = 276;
+
+        public static final int SHANGHAI_HORIZONTAL_SHIFT = 1216;
+        public static final int SHANGHAI_VERTICAL_SHIFT = 275;
+
+        public static final int BEIJING_HORIZONTAL_SHIFT = 1218;
+        public static final int BEIJING_VERTICAL_SHIFT = 229;
+
+        public static final int TEHRAN_HORIZONTAL_SHIFT = 997;
+        public static final int TEHRAN_VERTICAL_SHIFT = 235;
+
+        public static final int ISTANBUL_HORIZONTAL_SHIFT = 904;
+        public static final int ISTANBUL_VERTICAL_SHIFT = 213;
+
+        public static final int BANGKOK_HORIZONTAL_SHIFT = 1169;
+        public static final int BANGKOK_VERTICAL_SHIFT = 323;
+
+        public static final int LONDON_HORIZONTAL_SHIFT = 828;
+        public static final int LONDON_VERTICAL_SHIFT = 175;
+
+        public static final int PARIS_HORIZONTAL_SHIFT = 833;
+        public static final int PARIS_VERTICAL_SHIFT = 199;
+
+        public static final int MOSCOW_HORIZONTAL_SHIFT = 941;
+        public static final int MOSCOW_VERTICAL_SHIFT = 183;
+
+        public static final int BERLIN_HORIZONTAL_SHIFT = 860;
+        public static final int BERLIN_VERTICAL_SHIFT = 196;
+
+        public static final int JAKARTA_HORIZONTAL_SHIFT = 1191;
+        public static final int JAKARTA_VERTICAL_SHIFT = 393;
+
+        public static final int RIYADH_HORIZONTAL_SHIFT = 986;
+        public static final int RIYADH_VERTICAL_SHIFT = 283;
+
+        public static final int LAGOS_HORIZONTAL_SHIFT = 840;
+        public static final int LAGOS_VERTICAL_SHIFT = 349;
+
+        public static final int KINSHASA_HORIZONTAL_SHIFT = 878;
+        public static final int KINSHASA_VERTICAL_SHIFT = 387;
+
+        public static final int DES_HORIZONTAL_SHIFT = 969;
+        public static final int DES_VERTICAL_SHIFT = 387;
+
+        public static final int CAPE_TOWN_HORIZONTAL_SHIFT = 901;
+        public static final int CAPE_TOWN_VERTICAL_SHIFT = 522;
+
+        public static final int MELBOURNE_HORIZONTAL_SHIFT = 1359;
+        public static final int MELBOURNE_VERTICAL_SHIFT = 544;
+
+        public static final int PERTH_HORIZONTAL_SHIFT = 1247;
+        public static final int PERTH_VERTICAL_SHIFT = 517;
+
+
+
+
 
 
        

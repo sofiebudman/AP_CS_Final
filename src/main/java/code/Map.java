@@ -47,9 +47,32 @@ public class Map {
 
         // Add cities with their positions relative to the map
         // North America cities
+
+        //TODO: add more cities
         cities.add(new City("LA", LA_HORIZONTAL_SHIFT, LA_VERTICAL_SHIFT, 8000000, p)); // New York
         cities.add(new City("BA", BUENOS_AIRES_HORIZONTAL_SHIFT, BUENOS_AIRES_VERTICAL_SHIFT, 3000000, p)); // Buenos Aires
         cities.add(new City("Cairo", CAIRO_HORIZONTAL_SHIFT, CAIRO_VERTICAL_SHIFT, 4000000, p)); // Cairo
+        cities.add(new City("Tokyo", TOKYO_HORIZONTAL_SHIFT, TOKYO_VERTICAL_SHIFT, 9000000, p)); // Tokyo
+        cities.add(new City("London", LONDON_HORIZONTAL_SHIFT, LONDON_VERTICAL_SHIFT, 7000000, p)); // London
+        cities.add(new City("Sydney", SYDNEY_HORIZONTAL_SHIFT, SYDNEY_VERTICAL_SHIFT, 5000000, p)); // Sydney
+        cities.add(new City("Melbourne", MELBOURNE_HORIZONTAL_SHIFT, MELBOURNE_VERTICAL_SHIFT, 3000000, p)); // Melbourne
+        cities.add(new City("Perth", PERTH_HORIZONTAL_SHIFT, PERTH_VERTICAL_SHIFT, 2000000, p)); // Perth
+        cities.add(new City("Cape Town", CAPE_TOWN_HORIZONTAL_SHIFT, CAPE_TOWN_VERTICAL_SHIFT, 2000000, p)); // Cape Town
+        cities.add(new City("Des", DES_HORIZONTAL_SHIFT, DES_VERTICAL_SHIFT, 2000000, p)); // Des
+        cities.add(new City("Mexico City", MEXICO_CITY_HORIZONTAL_SHIFT, MEXICO_CITY_VERTICAL_SHIFT, 8000000, p)); // Mexico City
+        
+
+        cities.add(new City("Rio de Janeiro", RIO_DJ_HORIZONTAL_SHIFT, RIO_DJ_VERTICAL_SHIFT, 5000000, p)); // Rio de Janeiro
+        //cities.add(new City("Sao Paulo", SAO_PAULO_HORIZONTAL_SHIFT, SAO_PAULO_VERTICAL_SHIFT, 5000000, p)); // Sao Paulo
+        cities.add(new City("Lagos", LAGOS_HORIZONTAL_SHIFT, LAGOS_VERTICAL_SHIFT, 3000000, p)); // Lagos
+        cities.add(new City("Kinshasa", KINSHASA_HORIZONTAL_SHIFT, KINSHASA_VERTICAL_SHIFT, 2000000, p)); // Kinshasa
+        cities.add(new City("Jakarta", JAKARTA_HORIZONTAL_SHIFT, JAKARTA_VERTICAL_SHIFT, 2000000, p)); // Jakarta
+        cities.add(new City("Berlin", BERLIN_HORIZONTAL_SHIFT, BERLIN_VERTICAL_SHIFT, 6000000, p)); // Berlin
+        cities.add(new City("Moscow", MOSCOW_HORIZONTAL_SHIFT, MOSCOW_VERTICAL_SHIFT, 7000000, p)); // Moscow
+        cities.add(new City("Riyadh", RIYADH_HORIZONTAL_SHIFT, RIYADH_VERTICAL_SHIFT, 2000000, p)); // Riyadh
+        cities.add(new City("Paris", PARIS_HORIZONTAL_SHIFT, PARIS_VERTICAL_SHIFT, 6000000, p)); // Paris
+
+
         /*cities.add(new City(HORIZONTAL_SHIFT + 100, VERTICAL_SHIFT + 200, 4000000, p)); // Chicago
         cities.add(new City(HORIZONTAL_SHIFT + 300, VERTICAL_SHIFT + 250, 6000000, p)); // Los Angeles
 
