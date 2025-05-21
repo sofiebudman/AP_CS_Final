@@ -43,7 +43,10 @@ public class Map {
         countries.add(eurasia);
         countries.add(australia);
 
-        
+        //Start timer for all countries
+        for (Country c : countries) {
+            c.startTimer();
+        }
 
         // Add cities with their positions relative to the map
         // North America cities

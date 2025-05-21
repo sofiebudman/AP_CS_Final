@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Country",
+            "request": "launch",
+            "mainClass": "main.java.code.Country",
+            "projectName": "AP_CS_Final"
+        },
+        {
+            "type": "java",
             "name": "City",
             "request": "launch",
             "mainClass": "main.java.code.City",

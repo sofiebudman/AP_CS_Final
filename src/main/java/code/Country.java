@@ -5,6 +5,10 @@ import static main.java.code.Constants.Scale.*;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+
 public class Country {
     private String name;
     private boolean openBorder;
@@ -23,6 +27,8 @@ public class Country {
     //private String openPath;
     //private String closedPath;
     
+    private Timer timer;
+    private int secondsElapsed;
     
     
     public Country (String name, String openPath, String closedPath, PApplet p) {
@@ -47,6 +53,22 @@ public class Country {
         }
         xPos = x;
         yPos = y;*/
+
+        this.timer = new Timer();
+        this.secondsElapsed = 30;
+        
+    }
+
+    public void startTimer() {
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                secondsElapsed++;
+            }
+        }, 0, 1000); 
+    }
+
+    public void stopTimer() {
+        timer.cancel();
     }
 
 
@@ -90,8 +112,14 @@ public class Country {
             int i = currentImage.get(x, y);
             float a = p.alpha(i);
             if(a > 0) {
-                changeBorder();
-                Notification.newNotification(name + " borders are now " + (openBorder ? "open" : "closed"));
+                if (secondsElapsed >= 30) {
+                    changeBorder();
+                    Notification.newNotification(name + " borders are now " + (openBorder ? "open" : "closed"));
+                    secondsElapsed = 0;
+                } else {
+                    Notification.newNotification("Wait 30 days to change "+ name + "'s borders");
+                }
+
             }
         }
     }
