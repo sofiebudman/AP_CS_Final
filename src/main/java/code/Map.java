@@ -46,6 +46,7 @@ public class Map {
         //Start timer for all countries
         for (Country c : countries) {
             c.startTimer();
+            //System.out.println("Timer Started");
         }
 
         cities.add(new City("Los Angeles", LA_HORIZONTAL_SHIFT, LA_VERTICAL_SHIFT, 4000000, p));

@@ -62,6 +62,7 @@ public class Country {
     public void startTimer() {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
+                //System.out.println(secondsElapsed);
                 secondsElapsed++;
             }
         }, 0, 1000); 
@@ -117,7 +118,7 @@ public class Country {
                     Notification.newNotification(name + " borders are now " + (openBorder ? "open" : "closed"));
                     secondsElapsed = 0;
                 } else {
-                    Notification.newNotification("Wait 30 days to change "+ name + "'s borders");
+                    Notification.newNotification("Wait 30 days to toggle this border");
                 }
 
             }
