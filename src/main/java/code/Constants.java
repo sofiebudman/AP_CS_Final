@@ -35,8 +35,8 @@ public class Constants {
         public static final int SYDNEY_HORIZONTAL_SHIFT = 1377;
         public static final int SYDNEY_VERTICAL_SHIFT = 518;
 
-        public static final int MEXICO_CITY_HORIZONTAL_SHIFT = 1080;
-        public static final int MEXICO_CITY_VERTICAL_SHIFT = 304;
+        public static final int MEXICO_CITY_HORIZONTAL_SHIFT = 498;
+        public static final int MEXICO_CITY_VERTICAL_SHIFT = 295;
 
         public static final int NEW_YORK_HORIZONTAL_SHIFT = 579;
         public static final int NEW_YORK_VERTICAL_SHIFT = 237;
