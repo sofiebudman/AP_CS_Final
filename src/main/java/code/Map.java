@@ -48,56 +48,41 @@ public class Map {
             c.startTimer();
         }
 
-        // Add cities with their positions relative to the map
-        // North America cities
+        cities.add(new City("Los Angeles", LA_HORIZONTAL_SHIFT, LA_VERTICAL_SHIFT, 4000000, p));
+        cities.add(new City("Buenos Aires", BUENOS_AIRES_HORIZONTAL_SHIFT, BUENOS_AIRES_VERTICAL_SHIFT, 2900000, p));
+        cities.add(new City("Cairo", CAIRO_HORIZONTAL_SHIFT, CAIRO_VERTICAL_SHIFT, 20000000, p));
+        cities.add(new City("Mumbai", MUMBAI_HORIZONTAL_SHIFT, MUMBAI_VERTICAL_SHIFT, 20400000, p));
+        cities.add(new City("Sydney", SYDNEY_HORIZONTAL_SHIFT, SYDNEY_VERTICAL_SHIFT, 5312000, p));
+        cities.add(new City("Mexico City", MEXICO_CITY_HORIZONTAL_SHIFT, MEXICO_CITY_VERTICAL_SHIFT, 9200000, p));
+        cities.add(new City("New York", NEW_YORK_HORIZONTAL_SHIFT, NEW_YORK_VERTICAL_SHIFT, 8400000, p));
+        cities.add(new City("Toronto", TORONTO_HORIZONTAL_SHIFT, TORONTO_VERTICAL_SHIFT, 2800000, p));
+        cities.add(new City("Anchorage", ANCHORAGE_HORIZONTAL_SHIFT, ANCHORAGE_VERTICAL_SHIFT, 290000, p));
+        cities.add(new City("Lima", LIMA_HORIZONTAL_SHIFT, LIMA_VERTICAL_SHIFT, 8800000, p));
+        cities.add(new City("Rio de Janeiro", RIO_DJ_HORIZONTAL_SHIFT, RIO_DJ_VERTICAL_SHIFT, 6700000, p));
+        cities.add(new City("Bogota", BOGOTA_HORIZONTAL_SHIFT, BOGOTA_VERTICAL_SHIFT, 7700000, p));
+        cities.add(new City("Santiago", SANTIAGO_HORIZONTAL_SHIFT, SANTIAGO_VERTICAL_SHIFT, 5700000, p));
+        cities.add(new City("Tokyo", TOKYO_HORIZONTAL_SHIFT, TOKYO_VERTICAL_SHIFT, 37400000, p));
+        cities.add(new City("Delhi", DELHI_HORIZONTAL_SHIFT, DELHI_VERTICAL_SHIFT, 31800000, p));
+        cities.add(new City("Shanghai", SHANGHAI_HORIZONTAL_SHIFT, SHANGHAI_VERTICAL_SHIFT, 26300000, p));
+        cities.add(new City("Beijing", BEIJING_HORIZONTAL_SHIFT, BEIJING_VERTICAL_SHIFT, 21800000, p));
+        cities.add(new City("Tehran", TEHRAN_HORIZONTAL_SHIFT, TEHRAN_VERTICAL_SHIFT, 8800000, p));
+        cities.add(new City("Istanbul", ISTANBUL_HORIZONTAL_SHIFT, ISTANBUL_VERTICAL_SHIFT, 15400000, p));
+        cities.add(new City("Bangkok", BANGKOK_HORIZONTAL_SHIFT, BANGKOK_VERTICAL_SHIFT, 8300000, p));
+        cities.add(new City("London", LONDON_HORIZONTAL_SHIFT, LONDON_VERTICAL_SHIFT, 8900000, p));
+        cities.add(new City("Paris", PARIS_HORIZONTAL_SHIFT, PARIS_VERTICAL_SHIFT, 11000000, p));
+        cities.add(new City("Moscow", MOSCOW_HORIZONTAL_SHIFT, MOSCOW_VERTICAL_SHIFT, 12600000, p));
+        cities.add(new City("Berlin", BERLIN_HORIZONTAL_SHIFT, BERLIN_VERTICAL_SHIFT, 3700000, p));
+        cities.add(new City("Jakarta", JAKARTA_HORIZONTAL_SHIFT, JAKARTA_VERTICAL_SHIFT, 10800000, p));
+        cities.add(new City("Riyadh", RIYADH_HORIZONTAL_SHIFT, RIYADH_VERTICAL_SHIFT, 7700000, p));
+        cities.add(new City("Lagos", LAGOS_HORIZONTAL_SHIFT, LAGOS_VERTICAL_SHIFT, 30000000, p)); // Already in your example
+        cities.add(new City("Kinshasa", KINSHASA_HORIZONTAL_SHIFT, KINSHASA_VERTICAL_SHIFT, 15000000, p));
+        cities.add(new City("Dar es Salaam", DES_HORIZONTAL_SHIFT, DES_VERTICAL_SHIFT, 7200000, p));
+        cities.add(new City("Cape Town", CAPE_TOWN_HORIZONTAL_SHIFT, CAPE_TOWN_VERTICAL_SHIFT, 4600000, p));
+        cities.add(new City("Melbourne", MELBOURNE_HORIZONTAL_SHIFT, MELBOURNE_VERTICAL_SHIFT, 5000000, p));
+        cities.add(new City("Perth", PERTH_HORIZONTAL_SHIFT, PERTH_VERTICAL_SHIFT, 2100000, p));
 
-        //TODO: add more cities
-        cities.add(new City("LA", LA_HORIZONTAL_SHIFT, LA_VERTICAL_SHIFT, 8000000, p)); // New York
-        cities.add(new City("BA", BUENOS_AIRES_HORIZONTAL_SHIFT, BUENOS_AIRES_VERTICAL_SHIFT, 3000000, p)); // Buenos Aires
-        cities.add(new City("Cairo", CAIRO_HORIZONTAL_SHIFT, CAIRO_VERTICAL_SHIFT, 4000000, p)); // Cairo
-        cities.add(new City("Tokyo", TOKYO_HORIZONTAL_SHIFT, TOKYO_VERTICAL_SHIFT, 9000000, p)); // Tokyo
-        cities.add(new City("London", LONDON_HORIZONTAL_SHIFT, LONDON_VERTICAL_SHIFT, 7000000, p)); // London
-        cities.add(new City("Sydney", SYDNEY_HORIZONTAL_SHIFT, SYDNEY_VERTICAL_SHIFT, 5000000, p)); // Sydney
-        cities.add(new City("Melbourne", MELBOURNE_HORIZONTAL_SHIFT, MELBOURNE_VERTICAL_SHIFT, 3000000, p)); // Melbourne
-        cities.add(new City("Perth", PERTH_HORIZONTAL_SHIFT, PERTH_VERTICAL_SHIFT, 2000000, p)); // Perth
-        cities.add(new City("Cape Town", CAPE_TOWN_HORIZONTAL_SHIFT, CAPE_TOWN_VERTICAL_SHIFT, 2000000, p)); // Cape Town
-        cities.add(new City("Des", DES_HORIZONTAL_SHIFT, DES_VERTICAL_SHIFT, 2000000, p)); // Des
-        cities.add(new City("Mexico City", MEXICO_CITY_HORIZONTAL_SHIFT, MEXICO_CITY_VERTICAL_SHIFT, 8000000, p)); // Mexico City
-        
 
-        cities.add(new City("Rio de Janeiro", RIO_DJ_HORIZONTAL_SHIFT, RIO_DJ_VERTICAL_SHIFT, 5000000, p)); // Rio de Janeiro
-        //cities.add(new City("Sao Paulo", SAO_PAULO_HORIZONTAL_SHIFT, SAO_PAULO_VERTICAL_SHIFT, 5000000, p)); // Sao Paulo
-        cities.add(new City("Lagos", LAGOS_HORIZONTAL_SHIFT, LAGOS_VERTICAL_SHIFT, 3000000, p)); // Lagos
-        cities.add(new City("Kinshasa", KINSHASA_HORIZONTAL_SHIFT, KINSHASA_VERTICAL_SHIFT, 2000000, p)); // Kinshasa
-        cities.add(new City("Jakarta", JAKARTA_HORIZONTAL_SHIFT, JAKARTA_VERTICAL_SHIFT, 2000000, p)); // Jakarta
-        cities.add(new City("Berlin", BERLIN_HORIZONTAL_SHIFT, BERLIN_VERTICAL_SHIFT, 6000000, p)); // Berlin
-        cities.add(new City("Moscow", MOSCOW_HORIZONTAL_SHIFT, MOSCOW_VERTICAL_SHIFT, 7000000, p)); // Moscow
-        cities.add(new City("Riyadh", RIYADH_HORIZONTAL_SHIFT, RIYADH_VERTICAL_SHIFT, 2000000, p)); // Riyadh
-        cities.add(new City("Paris", PARIS_HORIZONTAL_SHIFT, PARIS_VERTICAL_SHIFT, 6000000, p)); // Paris
-
-
-        /*cities.add(new City(HORIZONTAL_SHIFT + 100, VERTICAL_SHIFT + 200, 4000000, p)); // Chicago
-        cities.add(new City(HORIZONTAL_SHIFT + 300, VERTICAL_SHIFT + 250, 6000000, p)); // Los Angeles
-
-        // South America cities
-        cities.add(new City(HORIZONTAL_SHIFT + 250, VERTICAL_SHIFT + 400, 5000000, p)); // São Paulo
-        cities.add(new City(HORIZONTAL_SHIFT + 200, VERTICAL_SHIFT + 450, 3000000, p)); // Buenos Aires
-
-        // Europe cities
-        cities.add(new City(HORIZONTAL_SHIFT + 500, VERTICAL_SHIFT + 200, 7000000, p)); // London
-        cities.add(new City(HORIZONTAL_SHIFT + 550, VERTICAL_SHIFT + 250, 6000000, p)); // Paris
-
-        // Africa cities
-        cities.add(new City(HORIZONTAL_SHIFT + 500, VERTICAL_SHIFT + 350, 4000000, p)); // Cairo
-        cities.add(new City(HORIZONTAL_SHIFT + 450, VERTICAL_SHIFT + 400, 3000000, p)); // Lagos
-
-        // Asia cities
-        cities.add(new City(HORIZONTAL_SHIFT + 700, VERTICAL_SHIFT + 250, 9000000, p)); // Tokyo
-        cities.add(new City(HORIZONTAL_SHIFT + 650, VERTICAL_SHIFT + 300, 8000000, p)); // Shanghai
-
-        // Australia cities
-        cities.add(new City(HORIZONTAL_SHIFT + 800, VERTICAL_SHIFT + 400, 5000000, p)); // Sydney
-        cities.add(new City(HORIZONTAL_SHIFT + 750, VERTICAL_SHIFT + 450, 3000000, p)); // Melbourne*/
+       
     }
     public void drawCity(){
         for (City city : cities) {
