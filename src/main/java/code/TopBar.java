@@ -17,7 +17,6 @@ public class TopBar {
         this.instructionsScreen = instructionScreen;
         this.virusControlScreen = virusControlScreen;
 
-        // Create buttons once in constructor
         cp5.addButton("instructions")
             .setPosition(0, 0)
             .setSize(100, 50)
@@ -26,14 +25,7 @@ public class TopBar {
                 this.instructionsScreen.toggle();
             });
 
-        /*cp5.addButton("virusControl")
-            .setPosition(100, 0)
-            .setSize(100, 50)
-            .setLabel("Virus Control")
-            .onPress(e -> {
-                this.virusControlScreen.toggle();
-            });
-*/
+
         cp5.addButton("graphButton")
             .setPosition(200, 0)
             .setSize(100, 50)
@@ -41,12 +33,10 @@ public class TopBar {
     }
      
     public void draw() {
-        // Draw any additional UI elements here if needed
+      
         p.fill(51, 94, 200, 250);
         p.rect(200, 0, 1000, 50);
         p.fill(255);
-        //PFont mono = p.createFont(GEO_REGULAR_FONT_PATH, 40);
-        //p.textFont(mono);
-        //p.text("Epidemic Simulator", 400, 40);
+        
     }
 }

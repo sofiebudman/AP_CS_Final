@@ -24,19 +24,10 @@ public class MySketch1 extends PApplet {
         size(1440, 700);
     }
 
-    //load all country images
-    /* 
-    void controlEvent(ControlEvent e) {
-        if (e.isFrom("virusName")) {
-            System.out.println("Event from virusName field");
-            virusControlScreen.handleEvent(e);
-        }
-    }*/
 
     public void setup() {
         notification = new Notification(this);
         instructionScreen = new Instructions(this);
-        //virusControlScreen  = new VirusControl(this); //TODO: uncomment this if we decide we want to see
         welcomeScreen = new WelcomeScreen(this);
         map = new Map(this, notification);
     }

@@ -23,8 +23,14 @@ public class Instructions{
     //
     public void draw(){
         if (!showInstructions)return;
-        p.fill(229, 229, 229, 250);
-        p.rect(0, 50, 300, 220);
+        p.noStroke();
+        p.fill(255, 184, 119);
+        p.rect(0, 50, 300, 650);
+       
+        
+        p.fill(255);
+        p.rect(10,60, 280, 620);
+         p.stroke(0);
         p.fill(0);
         //p.textSize(5);
         PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 30);
