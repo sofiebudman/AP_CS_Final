@@ -1,6 +1,9 @@
 package main.java.code;
 
 import static main.java.code.Constants.Scale.*;
+import static main.java.code.Constants.FilePaths.BACKGROUND_IMAGE_PATH;
+import static main.java.code.Constants.FilePaths.TITLE_IMAGE_PATH;
+import static main.java.code.Constants.FilePaths.VIRUS_CONTROL_IMAGE_PATH;
 import static main.java.code.Constants.Fonts.*;
 
 import controlP5.Button;
@@ -23,7 +26,7 @@ public class WelcomeScreen {
     private boolean controlsCreated;
     private int currentPage = 0;
 
-    // Animation variables
+   ///animation variables
     private double titleScale = 0.1;
     private double titleAlpha = 0;
     private double titleY = -100;
@@ -51,45 +54,67 @@ public class WelcomeScreen {
     private static final int HEADER_SIZE = 20;
     private static final int BODY_SIZE = 16;
     private static final int FEEDBACK_SIZE = 14;
+    private String[] countryOptions;
+    //private static final String VIRUS_NAME_TEXT = "Virus Name: ";
 
    //private String virusNameText;
 
     public WelcomeScreen(PApplet p) {
         this.p = p;
         cp5 = new ControlP5(p);
+
+        //creates font
         mainFont = p.createFont(FARRO_REGULAR_FONT_PATH, 16);
-        titleImage = p.loadImage("src/main/resources/elements/title.png");
-        backgroundImage = p.loadImage("src/main/resources/elements/background.png");
-        virusControlImage = p.loadImage("src/main/resources/elements/virusControl.png");
+
+        //sets up the images
+        titleImage = p.loadImage(TITLE_IMAGE_PATH);
+        backgroundImage = p.loadImage(BACKGROUND_IMAGE_PATH);
+        virusControlImage = p.loadImage(VIRUS_CONTROL_IMAGE_PATH);
+
+
         titleImage.resize(WIDTH_SCALE,0);
         backgroundImage.resize(WIDTH_SCALE-100,0);
         virusControlImage.resize(WIDTH_SCALE-100,0);
 
-        controlsCreated = false;
-        currentPage = 0;
-        setupNextButton();
-        nextButton.hide();
-    }
+        
+        controlsCreated = false; // allows it so we can only create controls once
+        currentPage = 0; //stores currnet page - 0 is the home page, 1 is the background page, 2 is the virus control screen, and 3 is the actual simulation screen
+        
+        setupNextButton(); //creates the next button
+        nextButton.hide(); // hides the next button until the animation is complete
 
+
+        countryOptions = new String[] {
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Australia"
+        };
+    }
+    
+
+    // title screen aniation 
     public void title() { 
         p.fill(255,255,255);
         p.rect(0, 0, p.width, p.height);
         
         // Only animate if we're on the first page and animation isn't complete
         if (currentPage == 0 && !animationComplete) {
-            // Update animation values
+           
             titleScale = Math.min(1.0, titleScale + ZOOM_SPEED);
             titleAlpha = Math.min(255, titleAlpha + ANIMATION_SPEED * 255);
             titleY = PApplet.lerp(-100, 0, (float)titleScale);
             
-            // Check if animation is complete
+            
             if (titleScale >= 1.0 && titleAlpha >= 255) {
                 animationComplete = true;
                 nextButton.show();
             }
         }
         
-        // Apply transformations for zoom effect
+      
         p.pushMatrix();
         p.translate(p.width/2, p.height/2);
         p.scale((float)titleScale);
@@ -98,7 +123,7 @@ public class WelcomeScreen {
         p.image(titleImage, 0, (float)titleY);
         p.popMatrix();
         
-        // Reset image mode
+        
         p.imageMode(PConstants.CORNER);
         p.noTint();
     }
@@ -114,16 +139,22 @@ public class WelcomeScreen {
                 .onPress((event) -> {
                     if (currentPage == 2) {
                         // Store all values when moving to the next page
-                        storedDeathRate = (int) deathRateSlider.getValue();
+                        /*storedDeathRate = (int) deathRateSlider.getValue();
                         storedRecoveryRate = (int) recoveryRateSlider.getValue();
                         storedTransmissionRate = (int) transmissionRateSlider.getValue();
-                        storedCountry = countryStart.getLabel();
+                        storedCountry = countryOptions[(int) countryStart.getId()];
                         
                         // Set the values in the Virus class
                         Virus.setDeathRate(storedDeathRate);
                         Virus.setRecoveryRate(storedRecoveryRate);
                         Virus.setTransmissionRate(storedTransmissionRate);
-                        Virus.setStartingCountry(storedCountry);
+                        Virus.setStartingCountry(storedCountry);*/
+                         if( !virusNameValid) {
+                           
+                           feedbackMessage = "Please enter a valid virus name";
+                            return; // Prevent moving to the next page if the name is invalid
+                        }
+                       
                     }
                     
                     currentPage++;
@@ -145,7 +176,7 @@ public class WelcomeScreen {
         feedbackMessage = "Please enter a virus name";
         
         virusName = cp5.addTextfield("virusName")
-                .setPosition(286, 132)
+                .setPosition(286, 135)
                 .setSize(300, 40)
                 .setFont(p.createFont(FARRO_REGULAR_FONT_PATH, 16))
                 .setColorBackground(p.color(255, 255, 255))
@@ -168,9 +199,21 @@ public class WelcomeScreen {
                     }
                 });
         p.fill(0);
-        p.text("Death Rate (%):", 540, 130);
+
+        
+        transmissionRateSlider = cp5.addSlider("transmissionRateSlider")
+                .setPosition(286, 205)
+                .setSize(300, 30)
+                .setRange(2, 8)
+                .setValue(50)
+                .setColorLabel(0)
+                .setNumberOfTickMarks(7)
+                .setLabel("Transmission Rate");
+
+
+
         deathRateSlider = cp5.addSlider("deathRateSlider")
-                .setPosition(286, 200)
+                .setPosition(286, 265)
                 .setSize(300, 30)
                 .setRange(0, 100)
                 .setValue(50)
@@ -181,7 +224,7 @@ public class WelcomeScreen {
 
         p.text("Recovery Rate (%):", 540, 180);
         recoveryRateSlider = cp5.addSlider("recoveryRateSlider")
-                .setPosition(286, 270)
+                .setPosition(286, 325)
                 .setSize(300, 30)
                 .setRange(0, 100)
                 .setValue(50)
@@ -189,18 +232,10 @@ public class WelcomeScreen {
                 .setLabel("Recovery Rate");
              
 
-        p.text("Transmission Rate (%):", 540, 230);
-        transmissionRateSlider = cp5.addSlider("transmissionRateSlider")
-                .setPosition(286, 320)
-                .setSize(300, 30)
-                .setRange(2, 8)
-                .setValue(50)
-                .setColorLabel(0)
-                .setNumberOfTickMarks(7)
-                .setLabel("Transmission Rate");
+        
 
         mutationRateSlider = cp5.addSlider("mutationRateSlider")
-                .setPosition(286, 370)
+                .setPosition(286, 385)
                 .setSize(300, 30)
                 .setRange(0, 100)
                 .setValue(50)
@@ -210,8 +245,8 @@ public class WelcomeScreen {
 
         p.text("Starting Country:", 540, 280);
         countryStart = cp5.addDropdownList("countryStart")
-                .setPosition(286, 410)
-                .setItems(new String[]{"North America", "South America", "Europe", "Africa", "Asia", "Australia"})
+                .setPosition(286, 445)
+                .setItems(countryOptions)
                 .setSize(300, 120)
                 .setItemHeight(30)
                 .setBarHeight(30)
@@ -234,7 +269,6 @@ public class WelcomeScreen {
             addButtons();
         }
 
-        // Display feedback message with improved styling
         p.fill(0);
         p.textFont(mainFont, FEEDBACK_SIZE);
         p.textAlign(PConstants.LEFT);
@@ -246,8 +280,9 @@ public class WelcomeScreen {
         p.textFont(mainFont, FEEDBACK_SIZE);
         p.text("Death Rate: " + (int)deathRateSlider.getValue() + "%", 696, 180);
         p.text("Recovery Rate: " + (int)recoveryRateSlider.getValue() + "%", 696, 210);
-        p.text("Transmission Rate: " + "Each person spreads the virus to " +(int)transmissionRateSlider.getValue() + "others" , 696, 240);
-        p.text("Starting Country: " + countryStart.getValue(), 696, 270);
+        p.text("Transmission Rate: " + "Each person spreads the virus to " +(int)transmissionRateSlider.getValue() + " others" , 696, 240);
+        p.text("Mutation Rate: " + (int)mutationRateSlider.getValue() + "%", 696, 270);
+        p.text("Starting Country: " + countryOptions[(int) countryStart.getValue()], 696, 300);
     }
 
     public void display() {
@@ -264,14 +299,13 @@ public class WelcomeScreen {
             Virus.setRecoveryRate((int) recoveryRateSlider.getValue());
             Virus.setTransmissionRate((int) transmissionRateSlider.getValue());
             Virus.setMutationRate((int) mutationRateSlider.getValue());
-            Virus.setStartingCountry(countryStart.getLabel());
-            Virus.setName(virusName.getText());
+            Virus.setStartingCountry(countryOptions[(int) countryStart.getValue()]);
+
+            Virus.setName(virusName.getStringValue());
 
         }
         else if(currentPage == 3) {
        
-            
-            
             // Remove controls
             cp5.remove("virusName");
             cp5.remove("deathRateSlider");
@@ -280,6 +314,8 @@ public class WelcomeScreen {
             cp5.remove("mutationRateSlider");
             cp5.remove("countryStart");
             cp5.remove("Next");
+
+            
         }
     }
 
@@ -287,13 +323,7 @@ public class WelcomeScreen {
         return currentPage;
     }
 
-    /*public void keyPressed() {
-        if (p.keyCode == p.ENTER && currentPage == 2) {
-            Virus.setName()
-            virusNameText = virusName.getText();
-            System.out.println("Virus Name: " + virusNameText);
-        }
-    }*/
+
 }
    
 
