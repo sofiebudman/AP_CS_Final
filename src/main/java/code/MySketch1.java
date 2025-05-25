@@ -17,6 +17,8 @@ public class MySketch1 extends PApplet {
     TopBar topBar;
     Map map;
 
+    private boolean firstNotification = false; // Flag to track if it's the first notificatio
+
    
     
 
@@ -41,6 +43,13 @@ public class MySketch1 extends PApplet {
         // Check if we're past the welcome screen
         if (welcomeScreen.getCurrentPage() >= 3) {
             // Create TopBar only once when we reach this point
+
+            if(!firstNotification){
+                Notification.newNotification(Virus.getName() + " created");
+                firstNotification = true;
+
+            }
+            
             if (!topBarCreated) {
                 topBar = new TopBar(this, instructionScreen, virusControlScreen);
                 map.start();

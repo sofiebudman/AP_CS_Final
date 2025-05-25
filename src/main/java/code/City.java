@@ -72,10 +72,7 @@ public class City {
             infect(); // Initial infection
         }
     }
-    public void incrementSpreadRadius() {
-       spreadRadius += Virus.getTransmissionRate() * 0.01; 
-    }
-
+  
     public void startTimer() {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
