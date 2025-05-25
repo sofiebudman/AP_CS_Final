@@ -118,7 +118,7 @@ public class Country {
                     Notification.newNotification(name + " borders are now " + (openBorder ? "open" : "closed"));
                     secondsElapsed = 0;
                 } else {
-                    Notification.newNotification("Wait 30 days to toggle this border");
+                    Notification.newNotification("Wait "+(30-secondsElapsed)+" more days to toggle this border");
                 }
 
             }
