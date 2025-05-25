@@ -8,12 +8,12 @@ import java.util.TimerTask;
 
 public class City {
     // Constants
-    private static final int MAX_POPULATION = 10000000;
+    /*private static final int MAX_POPULATION = 10000000;
     private static final double BASE_CITY_RADIUS = 20;
     private static final double SPREAD_RADIUS_MULTIPLIER = 1.5;
     private static final double POPULATION_GROWTH_RATE = 1.01;
     private static final double VACCINE_IMMUNITY_RATE = 0.02;
-    private static final double VACCINE_RECOVERY_BOOST = 1.25;
+    private static final double VACCINE_RECOVERY_BOOST = 1.25;*/
     
     // Population state
     private int populationVulnerable;
@@ -35,7 +35,7 @@ public class City {
     private boolean isInfected;
     private int secondsElapsed;
 
-    private int radiusMax;
+   
 
 
     private Timer timer;
@@ -48,16 +48,16 @@ public class City {
         this.isInfected = isInfected;
         
         // Initialize population
-        this.populationVulnerable = 100; // 1 million people
+        this.populationVulnerable = 100000; // 1 million people
         this.populationInfected = 0;
         this.populationImmune = 0;
         
         // Initialize radius values
-        this.cityRadius = BASE_CITY_RADIUS;
-        this.spreadRadius = cityRadius * SPREAD_RADIUS_MULTIPLIER;
+       // this.cityRadius = BASE_CITY_RADIUS;
+       // this.spreadRadius = cityRadius * SPREAD_RADIUS_MULTIPLIER;
         this.immunityRadius = cityRadius;
 
-        radiusMax = populationVulnerable /1000;
+    
 
         this.timer = new Timer();
         
@@ -84,7 +84,7 @@ public class City {
                 System.out.println("Seconds elapsed: " + secondsElapsed);
                 updateSpreadRadius();
             }
-        }, 0, 1);  //1000 = 1 second, 10 = 0.01 seconds, a tick for virus spread is 10 milliseconds
+        }, 0, 10);  //1000 = 1 second, 10 = 0.01 seconds, a tick for virus spread is 10 milliseconds
     }
 
     private void updateSpreadRadius() {
@@ -107,6 +107,7 @@ public class City {
 
     
     public void render() {
+        p.noStroke();
         // Draw immunity circle (blue)
         p.fill(0, 0, 255, 100);
         p.circle(posX, posY, (float)immunityRadius);
@@ -160,7 +161,7 @@ public class City {
             populationVulnerable -= 100;
         }
     }
-    public void update(Virus virus, boolean hasVaccine) {
+    /*public void update(Virus virus, boolean hasVaccine) {
         if (!isInfected) return;
 
         // Handle transmission
@@ -199,6 +200,7 @@ public class City {
     private void updateDeaths() {
         populationInfected -= (int) (populationInfected * Virus.getDeathRate());
     }
+    /* 
 
     private void updateRecovery(boolean hasVaccine) {
         if (populationInfected > 0) {
@@ -210,8 +212,8 @@ public class City {
             populationInfected -= change;
             populationImmune += change;
         }
-    }
-
+    }*/
+    /* 
     private void updateVaccineImmunity() {
         if (populationVulnerable > 0) {
             int change = (int) (populationVulnerable * VACCINE_IMMUNITY_RATE);
@@ -220,18 +222,19 @@ public class City {
             populationImmune += change;
         }
     }
-
+        */
+    /* 
     private void updatePopulationGrowth() {
         populationVulnerable = (int) (populationVulnerable * POPULATION_GROWTH_RATE);
         populationImmune = (int) (populationImmune * POPULATION_GROWTH_RATE);
-    }
-
+    }*/
+    /* 
     private void enforcePopulationLimits() {
         int totalPopulation = populationVulnerable + populationImmune + populationInfected;
         if (totalPopulation > MAX_POPULATION) {
             populationVulnerable = MAX_POPULATION - (populationImmune + populationInfected);
         }
-    }
+    }*/
     
     
     

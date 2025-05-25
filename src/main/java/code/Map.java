@@ -90,7 +90,7 @@ public class Map {
     }
     public void drawCity(){
         for (City city : cities) {
-            city.update(new Virus(), false); // Update each city with current virus state
+            //xcity.update(new Virus(), false); // Update each city with current virus state
             city.render();
         }
     }
