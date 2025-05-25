@@ -6,26 +6,22 @@ public class Virus {
     private static int deathRate;
     private static int recoveryRate;
     private static int transmissionRate;
-    private static int mutationRate;
+    private static int mutationRate = 10; // Default mutation rate
     private static String name;
     private static String startingCountry;
+
+    private static boolean la;
+    private static boolean buenosAires;
+    private static boolean cairo;
+    private static boolean sydney;
+    private static boolean beijing;
     
-    public Virus (/*String n, int d, int r, int t, int v, int m*/) {
-        /* 
-        name = n;
-        if (name.length() > 20) {
-            name = name.substring(0, 20);
-        }
-        if(name.equals("")) {
-            name = "Virus";
-        }
-        deathRate = d;
-        recoveryRate = r;
-        transmissionRate = t;
-        mutationRate = m;*/
+
+    
+    public Virus () {
+     
     }
 
-    //Settet methods
     public static void setName(String n) {
         name = n;
         if (name.length() > 20) {
@@ -47,9 +43,13 @@ public class Virus {
     public static void setMutationRate(int m) {
         mutationRate = m;
     }
+
+    
     public static void setStartingCountry(String c) {
         startingCountry = c;
+        
     }
+
     
     public static int getDeathRate() {
         return deathRate;
@@ -96,7 +96,12 @@ public class Virus {
         }
     }
     public String toString() {
-        return "Virus: " + name + "\nDeath Rate: " + deathRate + "\nRecovery Rate: " + recoveryRate + "\nTransmission Rate: " + transmissionRate + "\nMutation Rate: " + mutationRate;
+        return "Virus: " + name + 
+               "\nDeath Rate: " + deathRate + 
+               "\nRecovery Rate: " + recoveryRate + 
+               "\nTransmission Rate: " + transmissionRate + 
+               "\nMutation Rate: " + mutationRate + 
+               "\nStarting Country: " + startingCountry;
     }   
     
   public static void main(String args[]) {

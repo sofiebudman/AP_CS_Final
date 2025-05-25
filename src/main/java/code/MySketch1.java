@@ -16,6 +16,8 @@ public class MySketch1 extends PApplet {
     WelcomeScreen welcomeScreen;
     TopBar topBar;
     Map map;
+
+   
     
 
     private boolean topBarCreated = false;
@@ -30,6 +32,7 @@ public class MySketch1 extends PApplet {
         instructionScreen = new Instructions(this);
         welcomeScreen = new WelcomeScreen(this);
         map = new Map(this, notification);
+        
     }
 
     public void draw() {
@@ -40,8 +43,11 @@ public class MySketch1 extends PApplet {
             // Create TopBar only once when we reach this point
             if (!topBarCreated) {
                 topBar = new TopBar(this, instructionScreen, virusControlScreen);
+                map.start();
                 topBarCreated = true;
             }
+            
+            
             
             // Draw map and UI elements
             map.drawOcean();

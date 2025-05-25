@@ -29,11 +29,11 @@ public class Instructions{
        
         
         p.fill(255);
-        p.rect(10,60, 280, 620);
-         p.stroke(0);
+        p.rect(10,60, 280, 630);
+        p.stroke(0);
         p.fill(0);
         //p.textSize(5);
-        PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 30);
+        PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 20, true);
         p.textFont(mono);
         p.text("Instructions:\n1. Click continents.\n2. Track infection.\n3. Use buttons to\n toggle borders.", 20, 120);
 

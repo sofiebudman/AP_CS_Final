@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Virus",
+            "request": "launch",
+            "mainClass": "main.java.code.Virus",
+            "projectName": "AP_CS_Final"
+        },
+        {
+            "type": "java",
             "name": "Country",
             "request": "launch",
             "mainClass": "main.java.code.Country",
