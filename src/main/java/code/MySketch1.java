@@ -50,6 +50,7 @@ public class MySketch1 extends PApplet {
             
             
             // Draw map and UI elements
+            map.start();
             map.drawOcean();
             map.drawContinents();
             instructionScreen.draw();

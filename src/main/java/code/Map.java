@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Map {
     private PApplet p;
  
@@ -22,10 +25,17 @@ public class Map {
     private ArrayList<City> cities = new ArrayList<City>();
     private City la; // Los Angeles
 
+    private Timer timer;
+
+
+
     
 
     public Map(PApplet p, Notification notification) {
         this.p = p;
+
+        //Timer
+        this.timer = new Timer();
 
         //load the images
      
@@ -45,6 +55,8 @@ public class Map {
             c.startTimer();
             //System.out.println("Timer Started");
         }
+
+
         
         // add cities
         la = new City("Los Angeles", LA_HORIZONTAL_SHIFT, LA_VERTICAL_SHIFT, p, false);
@@ -86,11 +98,21 @@ public class Map {
        
     }
     public void start(){
-        la.becomeInfected(); // Example of starting the infection in Los Angeles
+        la.infect(); // Example of starting the infection in Los Angeles
     }
+
+    public void startTimer() {
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                drawCity();
+            }
+        }, 0, 10);  //1000 = 1 second, 10 = 0.01 seconds, a tick for virus spread is 10 milliseconds
+    }
+
     public void drawCity(){
         for (City city : cities) {
-            //xcity.update(new Virus(), false); // Update each city with current virus state
+            boolean v = countries.get(city.getCountryNum()).checkHasVaccine();
+            city.update(v);
             city.render();
         }
     }

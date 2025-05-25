@@ -12,11 +12,8 @@ import java.util.TimerTask;
 public class Country {
     private String name;
     private boolean openBorder;
-    //private ArrayList<City> cities;
     private boolean hasVaccine;
-    // Each city is max 10 million people
-    //private int maxCities = 20;
-    //private boolean infected;
+
    
 
     private PApplet p;
@@ -36,7 +33,6 @@ public class Country {
         this.name = name;
         openBorder = true;
         hasVaccine = false;
-       //infected = false;
         //this.openPath = openPath;
         //this.closedPath = closedPath;
         
@@ -138,6 +134,10 @@ public class Country {
     }
     public void loseVaccine() {
         hasVaccine = false;
+    }
+
+    public boolean checkHasVaccine() {
+        return hasVaccine;
     }
     
     
