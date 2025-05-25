@@ -151,18 +151,12 @@ public class Constants {
     public static class Scale{
         public static final int WIDTH_SCALE = 1166;
 
-    // paths for fonts .ttf files
-
-    
-
-
-    //File paths for image
-    
-
-
-    //formatting
         public static final int HORIZONTAL_SHIFT = 300;
         public static final int VERTICAL_SHIFT = 50;
+
+        
+
+       
 
     }
     

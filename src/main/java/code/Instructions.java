@@ -30,7 +30,7 @@ public class Instructions{
         
         p.fill(255);
         p.rect(10,60, 280, 630);
-        p.stroke(0);
+       
         p.fill(0);
         //p.textSize(5);
         PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 20, true);

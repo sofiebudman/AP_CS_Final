@@ -66,7 +66,7 @@ public class MySketch1 extends PApplet {
             topBar.draw();
             map.drawCity(); // Draw cities
 
-            //Draw Cities
+         
 
         } else {
             // Show welcome screen

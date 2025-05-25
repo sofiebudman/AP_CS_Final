@@ -127,7 +127,7 @@ public class Map {
 
     public void drawOcean() {
        
-        p.image(ocean, HORIZONTAL_SHIFT, 50);
+        p.image(ocean, HORIZONTAL_SHIFT, VERTICAL_SHIFT);
         
     }
     public void handleMousePressed(int mouseX, int mouseY) {

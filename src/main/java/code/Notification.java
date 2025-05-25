@@ -38,7 +38,7 @@ public class Notification {
         }
     }
 
-    //have a custon message to display a notification, make it an arraylist 
+ 
 
     
 }
