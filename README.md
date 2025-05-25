@@ -1,5 +1,8 @@
-# AP_CS_Final
-Epidemic Simulator 
+
+![Epidemic simulator (1)](https://github.com/user-attachments/assets/fad19a0c-6401-4f36-a52f-5cb2ed5062ff)
+
+# Epidemic Simulator
+Final project
 Sofie Budman & Tyler Tachiki
 AP CS period 5
 
