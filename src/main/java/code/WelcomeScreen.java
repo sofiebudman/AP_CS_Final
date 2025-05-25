@@ -36,6 +36,7 @@ public class WelcomeScreen {
     private Slider deathRateSlider;
     private Slider recoveryRateSlider;
     private Slider transmissionRateSlider; 
+    private Slider mutationRateSlider;
     private DropdownList countryStart;
 
     private String feedbackMessage = "";
@@ -131,6 +132,7 @@ public class WelcomeScreen {
                         cp5.remove("deathRateSlider");
                         cp5.remove("recoveryRateSlider");
                         cp5.remove("transmissionRateSlider");
+                        cp5.remove("mutationRateSlider");
                         cp5.remove("countryStart");
                         cp5.remove("Next");
                     }
@@ -139,20 +141,16 @@ public class WelcomeScreen {
 
     public void addButtons() {
         // Add labels for the controls with improved styling
-        p.textAlign(PConstants.LEFT);
-        p.fill(0);
-        p.textFont(mainFont, HEADER_SIZE);
-        p.text("Virus Configuration", 540, 30);
-        
-        p.textFont(mainFont, BODY_SIZE);
-        p.text("Enter Virus Name:", 540, 60);
+       
+        feedbackMessage = "Please enter a virus name";
         
         virusName = cp5.addTextfield("virusName")
-                .setPosition(540, 70)
-                .setSize(200, 40)
+                .setPosition(286, 132)
+                .setSize(300, 40)
                 .setFont(p.createFont(FARRO_REGULAR_FONT_PATH, 16))
                 .setColorBackground(p.color(255, 255, 255))
                 .setColorForeground(p.color(0, 0, 0))
+                .setColorLabel(0)
                 .setColorActive(p.color(0, 0, 0))
                 .setColorValue(p.color(0, 0, 0))
                 .onChange((event) -> {
@@ -169,41 +167,53 @@ public class WelcomeScreen {
                         virusNameValid = false;
                     }
                 });
-
+        p.fill(0);
         p.text("Death Rate (%):", 540, 130);
         deathRateSlider = cp5.addSlider("deathRateSlider")
-                .setPosition(540, 140)
-                .setSize(200, 20)
+                .setPosition(286, 200)
+                .setSize(300, 30)
                 .setRange(0, 100)
                 .setValue(50)
+                .setColorLabel(0)
                 .setDecimalPrecision(0)
                 .setLabel("Death Rate");
                
 
         p.text("Recovery Rate (%):", 540, 180);
         recoveryRateSlider = cp5.addSlider("recoveryRateSlider")
-                .setPosition(540, 190)
-                .setSize(200, 20)
+                .setPosition(286, 270)
+                .setSize(300, 30)
                 .setRange(0, 100)
                 .setValue(50)
+                .setColorLabel(0)
                 .setLabel("Recovery Rate");
              
 
         p.text("Transmission Rate (%):", 540, 230);
         transmissionRateSlider = cp5.addSlider("transmissionRateSlider")
-                .setPosition(540, 240)
-                .setSize(200, 20)
+                .setPosition(286, 320)
+                .setSize(300, 30)
+                .setRange(2, 8)
+                .setValue(50)
+                .setColorLabel(0)
+                .setNumberOfTickMarks(7)
+                .setLabel("Transmission Rate");
+
+        mutationRateSlider = cp5.addSlider("mutationRateSlider")
+                .setPosition(286, 370)
+                .setSize(300, 30)
                 .setRange(0, 100)
                 .setValue(50)
-                .setLabel("Transmission Rate");
+                .setColorLabel(0)
+                .setLabel("Mutation Rate");
                 
 
         p.text("Starting Country:", 540, 280);
         countryStart = cp5.addDropdownList("countryStart")
-                .setPosition(540, 290)
+                .setPosition(286, 410)
                 .setItems(new String[]{"North America", "South America", "Europe", "Africa", "Asia", "Australia"})
-                .setSize(200, 120)
-                .setItemHeight(20)
+                .setSize(300, 120)
+                .setItemHeight(30)
                 .setBarHeight(30)
                 .setLabel("Select Country");
         controlsCreated = true;
@@ -228,16 +238,16 @@ public class WelcomeScreen {
         p.fill(0);
         p.textFont(mainFont, FEEDBACK_SIZE);
         p.textAlign(PConstants.LEFT);
-        p.text(feedbackMessage, 540, 430);
+        p.text(feedbackMessage, 698, 134);
 
-        // Display current values with improved styling
+        
         p.textFont(mainFont, BODY_SIZE);
-        p.text("Current Configuration:", 540, 460);
+      
         p.textFont(mainFont, FEEDBACK_SIZE);
-        p.text("Death Rate: " + (int)deathRateSlider.getValue() + "%", 540, 480);
-        p.text("Recovery Rate: " + (int)recoveryRateSlider.getValue() + "%", 540, 500);
-        p.text("Transmission Rate: " + (int)transmissionRateSlider.getValue() + "%", 540, 520);
-        p.text("Starting Country: " + countryStart.getValue(), 540, 540);
+        p.text("Death Rate: " + (int)deathRateSlider.getValue() + "%", 696, 180);
+        p.text("Recovery Rate: " + (int)recoveryRateSlider.getValue() + "%", 696, 210);
+        p.text("Transmission Rate: " + "Each person spreads the virus to " +(int)transmissionRateSlider.getValue() + "others" , 696, 240);
+        p.text("Starting Country: " + countryStart.getValue(), 696, 270);
     }
 
     public void display() {
@@ -248,20 +258,28 @@ public class WelcomeScreen {
             background();
         }
         else if (currentPage == 2) {
+           
             virusControlScreen();
-            Virus.setDeathRate((int) deathRateSlider.getValue());
+            Virus.setDeathRate((int) deathRateSlider.getValue()); 
+            Virus.setRecoveryRate((int) recoveryRateSlider.getValue());
+            Virus.setTransmissionRate((int) transmissionRateSlider.getValue());
+            Virus.setMutationRate((int) mutationRateSlider.getValue());
+            Virus.setStartingCountry(countryStart.getLabel());
+            Virus.setName(virusName.getText());
+
         }
         else if(currentPage == 3) {
-            // Remove all controls when transitioning to map
+       
             
+            
+            // Remove controls
             cp5.remove("virusName");
             cp5.remove("deathRateSlider");
             cp5.remove("recoveryRateSlider");
             cp5.remove("transmissionRateSlider");
+            cp5.remove("mutationRateSlider");
             cp5.remove("countryStart");
             cp5.remove("Next");
-            
-            // Don't display anything on page 3, let the map show
         }
     }
 
