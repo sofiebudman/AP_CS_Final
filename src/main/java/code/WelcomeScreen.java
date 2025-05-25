@@ -2,6 +2,7 @@ package main.java.code;
 
 import static main.java.code.Constants.Scale.*;
 import static main.java.code.Constants.FilePaths.BACKGROUND_IMAGE_PATH;
+import static main.java.code.Constants.FilePaths.RULES_IMAGE_PATH;
 import static main.java.code.Constants.FilePaths.TITLE_IMAGE_PATH;
 import static main.java.code.Constants.FilePaths.VIRUS_CONTROL_IMAGE_PATH;
 import static main.java.code.Constants.Fonts.*;
@@ -19,9 +20,10 @@ import processing.core.PFont;
 public class WelcomeScreen {
 
     private PApplet p;
-    PImage titleImage;
-    PImage backgroundImage;
-    PImage virusControlImage;
+    private PImage titleImage;
+    private PImage backgroundImage;
+    private PImage virusControlImage;
+    private PImage rulesImage;
     private ControlP5 cp5;
     private boolean controlsCreated;
     private int currentPage = 0;
@@ -70,12 +72,13 @@ public class WelcomeScreen {
         titleImage = p.loadImage(TITLE_IMAGE_PATH);
         backgroundImage = p.loadImage(BACKGROUND_IMAGE_PATH);
         virusControlImage = p.loadImage(VIRUS_CONTROL_IMAGE_PATH);
+        rulesImage = p.loadImage(RULES_IMAGE_PATH);
 
 
         titleImage.resize(WIDTH_SCALE,0);
         backgroundImage.resize(WIDTH_SCALE-100,0);
         virusControlImage.resize(WIDTH_SCALE-100,0);
-
+        rulesImage.resize(WIDTH_SCALE-100,0);
         
         controlsCreated = false; // allows it so we can only create controls once
         currentPage = 0; //stores currnet page - 0 is the home page, 1 is the background page, 2 is the virus control screen, and 3 is the actual simulation screen
@@ -130,14 +133,14 @@ public class WelcomeScreen {
 
     private void setupNextButton() {
         nextButton = cp5.addButton("Next")
-                .setPosition(600, 550)
+                .setPosition(600, 570)
                 .setSize(200, 50)
                 .setLabel("Next")
                 .setColorBackground(p.color(0, 0, 0))
                 .setColorForeground(p.color(100, 100, 100))
                 .setColorActive(p.color(150, 150, 150))
                 .onPress((event) -> {
-                    if (currentPage == 2) {
+                    if (currentPage == 3) {
                         // Store all values when moving to the next page
                         /*storedDeathRate = (int) deathRateSlider.getValue();
                         storedRecoveryRate = (int) recoveryRateSlider.getValue();
@@ -158,7 +161,7 @@ public class WelcomeScreen {
                     }
                     
                     currentPage++;
-                    if (currentPage == 3) {
+                    if (currentPage == 4) {
                         cp5.remove("virusName");
                         cp5.remove("deathRateSlider");
                         cp5.remove("recoveryRateSlider");
@@ -260,6 +263,12 @@ public class WelcomeScreen {
         p.image(backgroundImage, 150,0);
     }
 
+    public void rules() {
+        p.fill(255,255,255);
+        p.rect(0, 0, p.width, p.height);
+        p.image(rulesImage, 150,0);
+    }
+
     public void virusControlScreen() {
         p.fill(255,255,255);
         p.rect(0, 0, p.width, p.height);
@@ -292,7 +301,10 @@ public class WelcomeScreen {
         else if(currentPage == 1) {
             background();
         }
-        else if (currentPage == 2) {
+        else if(currentPage == 2){
+            rules();
+        }
+        else if (currentPage == 3) {
            
             virusControlScreen();
             Virus.setDeathRate((int) deathRateSlider.getValue()); 
@@ -304,7 +316,7 @@ public class WelcomeScreen {
             Virus.setName(virusName.getStringValue());
 
         }
-        else if(currentPage == 3) {
+        else if(currentPage == 4) {
        
             // Remove controls
             cp5.remove("virusName");
