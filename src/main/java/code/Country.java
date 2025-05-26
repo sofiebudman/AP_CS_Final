@@ -42,13 +42,6 @@ public class Country {
         
         imageClosed = p.loadImage(closedPath);
         imageClosed.resize(WIDTH_SCALE, 0);
-        /* 
-        cities = new ArrayList<City>();
-        for (int i = 0; i < (int) (Math.random()*maxCities)+1; i++) {
-            cities.add(new City());
-        }
-        xPos = x;
-        yPos = y;*/
 
         this.timer = new Timer();
         this.secondsElapsed = 30;
@@ -129,6 +122,10 @@ public class Country {
         openBorder = !openBorder;
     }
     
+    public boolean hasOpenBorder() {
+        return openBorder;
+    }
+
     public void giveVaccine() {
         hasVaccine = true;
     }

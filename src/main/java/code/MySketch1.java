@@ -53,13 +53,13 @@ public class MySketch1 extends PApplet {
             if (!topBarCreated) {
                 topBar = new TopBar(this, instructionScreen, virusControlScreen);
                 map.start();
+                map.startTimer();
                 topBarCreated = true;
             }
             
             
             
             // Draw map and UI elements
-            map.start();
             map.drawOcean();
             map.drawContinents();
             instructionScreen.draw();

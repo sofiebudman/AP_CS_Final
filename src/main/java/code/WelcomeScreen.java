@@ -87,9 +87,8 @@ public class WelcomeScreen {
         countryOptions = new String[] {
             "North America",
             "South America",
-            "Europe",
+            "Eurasia",
             "Africa",
-            "Asia",
             "Australia"
         };
     }
@@ -295,13 +294,24 @@ public class WelcomeScreen {
         else if (currentPage == 2) {
            
             virusControlScreen();
+            /*
+              
             Virus.setDeathRate((int) deathRateSlider.getValue()); 
             Virus.setRecoveryRate((int) recoveryRateSlider.getValue());
             Virus.setTransmissionRate((int) transmissionRateSlider.getValue());
             Virus.setMutationRate((int) mutationRateSlider.getValue());
             Virus.setStartingCountry(countryOptions[(int) countryStart.getValue()]);
-
+            
             Virus.setName(virusName.getStringValue());
+            */
+            Virus.setDeathRate(2); 
+            Virus.setRecoveryRate(1);
+            Virus.setTransmissionRate(5);
+            Virus.setMutationRate(0);
+            Virus.setStartingCountry("North America");
+            
+            Virus.setName("Virus");
+            
 
         }
         else if(currentPage == 3) {

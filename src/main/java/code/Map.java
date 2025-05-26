@@ -6,6 +6,7 @@ import static main.java.code.Constants.Coordinates.*;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PImage;
 
 import java.util.Timer;
@@ -26,6 +27,7 @@ public class Map {
     private City la; // Los Angeles
 
     private Timer timer;
+    private int counter = 0;
 
 
 
@@ -44,10 +46,10 @@ public class Map {
   
 
         //add coutnries to the list
-        countries.add(new Country("Africa", AFRICA_OPEN_PATH, AFRICA_CLOSED_PATH, p));
         countries.add(new Country("North America", NORTH_AMERICA_OPEN_PATH, NORTH_AMERICA_CLOSED_PATH, p));
         countries.add(new Country("South America", SOUTH_AMERICA_OPEN_PATH, SOUTH_AMERICA_CLOSED_PATH, p));
         countries.add(new Country("Eurasia", EURASIA_OPEN_PATH, EURASIA_CLOSED_PATH, p));
+        countries.add(new Country("Africa", AFRICA_OPEN_PATH, AFRICA_CLOSED_PATH, p));
         countries.add(new Country("Australia", AUSTRALIA_OPEN_PATH, AUSTRALIA_CLOSED_PATH, p));
 
         //Start timer for all countries
@@ -104,16 +106,57 @@ public class Map {
     public void startTimer() {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                drawCity();
+                for (int i = cities.size()-1; i >=0; i--) {
+                    City c = cities.get(i);
+                    if(c.getPopulationImmune()+c.getPopulationInfected()+c.getPopulationVulnerable() == 0) {
+                        Notification.newNotification(c.getName() + " Perished!");
+                        cities.remove(i);
+                    }
+                }
+                for (City city : cities) {
+                    boolean v = countries.get(city.getCountryNum()).checkHasVaccine();
+                    city.update(v, countries.get(city.getCountryNum()).hasOpenBorder());
+
+
+                    
+                }
+                
+                
             }
-        }, 0, 10);  //1000 = 1 second, 10 = 0.01 seconds, a tick for virus spread is 10 milliseconds
+        }, 0, 1000);  //1000 = 1 second, 10 = 0.01 seconds, a tick for virus spread is 10 milliseconds
     }
 
     public void drawCity(){
+        //Get Rid of Cities with No People
+        for (int i = cities.size()-1; i >=0; i--) {
+            City c = cities.get(i);
+            if(c.getPopulationImmune()+c.getPopulationInfected()+c.getPopulationVulnerable() == 0) {
+                Notification.newNotification(c.getName() + " Perished!");
+                cities.remove(i);
+            }
+        }
         for (City city : cities) {
-            boolean v = countries.get(city.getCountryNum()).checkHasVaccine();
-            city.update(v);
-            city.render();
+            city.render(); 
+        }
+        for (City city : cities) {
+            if (p.dist(p.mouseX, p.mouseY, city.getPosX(), city.getPosY()) <= city.getCityRadius()) {
+                p.fill(100, 100, 100, 150);
+                int w = 180;
+                int h = 70;
+                p.rect(city.getPosX() - 10 - w, city.getPosY() - 10 - h, w, h);
+
+                int textX = city.getPosX()  - w - 2; 
+                int textY = city.getPosY()  - h - 2;  
+
+                p.fill(255);
+                p.textAlign(PConstants.LEFT, PConstants.TOP);
+                p.text(city.getName(),   textX, textY);
+                p.text("Vulnerable: "+city.getPopulationVulnerable(), textX, textY + 14);
+                p.text("Infected: "+city.getPopulationInfected(),   textX, textY + 28);
+                p.text("Immune: "+city.getPopulationImmune(),     textX, textY + 42);
+                p.textAlign(PConstants.LEFT, PConstants.BASELINE);
+            }
+
         }
     }
 

@@ -16,7 +16,6 @@ public class City {
 
     //TODO: notification when virus mutates
 
-    private double immunityRadius; // blue circle that represents how immune a populaiton is
     private double cityRadius; //radius that represents the size of a city
     private double infectionRadius;
     
@@ -36,26 +35,11 @@ public class City {
         this.p = p;
         
         // Initialize population
-        //this.populationVulnerable = (int) (Math.random() * 9000001) + 1000000; // 1 million people min, 10 million max
-        this.populationVulnerable = 1000000; // 1 million for testing
+        this.populationVulnerable = (int) (Math.random() * 9000001) + 1000000; // 1 million people min, 10 million max
         this.populationInfected = 0;
         this.populationImmune = 0;
-
-        //Radius
-        immunityRadius = 20;
-        cityRadius = 10;
-        infectionRadius = 50;
-
-    }
-
-    public double logisticSpread(double time){
-        // Logistic function for spread radius
-        double L = 500; // Maximum spread radius
-        //double e = 2.718; // Reduced growth rate for smoother expansion
-        double t = Virus.getTransmissionRate();
-        //double x0 = populationVulnerable/2; // Fixed midpoint for more predictable growth
-        return L / (1 + 0.1 *Math.pow(t, (-0.01 *(0.1 * time - (1800/t)))));
-
+        cityRadius = Math.pow((populationVulnerable+populationImmune+populationInfected) / 10_000_000.0, 0.4) * 18 + 2;
+        infectionRadius= cityRadius+ Math.sqrt(25 + populationInfected * (4500 / 10_000_000));
 
     }
 
@@ -86,6 +70,10 @@ public class City {
     public String getName() {
         return name;
     }
+
+    public int getCityRadius() {
+        return (int) cityRadius;
+    }
     
     //Infection
     public void infect() {
@@ -99,11 +87,11 @@ public class City {
 
     //UPDATE Variables
 
-    public void update(boolean hasVaccine) {
+    public void update(boolean hasVaccine, boolean borderOpen) {
 
         //Transmit to People 
         if (populationInfected > 0) {
-            int change = (int) (populationInfected*Virus.getTransmissionRate()*0.01);
+            int change = (int) (populationInfected*Virus.getTransmissionRate()/10);
             if (change > populationVulnerable) {
                 change = populationVulnerable;
             }
@@ -112,11 +100,20 @@ public class City {
         }
         
         //Kill People
-        populationInfected -= (int) (populationInfected * Virus.getDeathRate());
+        populationInfected -= (int) (populationInfected * Virus.getDeathRate()/10);
+
+        if (!borderOpen) {
+            int population = populationImmune+populationInfected+populationVulnerable;
+            double shrink = (1 - (0.5 - Math.max(0, Math.min(1, (Math.log10(population) - 3) / 3)) * (0.5 - 0.05)));
+            populationVulnerable = (int) ((populationVulnerable) * shrink);
+            populationInfected = (int) ((populationInfected) * shrink);
+            populationImmune = (int) ((populationImmune) * shrink);
+            
+        }
         
         //Recover People
         if (populationInfected > 0) {
-            int change = (int) (populationInfected*Virus.getRecoveryRate());
+            int change = (int) (populationInfected*Virus.getRecoveryRate()/50);
             // 1*25 recovery of has vaccine
             if (hasVaccine) {
                 change = (int) (change * 1.25);
@@ -127,6 +124,11 @@ public class City {
             populationInfected -= change;
             populationImmune += change;
         }
+        //If most of the population is immune virus goes away
+        if (populationInfected>0 && (populationImmune/populationInfected)>100) {
+            populationImmune+=populationInfected;
+            populationInfected=0;
+        }
         //Immunity from vaccination
         if (populationVulnerable > 0 && hasVaccine) {
             int change = (int) (populationVulnerable * 0.02);
@@ -135,26 +137,30 @@ public class City {
             }
         }
         //increase population
-        populationVulnerable = (int) (populationVulnerable * 1.01);
-        populationVulnerable += (int) (populationImmune * 1.01);
+        populationVulnerable = (int) ((populationVulnerable) * 1.00003 + populationImmune * 0.00003);
         //Keep max pop at 10000000
         if (populationVulnerable + populationImmune + populationInfected > 10000000) {
             
             populationVulnerable = 10000000 - (populationImmune+populationInfected);
         }
-        
+
+        //Update Radius
+        cityRadius = Math.pow((populationVulnerable+populationImmune+populationInfected) / 10_000_000.0, 0.4) * 18 + 2;
+        infectionRadius = Math.sqrt(Math.pow(cityRadius + 5, 2) + (4900 - Math.pow(cityRadius + 5, 2)) * (populationInfected / 10_000_000.0));
     }
 
     //RENDERING
 
     public void render() {
         p.noStroke();
-        // Draw immunity circle (blue)
-        p.fill(0, 0, 255, 255);
-        p.circle(posX, posY, (float)immunityRadius);
         
-        // Draw vulnerable population circle (white)
-        p.fill(255, 255, 255, 255);
+        // Draw vulnerable population circle (black)
+        int color = 255;  // Default to white
+        if (populationImmune + populationVulnerable + populationInfected > 0) {
+            double immuneRatio = (double)populationImmune / (populationImmune + populationVulnerable + populationInfected);
+            color = (int)(155 * (1.0 - immuneRatio)) + 100;  // Will range from 255 to 100
+        }
+        p.fill(45, 45, 45, 255);
         p.circle(posX, posY, (float)cityRadius);
         
         // Draw infected population circle (red) only if infected
@@ -162,6 +168,10 @@ public class City {
             p.fill(255, 0, 0, 100);
             p.circle(posX, posY, (float)infectionRadius);
         }
+
+        //Point
+        p.fill(color, color, 255, 225);
+        p.circle(posX, posY, (int)(cityRadius/1.5));
     }
   public static void main(String args[]) {
   }
