@@ -1,7 +1,25 @@
-# AP_CS_Final
-Epidemic Simulator 
+
+![Epidemic simulator (1)](https://github.com/user-attachments/assets/fad19a0c-6401-4f36-a52f-5cb2ed5062ff)
+
+# Epidemic Simulator
+Final project
 Sofie Budman & Tyler Tachiki
 AP CS period 5
+
+## Background
+
+Welcome to CATCH IT IF YOU CAN!
+
+This epidemic simulator models the spread of a custom-designed virus. See how your virus will spread across the world and see if humanity will be able to respond!
+
+On the next page, you can set virus parameters to control how quickly the virus spreads and mutates and how deadly it will be.
+
+Once you start the simulation, you will also be able to quarantine regions of the world by closing their borders. But beware! Closing a region's borders will cut off key supplies, leading to population decline from starvation.
+
+You will be able to monitor charts throughout the simulation to see how populations are affected by the virus.
+
+Stay Strong!
+
 
 ## VSCode Setup Instructions
 
@@ -30,5 +48,4 @@ AP CS period 5
    - If you get "package processing.core does not exist" errors, make sure the Processing libraries are properly linked
    - If images don't load, check that all resource files are in the correct directories
    - Make sure you're using Java 8 or later
-
-Note: This project was originally developed in Processing IDE. While it can run in VSCode, you might need to adjust some paths or configurations if you encounter issues.
+ 

@@ -21,8 +21,7 @@ public class Country {
 
     private PImage imageOpen;
     private PImage imageClosed; 
-    //private String openPath;
-    //private String closedPath;
+    
     
     private Timer timer;
     private int secondsElapsed;
@@ -51,7 +50,7 @@ public class Country {
     public void startTimer() {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                //System.out.println(secondsElapsed);
+                
                 secondsElapsed++;
             }
         }, 0, 1000); 

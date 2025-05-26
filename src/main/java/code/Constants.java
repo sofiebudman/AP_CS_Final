@@ -142,7 +142,8 @@ public class Constants {
         public static final String OCEAN_PATH = "src/main/resources/images/ocean.png";
 
         public static final String TITLE_IMAGE_PATH = "src/main/resources/elements/title.png";
-        public static final String BACKGROUND_IMAGE_PATH = "src/main/resources/elements/background.png";
+        public static final String BACKGROUND_IMAGE_PATH = "src/main/resources/elements/background_new.png";
+        public static final String RULES_IMAGE_PATH = "src/main/resources/elements/rules.png";
         public static final String VIRUS_CONTROL_IMAGE_PATH = "src/main/resources/elements/virusControl.png";
 
     }
@@ -150,18 +151,12 @@ public class Constants {
     public static class Scale{
         public static final int WIDTH_SCALE = 1166;
 
-    // paths for fonts .ttf files
-
-    
-
-
-    //File paths for image
-    
-
-
-    //formatting
         public static final int HORIZONTAL_SHIFT = 300;
         public static final int VERTICAL_SHIFT = 50;
+
+        
+
+       
 
     }
     

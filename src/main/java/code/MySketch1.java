@@ -41,7 +41,7 @@ public class MySketch1 extends PApplet {
         background(255); 
         
         // Check if we're past the welcome screen
-        if (welcomeScreen.getCurrentPage() >= 3) {
+        if (welcomeScreen.getCurrentPage() >= 4) {
             // Create TopBar only once when we reach this point
 
             if(!firstNotification){
@@ -66,7 +66,7 @@ public class MySketch1 extends PApplet {
             topBar.draw();
             map.drawCity(); // Draw cities
 
-            //Draw Cities
+         
 
         } else {
             // Show welcome screen
@@ -81,7 +81,7 @@ public class MySketch1 extends PApplet {
     
     public void mousePressed() {
         // Only handle map clicks if we're past the welcome screen
-        if (welcomeScreen.getCurrentPage() >= 3) {
+        if (welcomeScreen.getCurrentPage() >= 4) {
             map.handleMousePressed(mouseX, mouseY);
             
         }
