@@ -17,7 +17,7 @@ public class MySketch1 extends PApplet {
     TopBar topBar;
     Map map;
 
-    private boolean firstNotification = false; // Flag to track if it's the first notificatio
+    private boolean firstNotification = false; // Flag to track if it's the first notification
 
    
     

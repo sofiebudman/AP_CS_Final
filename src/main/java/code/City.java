@@ -116,7 +116,7 @@ public class City {
             int change = (int) (populationInfected*Virus.getRecoveryRate()/50);
             // 1*25 recovery of has vaccine
             if (hasVaccine) {
-                change = (int) (change * 1.25);
+                change = (int) (change * 20);
             }
             if (change > populationInfected) {
                 change = populationInfected;
@@ -131,10 +131,12 @@ public class City {
         }
         //Immunity from vaccination
         if (populationVulnerable > 0 && hasVaccine) {
-            int change = (int) (populationVulnerable * 0.02);
+            int change = (int) (populationVulnerable * 0.05); 
             if (change > populationVulnerable) {
                 change = populationVulnerable;
             }
+            populationImmune+=change;
+            populationVulnerable-=change;
         }
         //increase population
         populationVulnerable = (int) ((populationVulnerable) * 1.00003 + populationImmune * 0.00003);

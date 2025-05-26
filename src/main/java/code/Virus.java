@@ -6,7 +6,7 @@ public class Virus {
     private static int deathRate;
     private static int recoveryRate;
     private static int transmissionRate;
-    private static int mutationRate = 10; // Default mutation rate
+    private static int mutationRate; 
     private static String name;
     private static String startingCountry;
 
@@ -73,6 +73,8 @@ public class Virus {
         return startingCountry;
     }
     public static void mutate() {
+        /* 
+         
         int change = (int) (Math.random()*41)-20;
         deathRate += change;
         if (deathRate < 1) {
@@ -89,14 +91,15 @@ public class Virus {
         if (recoveryRate > 100) {
             recoveryRate = 100;
         }
-        change = (int) (Math.random()*41)-20;
+        change = (int) (Math.random()*8)-4;
         transmissionRate += change;
-        if (transmissionRate < 1) {
-            transmissionRate = 1;
+        if (transmissionRate < 2) {
+            transmissionRate = 2;
         }
-        if (transmissionRate > 100) {
-            transmissionRate = 100;
+        if (transmissionRate > 8) {
+            transmissionRate = 8;
         }
+        */
     }
     public String toString() {
         return "Virus: " + name + 

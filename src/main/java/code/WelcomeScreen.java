@@ -319,7 +319,7 @@ public class WelcomeScreen {
             Virus.setDeathRate(2); 
             Virus.setRecoveryRate(1);
             Virus.setTransmissionRate(5);
-            Virus.setMutationRate(0);
+            Virus.setMutationRate(5);
             Virus.setStartingCountry(countryOptions[(int) countryStart.getValue()]);
             
             Virus.setName("Virus");

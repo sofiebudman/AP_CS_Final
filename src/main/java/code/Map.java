@@ -24,7 +24,6 @@ public class Map {
     private PImage ocean;
     private ArrayList<Country> countries = new ArrayList<Country>();
     private ArrayList<City> cities = new ArrayList<City>();
-    private City la; // Los Angeles
 
     private Timer timer;
     private int days = 0;
@@ -176,29 +175,24 @@ public class Map {
                                 
                                 
                                 if (chance < score && distance <= 500) {
-                                    if (other.getPopulationInfected()==0) {
+                                    if (other.getPopulationInfected()==0 && other.getPopulationImmune() == 0) {
                                         Notification.newNotification(other.getName() + " Infected!");
                                     }
                                     other.infect();
-                                    
-                                    
                                 }
                             }
                         }
                     }
                 }
 
-
-
-
-
                 //-------------------------------------------------//
 
                 //------------VACCINE-----------------//
                 
                 for (Country place : countries) {
-                    if (place.getHasVirusInfo()) {
-                        if (Math.random() < 0.009) {
+                    if (place.getHasVirusInfo() && !place.checkHasVaccine()) {
+                        
+                        if (Math.random() < 0.005) {
                             Notification.newNotification(place.getName()+ " Discovered a Vaccine!");
                             place.giveVaccine();
                         }
@@ -206,27 +200,45 @@ public class Map {
                     if (place.checkHasVaccine()) {
                         boolean give = true;
                         for (City c : cities) {
-                            if (c.getCountryNum() == place.getCountryNum() && (c.getPopulationInfected() > 0 || c.getPopulationImmune() == 0)) {
+                            if (c.getCountryNum() == place.getCountryNum() && c.getPopulationInfected() > 0) {
                                 give = false;
+                                break;
                             }
                         }
                         if (give) {
+                            boolean b = false;
                             for (Country u : countries) {
-                                if (!u.checkHasVaccine())  {
-                                    Notification.newNotification(u.getName() + " Received the Vaccine!");
+                                if (!u.checkHasVaccine() && u.hasOpenBorder())  {
                                     u.giveVaccine();
+                                    b = true;
                                 }
-        
                             }
-                                
+                            if (b) {
+                                Notification.newNotification("All Open Countries Received a Vaccine!");
                             }
                         }
                     }
+                }
                 
 
 
 
                 //------------------------------------//
+
+                //-------------MUTATION----------------//
+                if (Math.random() < (double) Virus.getMutationRate()/100) {
+                    Notification.newNotification("Virus Mutated");
+                    Virus.mutate();
+                    for (Country c : countries) {
+                        c.setHasVirusInfo(false);
+                        c.loseVaccine();
+                    }
+                    for (City c : cities) {
+                        c.wipeImmunity();
+                    }
+                }
+
+                //-------------------------------------//
 
 
                 //Update all cities
@@ -237,7 +249,7 @@ public class Map {
                 
                 
             }
-        }, 0, 1000);  //1000 = 1 second, 10 = 0.01 seconds, a tick for virus spread is 10 milliseconds
+        }, 0, 1000);  //1000 = 1 second
     }
 
     public void drawCity(){
@@ -277,6 +289,13 @@ public class Map {
         //Day Counter
         p.fill(255);
         p.text("Day: "+days, 320, 35);
+
+        String e = "Vaccines: ";
+        for (Country c : countries) {
+            e+=c.getName().substring(0, 2);
+            e+= " "+c.checkHasVaccine()+" ";
+        }
+        p.text(e, 500, 35);
 
     }
 
