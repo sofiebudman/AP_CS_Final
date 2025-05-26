@@ -320,7 +320,7 @@ public class WelcomeScreen {
             Virus.setRecoveryRate(1);
             Virus.setTransmissionRate(5);
             Virus.setMutationRate(0);
-            Virus.setStartingCountry("North America");
+            Virus.setStartingCountry(countryOptions[(int) countryStart.getValue()]);
             
             Virus.setName("Virus");
             

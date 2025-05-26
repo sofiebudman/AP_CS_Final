@@ -69,6 +69,9 @@ public class Virus {
     public static String getName() {
         return name;
     }
+    public static String getStartingCountry () {
+        return startingCountry;
+    }
     public static void mutate() {
         int change = (int) (Math.random()*41)-20;
         deathRate += change;

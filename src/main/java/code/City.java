@@ -26,12 +26,12 @@ public class City {
 
 
     
-    public City (String name, int x, int y, /*int c int pop*/ PApplet p, boolean isInfected) {
+    public City (String name, int x, int y, int c, PApplet p, boolean isInfected) {
         this.name = name;
         this.posX = x;
         this.posY = y;
         //countryNum = c;
-        countryNum = 0;
+        this.countryNum = c;
         this.p = p;
         
         // Initialize population
@@ -91,7 +91,7 @@ public class City {
 
         //Transmit to People 
         if (populationInfected > 0) {
-            int change = (int) (populationInfected*Virus.getTransmissionRate()/10);
+            int change = (int) (populationInfected*Virus.getTransmissionRate()/8);
             if (change > populationVulnerable) {
                 change = populationVulnerable;
             }
@@ -100,7 +100,7 @@ public class City {
         }
         
         //Kill People
-        populationInfected -= (int) (populationInfected * Virus.getDeathRate()/10);
+        populationInfected -= (int) (populationInfected * Virus.getDeathRate()/50);
 
         if (!borderOpen) {
             int population = populationImmune+populationInfected+populationVulnerable;

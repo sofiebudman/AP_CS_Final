@@ -13,7 +13,8 @@ public class Country {
     private String name;
     private boolean openBorder;
     private boolean hasVaccine;
-
+    private boolean hasVirusInfo;
+    private int countryNum;
    
 
     private PApplet p;
@@ -27,11 +28,13 @@ public class Country {
     private int secondsElapsed;
     
     
-    public Country (String name, String openPath, String closedPath, PApplet p) {
+    
+    public Country (String name, int num, String openPath, String closedPath, PApplet p) {
         this.p = p;
         this.name = name;
         openBorder = true;
         hasVaccine = false;
+        countryNum = num;
         //this.openPath = openPath;
         //this.closedPath = closedPath;
         
@@ -130,6 +133,18 @@ public class Country {
     }
     public void loseVaccine() {
         hasVaccine = false;
+    }
+
+    public int getCountryNum() {
+        return countryNum;
+    }
+
+    public void setHasVirusInfo(boolean b) {
+        hasVirusInfo = b;
+    }
+
+    public boolean getHasVirusInfo() {
+        return hasVirusInfo;
     }
 
     public boolean checkHasVaccine() {
