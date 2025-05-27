@@ -206,10 +206,11 @@ public class WelcomeScreen {
         transmissionRateSlider = cp5.addSlider("transmissionRateSlider")
                 .setPosition(286, 205)
                 .setSize(300, 30)
-                .setRange(2, 8)
-                .setValue(50)
+                .setRange((float) 0.1, (float) 1)
+                .setValue((float)0.625)
                 .setColorLabel(0)
-                .setNumberOfTickMarks(7)
+                .setDecimalPrecision(2)
+               
                 .setLabel("Transmission Rate");
 
 
@@ -217,10 +218,10 @@ public class WelcomeScreen {
         deathRateSlider = cp5.addSlider("deathRateSlider")
                 .setPosition(286, 265)
                 .setSize(300, 30)
-                .setRange(0, 100)
-                .setValue(50)
+                .setRange((float) 0.01, (float)0.025)
+                .setValue((float)0.015)
                 .setColorLabel(0)
-                .setDecimalPrecision(0)
+                .setDecimalPrecision(2)
                 .setLabel("Death Rate");
                
 
@@ -228,9 +229,10 @@ public class WelcomeScreen {
         recoveryRateSlider = cp5.addSlider("recoveryRateSlider")
                 .setPosition(286, 325)
                 .setSize(300, 30)
-                .setRange(0, 100)
-                .setValue(50)
+                .setRange((float) 0.01, (float) 0.03)
+                .setValue((float) 0.02)
                 .setColorLabel(0)
+                .setDecimalPrecision(2)
                 .setLabel("Recovery Rate");
              
 
@@ -239,9 +241,11 @@ public class WelcomeScreen {
         mutationRateSlider = cp5.addSlider("mutationRateSlider")
                 .setPosition(286, 385)
                 .setSize(300, 30)
-                .setRange(0, 100)
-                .setValue(50)
+                .setRange((float) 0 ,(float) 10)
+                .setValue((float) 2)
                 .setColorLabel(0)
+                .setNumberOfTickMarks(10)
+                .setDecimalPrecision(2)
                 .setLabel("Mutation Rate");
                 
 
@@ -252,6 +256,7 @@ public class WelcomeScreen {
                 .setSize(300, 120)
                 .setItemHeight(30)
                 .setBarHeight(30)
+                .setDecimalPrecision(2)
                 .setLabel("Select Country");
         controlsCreated = true;
     }
@@ -266,6 +271,13 @@ public class WelcomeScreen {
         p.fill(255,255,255);
         p.rect(0, 0, p.width, p.height);
         p.image(rulesImage, 150,0);
+    }
+    public String percentages (double p) {
+       
+      
+        return ""+Math.round(p * 1000.0) / 1000.0;
+        
+        
     }
 
     public void virusControlScreen() {
@@ -286,10 +298,10 @@ public class WelcomeScreen {
         p.textFont(mainFont, BODY_SIZE);
       
         p.textFont(mainFont, FEEDBACK_SIZE);
-        p.text("Death Rate: " + (int)deathRateSlider.getValue() + "%", 696, 180);
-        p.text("Recovery Rate: " + (int)recoveryRateSlider.getValue() + "%", 696, 210);
-        p.text("Transmission Rate: " + "Each person spreads the virus to " +(int)transmissionRateSlider.getValue() + " others" , 696, 240);
-        p.text("Mutation Rate: " + (int)mutationRateSlider.getValue() + "%", 696, 270);
+        p.text("Death Rate: " + percentages((double)deathRateSlider.getValue()) + "%", 696, 180);
+        p.text("Recovery Rate: " + percentages((double)recoveryRateSlider.getValue()) + "%", 696, 210);
+        p.text("Transmission Rate: " +  percentages((double)transmissionRateSlider.getValue()) + "%" , 696, 240);
+        p.text("Mutation Rate: " + percentages((double)mutationRateSlider.getValue()) + "%", 696, 270);
         p.text("Starting Country: " + countryOptions[(int) countryStart.getValue()], 696, 300);
     }
 
@@ -306,23 +318,16 @@ public class WelcomeScreen {
         else if (currentPage == 3) {
            
             virusControlScreen();
-            /*
+            
               
-            Virus.setDeathRate((int) deathRateSlider.getValue()); 
-            Virus.setRecoveryRate((int) recoveryRateSlider.getValue());
-            Virus.setTransmissionRate((int) transmissionRateSlider.getValue());
-            Virus.setMutationRate((int) mutationRateSlider.getValue());
+            Virus.setDeathRate((double) deathRateSlider.getValue()); 
+            Virus.setRecoveryRate((double) recoveryRateSlider.getValue());
+            Virus.setTransmissionRate((double) transmissionRateSlider.getValue());
+            Virus.setMutationRate((double) mutationRateSlider.getValue() / 100);
             Virus.setStartingCountry(countryOptions[(int) countryStart.getValue()]);
             
             Virus.setName(virusName.getStringValue());
-            */
-            Virus.setDeathRate(2); 
-            Virus.setRecoveryRate(1);
-            Virus.setTransmissionRate(5);
-            Virus.setMutationRate(5);
-            Virus.setStartingCountry(countryOptions[(int) countryStart.getValue()]);
             
-            Virus.setName("Virus");
             
 
         }

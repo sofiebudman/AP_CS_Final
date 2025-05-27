@@ -35,7 +35,7 @@ public class TopBar {
     public void draw() {
       
         p.fill(51, 94, 200, 250);
-        p.rect(200, 0, 1000, 50);
+        p.rect(200, 0, 1400, 50);
         p.fill(255);
         
     }

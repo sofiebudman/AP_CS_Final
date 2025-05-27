@@ -3,19 +3,13 @@ package main.java.code;
 
 
 public class Virus {
-    private static int deathRate;
-    private static int recoveryRate;
-    private static int transmissionRate;
-    private static int mutationRate; 
+    private static double deathRate;
+    private static double recoveryRate;
+    private static double transmissionRate;
+    private static double mutationRate; 
     private static String name;
     private static String startingCountry;
 
-    private static boolean la;
-    private static boolean buenosAires;
-    private static boolean cairo;
-    private static boolean sydney;
-    private static boolean beijing;
-    
 
     
     public Virus () {
@@ -31,16 +25,16 @@ public class Virus {
             name = "Virus";
         }
     }
-    public static void setDeathRate(int d) {
+    public static void setDeathRate(double d) {
         deathRate = d;
     }
-    public static void setRecoveryRate(int r) {
+    public static void setRecoveryRate(double r) {
         recoveryRate = r;
     }
-    public static void setTransmissionRate(int t) {
+    public static void setTransmissionRate(double t) {
         transmissionRate = t;
     }
-    public static void setMutationRate(int m) {
+    public static void setMutationRate(double m) {
         mutationRate = m;
     }
 
@@ -51,19 +45,19 @@ public class Virus {
     }
 
     
-    public static int getDeathRate() {
+    public static double getDeathRate() {
         return deathRate;
     }
     
-    public static int getRecoveryRate() {
+    public static double getRecoveryRate() {
         return recoveryRate;
     }
     
-    public static int getTransmissionRate() {
+    public static double getTransmissionRate() {
         return transmissionRate;
     }
     
-    public static int getMutationRate() {
+    public static double getMutationRate() {
         return mutationRate;
     }
     public static String getName() {

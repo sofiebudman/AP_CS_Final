@@ -19,6 +19,7 @@ public class Notification {
     public static void newNotification(String message) {
         currentMessage = message;
         displayStartTime = System.currentTimeMillis();
+        Log.addMessage(message);
     }
 
     public static void display() {
