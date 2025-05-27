@@ -23,6 +23,7 @@ public class TopBar {
             .setLabel("Instructions")
             .onPress(e -> {
                 this.instructionsScreen.toggle();
+                Log.hide();
             });
 
 
@@ -30,6 +31,15 @@ public class TopBar {
             .setPosition(200, 0)
             .setSize(100, 50)
             .setLabel("Graph");
+
+        cp5.addButton("logButton")
+            .setPosition(100,0)
+            .setSize(100,50)
+            .setLabel("Log")
+            .onPress(e -> {
+                Log.toggle();
+                this.instructionsScreen.hide();
+            });
     }
      
     public void draw() {

@@ -29,11 +29,14 @@ public class Map {
     private ArrayList<City> cities = new ArrayList<City>();
 
     private Timer timer;
-    private int days = 0;
+    private static int days = 0;
 
 
 
-    
+    public static int getDay(){
+            return days;    
+    }
+
 
     public Map(PApplet p, Notification notification) {
         this.p = p;
@@ -60,6 +63,7 @@ public class Map {
             //System.out.println("Timer Started");
         }
 
+        
 
         
         // add cities

@@ -63,6 +63,7 @@ public class MySketch1 extends PApplet {
             map.drawOcean();
             map.drawContinents();
             instructionScreen.draw();
+            Log.displayLog(this);
             topBar.draw();
             map.drawCity(); // Draw cities
 

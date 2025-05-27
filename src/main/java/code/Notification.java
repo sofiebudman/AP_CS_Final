@@ -19,7 +19,8 @@ public class Notification {
     public static void newNotification(String message) {
         currentMessage = message;
         displayStartTime = System.currentTimeMillis();
-        Log.addMessage(message);
+        Log.addMessage(message, Map.getDay()); // Assuming Map.getDay() returns the current day
+
     }
 
     public static void display() {
