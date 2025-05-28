@@ -31,7 +31,10 @@ public class Map {
     private Timer timer;
     private static int days = 0;
 
-
+    // Add font fields
+    private PFont cityInfoFont;
+    private PFont cityNameFont;
+    private PFont dayCounterFont;
 
     public static int getDay(){
             return days;    
@@ -40,6 +43,12 @@ public class Map {
 
     public Map(PApplet p, Notification notification) {
         this.p = p;
+        FontManager.initialize(p);
+
+        // Initialize fonts
+        cityInfoFont = FontManager.getFont("FARRO_REGULAR_12");
+        cityNameFont = FontManager.getFont("FARRO_REGULAR_20");
+        dayCounterFont = FontManager.getFont("FARRO_REGULAR_20");
 
         //Timer
         this.timer = new Timer();
@@ -304,51 +313,41 @@ public class Map {
                 int textX = city.getPosX()  - w - 2; 
                 int textY = city.getPosY()  - h - 2;  
 
-                PFont m= p.createFont(FARRO_REGULAR_FONT_PATH, 12, true);
-                p.textFont(m);
+                p.textFont(cityInfoFont);
 
                 int totalPopulation = city.getPopulationVulnerable() + city.getPopulationInfected() + city.getPopulationImmune();
                 String vulnerablePercentage = percentages(city.getPopulationVulnerable(), totalPopulation);
-
-                
                 String infectedPercentage = percentages(city.getPopulationInfected(), totalPopulation);
-
                 String immunePercentage = percentages(city.getPopulationImmune(), totalPopulation);
+                
                 p.fill(255);
                 p.textAlign(PConstants.LEFT, PConstants.TOP);
-                p.text(city.getName() + " Pop: " + abb(totalPopulation),   textX, textY);
+                p.text(city.getName() + " Pop: " + abb(totalPopulation), textX, textY);
                 p.text("Vulnerable: "+vulnerablePercentage+"%", textX, textY + 14);
-                p.text("Infected: "+infectedPercentage+"%",   textX, textY + 28);
-                p.text("Immune: "+immunePercentage+"%",     textX, textY + 42);
+                p.text("Infected: "+infectedPercentage+"%", textX, textY + 28);
+                p.text("Immune: "+immunePercentage+"%", textX, textY + 42);
                 p.textAlign(PConstants.LEFT, PConstants.BASELINE);
 
-                PFont a= p.createFont(FARRO_REGULAR_FONT_PATH, 20, true);
-                p.textFont(a);
+                p.textFont(cityNameFont);
             }
-
         }
 
         //Day Counter
         p.fill(255);
-        PFont m= p.createFont(FARRO_REGULAR_FONT_PATH, 20, true);
-        p.textFont(m);
-   
+        p.textFont(dayCounterFont);
         p.text("Day: "+days, 320, 35);
 
         String e = "Vaccines: ";
         for (Country c : countries) {
-            PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 20, true);
-            p.textFont(mono);
+            p.textFont(dayCounterFont);
             e+=c.getName().substring(0, 2);
             if(c.checkHasVaccine()) {
                 e+= " Y";
             } else {
                 e+= " N ";
             }
-            
         }
         p.text(e, 500, 35);
-
     }
 
     public void drawContinents() {

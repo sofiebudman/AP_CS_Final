@@ -57,7 +57,9 @@ public class WelcomeScreen {
     private static final int BODY_SIZE = 16;
     private static final int FEEDBACK_SIZE = 14;
     private String[] countryOptions;
-    //private static final String VIRUS_NAME_TEXT = "Virus Name: ";
+    private PFont titleFont;
+    private PFont subtitleFont;
+    private boolean isVisible;
 
    //private String virusNameText;
 
@@ -67,13 +69,15 @@ public class WelcomeScreen {
 
         //creates font
         mainFont = p.createFont(FARRO_REGULAR_FONT_PATH, 16);
+        titleFont = p.createFont(FARRO_REGULAR_FONT_PATH, 40);
+        subtitleFont = p.createFont(FARRO_REGULAR_FONT_PATH, 20);
+        isVisible = true;
 
         //sets up the images
         titleImage = p.loadImage(TITLE_IMAGE_PATH);
         backgroundImage = p.loadImage(BACKGROUND_IMAGE_PATH);
         virusControlImage = p.loadImage(VIRUS_CONTROL_IMAGE_PATH);
         rulesImage = p.loadImage(RULES_IMAGE_PATH);
-
 
         titleImage.resize(WIDTH_SCALE,0);
         backgroundImage.resize(WIDTH_SCALE-100,0);
@@ -85,7 +89,6 @@ public class WelcomeScreen {
         
         setupNextButton(); //creates the next button
         nextButton.hide(); // hides the next button until the animation is complete
-
 
         countryOptions = new String[] {
             "North America",
@@ -306,6 +309,20 @@ public class WelcomeScreen {
     }
 
     public void display() {
+        if (!isVisible) return;
+
+        p.background(255);
+        p.fill(0);
+        p.textAlign(PConstants.CENTER, PConstants.CENTER);
+        
+        // Display title
+        p.textFont(titleFont);
+        p.text("Global Pandemic Simulator", p.width/2, p.height/3);
+        
+        // Display subtitle
+        p.textFont(subtitleFont);
+        p.text("Click anywhere to begin", p.width/2, p.height/2);
+
         if(currentPage == 0) {
             title();
         }
