@@ -8,37 +8,49 @@ import static main.java.code.Constants.*;
 public class TopBar {
     private PApplet p;
     private ControlP5 cp5;  // Single ControlP5 instance
-    private Instructions instructionsScreen;
-    private VirusControl virusControlScreen;
+    private Instructions instructions;
+    private Log log;
+
+    
    
-    public TopBar(PApplet p, Instructions instructionScreen, VirusControl virusControlScreen) {
+   
+    public TopBar(PApplet p, Instructions instructions, Log log) {
         this.p = p;
         this.cp5 = new ControlP5(p);
-        this.instructionsScreen = instructionScreen;
-        this.virusControlScreen = virusControlScreen;
+        this.instructions = instructions;
+        this.log = log;
+      
+  
+      
 
         cp5.addButton("instructions")
             .setPosition(0, 0)
             .setSize(100, 50)
             .setLabel("Instructions")
             .onPress(e -> {
-                this.instructionsScreen.toggle();
-                Log.hide();
+                instructions.toggle();
+                log.hide();
+                Graph.hide();
             });
-
 
         cp5.addButton("graphButton")
             .setPosition(200, 0)
             .setSize(100, 50)
-            .setLabel("Graph");
+            .setLabel("Graph")
+            .onPress(e -> {
+                Graph.toggle();
+                log.hide();
+                instructions.hide();
+            });
 
         cp5.addButton("logButton")
             .setPosition(100,0)
             .setSize(100,50)
             .setLabel("Log")
             .onPress(e -> {
-                Log.toggle();
-                this.instructionsScreen.hide();
+                log.toggle();
+                instructions.hide();
+                Graph.hide();
             });
     }
      

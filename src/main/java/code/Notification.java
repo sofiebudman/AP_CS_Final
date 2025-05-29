@@ -10,24 +10,10 @@ public class Notification {
     private static long displayStartTime;
     private static final long DISPLAY_DURATION = 3000; // Display for 3 seconds
     
-    private PFont notificationFont;
-    private String notificationText;
-    private boolean isVisible;
-    private int alpha;
-    private long fadeInStartTime;
-    private long fadeOutStartTime;
-    private long displayDuration;
-    
     public Notification(PApplet p) {
         this.p = p;
-        FontManager.initialize(p);
-        this.notificationFont = FontManager.getFont("FARRO_REGULAR_20");
-        this.notificationText = "";
-        this.isVisible = false;
-        this.alpha = 0;
-        this.fadeInStartTime = 0;
-        this.fadeOutStartTime = 0;
-        this.displayDuration = 3000; // 3 seconds
+        currentMessage = "";
+        displayStartTime = 0;
     }
 
     public static void newNotification(String message) {

@@ -10,12 +10,16 @@ import controlP5.*;  // Add ControlP5 import
 import g4p_controls.*;
 
 public class MySketch1 extends PApplet {
-    Instructions instructionScreen;
-    VirusControl virusControlScreen;
+    Instructions instructions;
+
+
+
     Notification notification;
     WelcomeScreen welcomeScreen;
     TopBar topBar;
     Map map;
+    Log log;
+   
 
     private boolean firstNotification = false; // Flag to track if it's the first notification
 
@@ -31,13 +35,16 @@ public class MySketch1 extends PApplet {
 
     public void setup() {
         notification = new Notification(this);
-        instructionScreen = new Instructions(this);
+        instructions = new Instructions(this);
         welcomeScreen = new WelcomeScreen(this);
-        map = new Map(this, notification);
+        log = new Log (this);
         
+        map = new Map(this, notification);
+        //graph = new Graph(this);
     }
 
     public void draw() {
+        
         background(255); 
         
         // Check if we're past the welcome screen
@@ -51,7 +58,7 @@ public class MySketch1 extends PApplet {
             }
             
             if (!topBarCreated) {
-                topBar = new TopBar(this, instructionScreen, virusControlScreen);
+                topBar = new TopBar(this, instructions, log);
                 map.start();
                 map.startTimer();
                 topBarCreated = true;
@@ -60,10 +67,11 @@ public class MySketch1 extends PApplet {
             
             
             // Draw map and UI elements
-            Log.displayLog(this);
+          
+            Log.displayLog();
             map.drawOcean();
             map.drawContinents();
-            instructionScreen.draw();
+            instructions.draw();
            
             topBar.draw();
             map.drawCity(); // Draw cities
@@ -78,6 +86,9 @@ public class MySketch1 extends PApplet {
         // Display notifications last so they appear on top
         Notification.display();
 
+        // Display graph if visible
+        Graph.display(map.getCities(), this);
+      
     }
 
     

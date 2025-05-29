@@ -32,9 +32,10 @@ public class Map {
     private static int days = 0;
 
     // Add font fields
-    private PFont cityInfoFont;
-    private PFont cityNameFont;
-    private PFont dayCounterFont;
+    private static PFont cityInfoFont;
+    private static PFont cityNameFont;
+    private static PFont dayCounterFont;
+    private static boolean isInitialized = false;
 
     public static int getDay(){
             return days;    
@@ -43,12 +44,7 @@ public class Map {
 
     public Map(PApplet p, Notification notification) {
         this.p = p;
-        FontManager.initialize(p);
-
-        // Initialize fonts
-        cityInfoFont = FontManager.getFont("FARRO_REGULAR_12");
-        cityNameFont = FontManager.getFont("FARRO_REGULAR_20");
-        dayCounterFont = FontManager.getFont("FARRO_REGULAR_20");
+        initialize();
 
         //Timer
         this.timer = new Timer();
@@ -115,6 +111,23 @@ public class Map {
 
        
     }
+
+    private void initialize() {
+        if (!isInitialized) {
+            try {
+                cityInfoFont = p.createFont(FARRO_REGULAR_FONT_PATH, 12);
+                cityNameFont = p.createFont(FARRO_REGULAR_FONT_PATH, 20);
+                dayCounterFont = p.createFont(FARRO_REGULAR_FONT_PATH, 20);
+            } catch (Exception e) {
+                // Fallback to system fonts if custom fonts fail to load
+                cityInfoFont = p.createFont("Arial", 12);
+                cityNameFont = p.createFont("Arial", 20);
+                dayCounterFont = p.createFont("Arial", 20);
+            }
+            isInitialized = true;
+        }
+    }
+
     public void start(){
         String startingCountry = Virus.getStartingCountry();
         String [] options = {
@@ -308,10 +321,10 @@ public class Map {
                 p.fill(100, 100, 100, 180);
                 int w = 180;
                 int h = 70;
-                p.rect(city.getPosX() - 10 - w, city.getPosY() - 10 - h, w, h);
+                p.rect(city.getPosX() , city.getPosY() - 10 - h, w, h);
 
-                int textX = city.getPosX()  - w - 2; 
-                int textY = city.getPosY()  - h - 2;  
+                int textX = city.getPosX() + 5; 
+                int textY = city.getPosY() -h -2 ;  
 
                 p.textFont(cityInfoFont);
 

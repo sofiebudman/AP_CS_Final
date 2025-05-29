@@ -148,6 +148,12 @@ public class Constants {
 
     }
 
+    public static class MessageColor{
+        public static final int VACCINE_MESSAGE_COLOR =0x0000FF;
+        public static final int VIRUS_MUTATE_COLOR = 0xFF0000;
+        public static final int DEFAULT_COLOR = 0;
+    }
+
     public static class Scale{
         public static final int WIDTH_SCALE = 1166;
 
