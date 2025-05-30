@@ -18,12 +18,7 @@ import java.util.TimerTask;
 public class Map {
     private PApplet p;
  
-    /* 
-    Country africa;
-    Country northAmerica;
-    Country southAmerica;
-    Country eurasia;
-    Country australia;*/
+   
     private PImage ocean;
     private ArrayList<Country> countries = new ArrayList<Country>();
     private ArrayList<City> cities = new ArrayList<City>();
@@ -31,11 +26,10 @@ public class Map {
     private Timer timer;
     private static int days = 0;
 
-    // Add font fields
     private static PFont cityInfoFont;
     private static PFont cityNameFont;
     private static PFont dayCounterFont;
-    private static boolean isInitialized = false;
+   
 
     public static int getDay(){
             return days;    
@@ -46,39 +40,35 @@ public class Map {
         this.p = p;
         initialize();
 
-        //Timer
+       
         this.timer = new Timer();
 
-        //load the images
+        
      
         ocean = p.loadImage(OCEAN_PATH);
      
   
 
-        //add coutnries to the list
+
         countries.add(new Country("North America", 0, NORTH_AMERICA_OPEN_PATH, NORTH_AMERICA_CLOSED_PATH, p)); //0
         countries.add(new Country("South America", 1, SOUTH_AMERICA_OPEN_PATH, SOUTH_AMERICA_CLOSED_PATH, p)); //1
         countries.add(new Country("Eurasia", 2, EURASIA_OPEN_PATH, EURASIA_CLOSED_PATH, p)); //2
         countries.add(new Country("Africa", 3, AFRICA_OPEN_PATH, AFRICA_CLOSED_PATH, p)); //3 
         countries.add(new Country("Australia", 4, AUSTRALIA_OPEN_PATH, AUSTRALIA_CLOSED_PATH, p)); //4
 
-        //Start timer for all countries
+       
         for (Country c : countries) {
             c.startTimer();
-            //System.out.println("Timer Started");
+            
         }
 
         
 
-        
-        // add cities
-        //Starters
         cities.add(new City("Los Angeles", LA_HORIZONTAL_SHIFT, LA_VERTICAL_SHIFT,0,  p, false, 3900000));
         cities.add(new City("Buenos Aires", BUENOS_AIRES_HORIZONTAL_SHIFT, BUENOS_AIRES_VERTICAL_SHIFT,  1, p, false, 3000000));
         cities.add(new City("Mumbai", MUMBAI_HORIZONTAL_SHIFT, MUMBAI_VERTICAL_SHIFT,  2, p, false, 10000000));
         cities.add(new City("Cairo", CAIRO_HORIZONTAL_SHIFT, CAIRO_VERTICAL_SHIFT, 3, p, false, 8000000));
         cities.add(new City("Sydney", SYDNEY_HORIZONTAL_SHIFT, SYDNEY_VERTICAL_SHIFT,4, p, false, 5200000));
-        //All Others
         cities.add(new City("Mexico City", MEXICO_CITY_HORIZONTAL_SHIFT, MEXICO_CITY_VERTICAL_SHIFT, 0, p, false, 9200000));
         cities.add(new City("New York", NEW_YORK_HORIZONTAL_SHIFT, NEW_YORK_VERTICAL_SHIFT, 0, p, false, 8800000));
         cities.add(new City("Toronto", TORONTO_HORIZONTAL_SHIFT, TORONTO_VERTICAL_SHIFT, 0, p, false, 2700000));
