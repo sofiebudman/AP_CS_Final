@@ -293,6 +293,26 @@ public class Map {
         }, 0, 1000);  //1000 = 1 second
     }
 
+    public String vacCouAbb (String x) {
+        if (x.equals("North America")) {
+            return "NA";
+        }
+        else if (x.equals("South America")) {
+            return "SA";
+        }
+        else if (x.equals("Eurasia")) {
+            return "EU";
+        }
+        else if (x.equals("Africa")) {
+            return "AF";
+        }
+        else if (x.equals("Australia")) {
+            return "AU";
+        }
+        return "";        
+    }
+
+
     public void drawCity(){
         //Get Rid of Cities with No People
         for (int i = cities.size()-1; i >=0; i--) {
@@ -352,7 +372,7 @@ public class Map {
         String e = "Vaccines: ";
         for (Country c : countries) {
             p.textFont(dayCounterFont);
-            e+=c.getName().substring(0, 2);
+            e+=vacCouAbb(c.getName());
             if(c.checkHasVaccine()) {
                 e+= " Y";
             } else {

@@ -110,6 +110,14 @@ public class MySketch1 extends PApplet {
         
         
     }
+    public void mousePressed() {
+
+        if (WelcomeScreen.getCurrentPage() >= 4) {
+            map.handleMousePressed(mouseX, mouseY);
+            
+        }
+        //System.out.println("Coordinates - X: " + mouseX + ", Y: " + mouseY);
+    }
 
 
    
