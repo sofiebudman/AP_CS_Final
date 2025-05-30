@@ -19,7 +19,7 @@ public class Country {
 
     private PApplet p;
 
-
+    //each image has two states: open and closed
     private PImage imageOpen;
     private PImage imageClosed; 
     
@@ -35,13 +35,10 @@ public class Country {
         openBorder = true;
         hasVaccine = false;
         countryNum = num;
-        //this.openPath = openPath;
-        //this.closedPath = closedPath;
         
-        // Load and resize images once
+        //load and resize image
         imageOpen = p.loadImage(openPath);
         imageOpen.resize(WIDTH_SCALE, 0);
-        
         imageClosed = p.loadImage(closedPath);
         imageClosed.resize(WIDTH_SCALE, 0);
 
@@ -49,7 +46,10 @@ public class Country {
         this.secondsElapsed = 30;
         
     }
-
+    /*
+     * Starts time to control city borders opening and closing
+     * timer runs every 1 second
+     */
     public void startTimer() {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
@@ -70,6 +70,10 @@ public class Country {
     public PImage getClosedImage(){
         return imageClosed;
     }
+
+    /**
+     * @return Image at current state (open or closes)
+     */
     public PImage getImage() {
         if (openBorder) {
             return imageOpen;
@@ -78,6 +82,11 @@ public class Country {
         }
     }
 
+
+    /**
+     * 
+     * Draws the image at current xPos, yPos
+     */
     public void drawImage(int xPos, int yPos) {
         if(openBorder){
             p.image(imageOpen, xPos, yPos);
@@ -86,7 +95,12 @@ public class Country {
         }
     }
 
-    
+    /**
+     * 
+     * @param mouseX User's mouse position determined by processing
+     * @param mouseY User's position determined by processing
+     * Calls the checkContinent Click method to determine whether or not to change border
+     */
     public void handleMousePressed(int mouseX, int mouseY){
         int x = mouseX - HORIZONTAL_SHIFT; // Adjust for offsets
         int y = mouseY - VERTICAL_SHIFT;
@@ -95,6 +109,15 @@ public class Country {
 
 
     }
+
+    /**
+     * 
+     * @param x - mouse x
+     * @param y - mouse y
+     * Gets the position of the user's mouse X and Y
+     * Compares that to the pixel alpha value of the image 
+     * If that value is not zero (it has clicked on a country) it will switch the borders
+     */
 
     private void checkContinentClick(int x, int y) {
         // Get the currently displayed image
