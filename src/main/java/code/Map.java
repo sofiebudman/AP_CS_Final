@@ -373,9 +373,9 @@ public class Map {
             p.textFont(dayCounterFont);
             e+=vacCouAbb(c.getName());
             if(c.checkHasVaccine()) {
-                e+= " Y";
+                e+= ": Yes |";
             } else {
-                e+= " N ";
+                e+= ": No | ";
             }
         }
         p.text(e, 500, 35);
