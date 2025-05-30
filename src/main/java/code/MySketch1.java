@@ -1,21 +1,19 @@
 package main.java.code;
-import java.util.ArrayList;
-import static main.java.code.Constants.Coordinates.*;
-import static main.java.code.Constants.FilePaths.END_IMAGE_PATH;
+
+
+import static main.java.code.Constants.FilePaths.*;
 import static main.java.code.Constants.Scale.*;
 
 import processing.core.PApplet;
-import processing.core.PFont;
+
 import processing.core.PImage;
-import controlP5.*;  // Add ControlP5 import
-import g4p_controls.*;
+
+
 
 public class MySketch1 extends PApplet {
+
+    //instance variables for other UI elements for bettercontrol
     Instructions instructions;
-    //Data data;
-
-
-
     Notification notification;
     WelcomeScreen welcomeScreen;
     TopBar topBar;
@@ -26,18 +24,20 @@ public class MySketch1 extends PApplet {
 
     private boolean firstNotification = false; // Flag to track if it's the first notification
 
-   
-    
 
-    private boolean topBarCreated = false;
+    private boolean topBarCreated = false; // ensures this is only creates once
 
+
+    /*
+     * This line runs at the start of creating PApplet
+     * Creates 1440 by 700 window
+     */
     public void settings() {
         size(1440, 700);
     }
 
 
     public void setup() {
-       // data = new Data();
         notification = new Notification(this);
         instructions = new Instructions(this);
         welcomeScreen = new WelcomeScreen(this);
@@ -48,7 +48,7 @@ public class MySketch1 extends PApplet {
        
         
         map = new Map(this, notification);
-        //graph = new Graph(this);
+
     }
 
     public void draw() {
@@ -57,7 +57,7 @@ public class MySketch1 extends PApplet {
         
         // Check if we're past the welcome screen
         if (WelcomeScreen.getCurrentPage() == 4) {
-            // Create TopBar only once when we reach this point
+            
 
             if(!firstNotification){
                 Notification.newNotification(Virus.getName() + " created");
@@ -74,7 +74,7 @@ public class MySketch1 extends PApplet {
             
             
             
-            // Draw map and UI elements
+            //draw all UI elements
           
             Log.displayLog();
             map.drawOcean();
@@ -87,18 +87,18 @@ public class MySketch1 extends PApplet {
 
 
             Graph.display(map.getCities(), this);
-            /// Data.logData(Data.cityData(Map.getDay(), map.getCities()));
+           
       
 
          
 
         } else if(WelcomeScreen.getCurrentPage() < 4){
-            ///topBar = new TopBar(this, instructions, log);
-            // Show welcome screen
+            //show welcome screen here
             welcomeScreen.display();
            
         }
         else{
+            //remove elements and show end screen
              topBar.remove();
              image(end,150,-50);
 
@@ -106,20 +106,12 @@ public class MySketch1 extends PApplet {
       
         }
         
-        // Display notifications last so they appear on top
+        
         
     }
 
-    
-    public void mousePressed() {
 
-        if (WelcomeScreen.getCurrentPage() >= 4) {
-            map.handleMousePressed(mouseX, mouseY);
-            
-        }
-        System.out.println("Coordinates - X: " + mouseX + ", Y: " + mouseY);
-    }
-
+   
     public static void main(String[] args) {
         PApplet.main(new String[] { "main.java.code.MySketch1" });
     }
