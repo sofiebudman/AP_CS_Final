@@ -12,7 +12,7 @@ import g4p_controls.*;
 
 public class MySketch1 extends PApplet {
     Instructions instructions;
-    Data data;
+    //Data data;
 
 
 
@@ -37,7 +37,7 @@ public class MySketch1 extends PApplet {
 
 
     public void setup() {
-        data = new Data();
+       // data = new Data();
         notification = new Notification(this);
         instructions = new Instructions(this);
         welcomeScreen = new WelcomeScreen(this);
@@ -87,7 +87,7 @@ public class MySketch1 extends PApplet {
 
 
             Graph.display(map.getCities(), this);
-             Data.logData(Data.cityData(Map.getDay(), map.getCities()));
+            /// Data.logData(Data.cityData(Map.getDay(), map.getCities()));
       
 
          

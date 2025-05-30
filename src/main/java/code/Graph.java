@@ -1,13 +1,13 @@
 package main.java.code;
 
 import processing.core.PApplet;
-import processing.core.PConstants;
+import static processing.core.PConstants.*;
 import java.util.ArrayList;
 
 public class Graph {
    /// private static PApplet p;
     private static boolean isVisible;
-    private static final int GRAPH_X = 20;
+    private static final int GRAPH_X = 20; //left
     private static final int GRAPH_Y = 100;
     private static final int GRAPH_SIZE = 200;
     private static final int LEGEND_X = GRAPH_X + 20;
@@ -15,16 +15,16 @@ public class Graph {
     private static final int LEGEND_SPACING = 25;
 
     // More subtle colors
-    private static final int INFECTED_COLOR = 0xFFE57373;  // Soft red
-    private static final int IMMUNE_COLOR = 0xFF81C784;    // Soft green
-    private static final int VULNERABLE_COLOR = 0xFF64B5F6; // Soft blue
-    private static final int BACKGROUND_COLOR = 0xFFFFB877; // Match Instructions panel color (255, 184, 119)
-    private static final int PANEL_COLOR = 0xFFFFFFFF;     // White
-    private static final int TEXT_COLOR = 0xFF424242;      // Dark gray
+    private static final int INFECTED_COLOR = 0xFFE57373;  
+    private static final int IMMUNE_COLOR = 0xFF81C784;  
+    private static final int VULNERABLE_COLOR = 0xFF64B5F6; 
+    private static final int BACKGROUND_COLOR = 0xFFFFB877; 
+    private static final int PANEL_COLOR = 0xFFFFFFFF;   
+    private static final int TEXT_COLOR = 0xFF424242;      
 
     public Graph() {
         //his.p = p;
-        this.isVisible = false;
+        Graph.isVisible = false;
     }
 
     public static boolean isVisible() {
@@ -73,64 +73,62 @@ public class Graph {
 
         // Draw title
         p.fill(TEXT_COLOR);
-        p.textAlign(PConstants.CENTER);
+        p.textAlign(CENTER);
         p.textSize(16);
         p.text("World Population Status", 150, 90);
 
         // Calculate percentages
-        float infectedPercent = (float)infected / totalPopulation;
-        float immunePercent = (float)immune / totalPopulation;
-        float vulnerablePercent = (float)vulnerable / totalPopulation;
+        double infectedPercent = (double)infected / totalPopulation;
+        double immunePercent = (double)immune / totalPopulation;
+        double vulnerablePercent = (double)vulnerable / totalPopulation;
 
         // Draw pie chart
-        float startAngle = 0;
+        double startAngle = 0;
         
         // Infected (soft red)
         p.fill(INFECTED_COLOR);
-        p.arc(GRAPH_X + GRAPH_SIZE/2, GRAPH_Y + GRAPH_SIZE/2, 
-              GRAPH_SIZE, GRAPH_SIZE, 
-              startAngle, startAngle + PConstants.TWO_PI * infectedPercent);
-        startAngle += PConstants.TWO_PI * infectedPercent;
+        p.arc( (float) GRAPH_X + GRAPH_SIZE/2, (float) GRAPH_Y + GRAPH_SIZE/2,  (float) GRAPH_SIZE, (float) GRAPH_SIZE,  (float) startAngle, (float) startAngle + (float) TWO_PI * (float) infectedPercent);
+        startAngle += TWO_PI * infectedPercent;
 
         // Immune (soft green)
         p.fill(IMMUNE_COLOR);
-        p.arc(GRAPH_X + GRAPH_SIZE/2, GRAPH_Y + GRAPH_SIZE/2, 
-              GRAPH_SIZE, GRAPH_SIZE, 
-              startAngle, startAngle + PConstants.TWO_PI * immunePercent);
-        startAngle += PConstants.TWO_PI * immunePercent;
+        p.arc( (float) GRAPH_X + GRAPH_SIZE/2, (float)  GRAPH_Y + GRAPH_SIZE/2, 
+              (float)GRAPH_SIZE, (float) GRAPH_SIZE, 
+              (float) startAngle, (float)(startAngle + TWO_PI * immunePercent));
+        startAngle += TWO_PI * immunePercent;
 
-        // Vulnerable (soft blue)
+
         p.fill(VULNERABLE_COLOR);
-        p.arc(GRAPH_X + GRAPH_SIZE/2, GRAPH_Y + GRAPH_SIZE/2, 
-              GRAPH_SIZE, GRAPH_SIZE, 
-              startAngle, startAngle + PConstants.TWO_PI * vulnerablePercent);
+        p.arc((float) GRAPH_X + GRAPH_SIZE/2, (float) GRAPH_Y + GRAPH_SIZE/2, 
+              (float) GRAPH_SIZE, (float) GRAPH_SIZE, 
+              (float) startAngle,(float) (startAngle + TWO_PI * vulnerablePercent));
 
-        // Draw legend
-        p.textAlign(PConstants.LEFT);
+
+        p.textAlign(LEFT);
         p.textSize(14);
         
-        // Infected
+
         p.fill(INFECTED_COLOR);
         p.rect(LEGEND_X, LEGEND_Y, 15, 15);
         p.fill(TEXT_COLOR);
         p.text(String.format("Infected: %.1f%%", infectedPercent * 100), 
                LEGEND_X + 20, LEGEND_Y + 12);
 
-        // Immune
+
         p.fill(IMMUNE_COLOR);
         p.rect(LEGEND_X, LEGEND_Y + LEGEND_SPACING, 15, 15);
         p.fill(TEXT_COLOR);
         p.text(String.format("Immune: %.1f%%", immunePercent * 100), 
                LEGEND_X + 20, LEGEND_Y + LEGEND_SPACING + 12);
 
-        // Vulnerable
+
         p.fill(VULNERABLE_COLOR);
         p.rect(LEGEND_X, LEGEND_Y + LEGEND_SPACING * 2, 15, 15);
         p.fill(TEXT_COLOR);
         p.text(String.format("Vulnerable: %.1f%%", vulnerablePercent * 100), 
                LEGEND_X + 20, LEGEND_Y + LEGEND_SPACING * 2 + 12);
 
-        // Reset text alignment
-        p.textAlign(PConstants.LEFT, PConstants.BASELINE);
+       
+        p.textAlign(LEFT, BASELINE);
     }
 } 
