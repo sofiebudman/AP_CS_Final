@@ -33,9 +33,21 @@ public class Instructions{
        
         p.fill(0);
         //p.textSize(5);
-        PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 20, true);
+        PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 18, true);
         p.textFont(mono);
-        p.text("Instructions:\n1. Click continents.\n2. Track infection.\n3. Use buttons to\n toggle borders.", 20, 120);
+        p.text("Red Circle = Infection\n" + //
+                "White City = Vulnerable\n" + //
+                "Blue City = Immune\n\n" + //
+                
+                "Vaccines and immunity\n" +
+                "Lost on virus mutation\n\n" + //
+
+                "Click countries toggle border\n\n" + //
+                "Population grows on open \n border\n\n" + //
+                "Population Shrinks on\nClosed Border (no trade)\n\n" + //
+
+                "Hover over a city to see\nstatistics\n" + //
+                 "Tip: Use Graph and Log to\nsee information", 20, 120);
 
 
     }

@@ -113,19 +113,14 @@ public class Map {
     }
 
     private void initialize() {
-        if (!isInitialized) {
-            try {
+    
                 cityInfoFont = p.createFont(FARRO_REGULAR_FONT_PATH, 12);
                 cityNameFont = p.createFont(FARRO_REGULAR_FONT_PATH, 20);
                 dayCounterFont = p.createFont(FARRO_REGULAR_FONT_PATH, 20);
-            } catch (Exception e) {
-                // Fallback to system fonts if custom fonts fail to load
-                cityInfoFont = p.createFont("Arial", 12);
-                cityNameFont = p.createFont("Arial", 20);
-                dayCounterFont = p.createFont("Arial", 20);
-            }
-            isInitialized = true;
-        }
+
+               
+              
+         
     }
 
     public void start(){
@@ -179,6 +174,11 @@ public class Map {
     public void startTimer() {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
+
+
+
+
+                
                 //Update days
                 days++;
                 

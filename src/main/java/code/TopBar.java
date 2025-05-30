@@ -11,6 +11,7 @@ public class TopBar {
     private Instructions instructions;
     private Log log;
 
+
     
    
    
@@ -52,13 +53,30 @@ public class TopBar {
                 instructions.hide();
                 Graph.hide();
             });
-    }
+
+        cp5.addButton("end")
+            .setPosition(1300,0)
+            .setSize(100,50)
+            .setLabel("End Sim")
+            .onPress(e -> {
+                WelcomeScreen.increaseCurrentPage();
+
+            });
+        }
+    
      
     public void draw() {
+        
       
         p.fill(51, 94, 200, 250);
         p.rect(200, 0, 1400, 50);
         p.fill(255);
         
+    }
+    public void remove(){
+        cp5.remove("instructions");
+            cp5.remove("graphButton");
+            cp5.remove("logButton");
+            cp5.remove("end");
     }
 }

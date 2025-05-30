@@ -1,6 +1,7 @@
 package main.java.code;
 import java.util.ArrayList;
 import static main.java.code.Constants.Coordinates.*;
+import static main.java.code.Constants.FilePaths.END_IMAGE_PATH;
 import static main.java.code.Constants.Scale.*;
 
 import processing.core.PApplet;
@@ -11,6 +12,7 @@ import g4p_controls.*;
 
 public class MySketch1 extends PApplet {
     Instructions instructions;
+    Data data;
 
 
 
@@ -19,6 +21,7 @@ public class MySketch1 extends PApplet {
     TopBar topBar;
     Map map;
     Log log;
+    PImage end;
    
 
     private boolean firstNotification = false; // Flag to track if it's the first notification
@@ -34,10 +37,15 @@ public class MySketch1 extends PApplet {
 
 
     public void setup() {
+        data = new Data();
         notification = new Notification(this);
         instructions = new Instructions(this);
         welcomeScreen = new WelcomeScreen(this);
         log = new Log (this);
+
+        end = loadImage(END_IMAGE_PATH);
+        end.resize(WIDTH_SCALE-100,0);
+       
         
         map = new Map(this, notification);
         //graph = new Graph(this);
@@ -48,7 +56,7 @@ public class MySketch1 extends PApplet {
         background(255); 
         
         // Check if we're past the welcome screen
-        if (welcomeScreen.getCurrentPage() >= 4) {
+        if (WelcomeScreen.getCurrentPage() == 4) {
             // Create TopBar only once when we reach this point
 
             if(!firstNotification){
@@ -75,26 +83,37 @@ public class MySketch1 extends PApplet {
            
             topBar.draw();
             map.drawCity(); // Draw cities
+            Notification.display();
+
+
+            Graph.display(map.getCities(), this);
+             Data.logData(Data.cityData(Map.getDay(), map.getCities()));
+      
 
          
 
-        } else {
+        } else if(WelcomeScreen.getCurrentPage() < 4){
+            ///topBar = new TopBar(this, instructions, log);
             // Show welcome screen
             welcomeScreen.display();
+           
+        }
+        else{
+             topBar.remove();
+             image(end,150,-50);
+
+             
+      
         }
         
         // Display notifications last so they appear on top
-        Notification.display();
-
-        // Display graph if visible
-        Graph.display(map.getCities(), this);
-      
+        
     }
 
     
     public void mousePressed() {
-        // Only handle map clicks if we're past the welcome screen
-        if (welcomeScreen.getCurrentPage() >= 4) {
+
+        if (WelcomeScreen.getCurrentPage() >= 4) {
             map.handleMousePressed(mouseX, mouseY);
             
         }

@@ -26,7 +26,7 @@ public class WelcomeScreen {
     private PImage rulesImage;
     private ControlP5 cp5;
     private boolean controlsCreated;
-    private int currentPage = 0;
+    private static int currentPage = 0;
 
    ///animation variables
     private double titleScale = 0.1;
@@ -361,10 +361,14 @@ public class WelcomeScreen {
 
             
         }
+     
     }
 
-    public int getCurrentPage() {
+    public static int getCurrentPage() {
         return currentPage;
+    }
+    public static  void increaseCurrentPage(){
+        currentPage ++;
     }
 
 

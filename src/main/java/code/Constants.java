@@ -144,6 +144,7 @@ public class Constants {
         public static final String TITLE_IMAGE_PATH = "src/main/resources/elements/title.png";
         public static final String BACKGROUND_IMAGE_PATH = "src/main/resources/elements/background_new.png";
         public static final String RULES_IMAGE_PATH = "src/main/resources/elements/rules.png";
+        public static final String END_IMAGE_PATH = "src/main/resources/elements/end.png";
         public static final String VIRUS_CONTROL_IMAGE_PATH = "src/main/resources/elements/virusControl.png";
 
     }
