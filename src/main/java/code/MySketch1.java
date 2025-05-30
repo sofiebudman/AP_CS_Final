@@ -99,6 +99,7 @@ public class MySketch1 extends PApplet {
         }
         else{
             //remove elements and show end screen
+            Log.hide();
              topBar.remove();
              image(end,150,-50);
 

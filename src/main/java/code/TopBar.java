@@ -2,26 +2,16 @@ package main.java.code;
 
 import controlP5.ControlP5;
 import processing.core.PApplet;
-import processing.core.PFont;
-import static main.java.code.Constants.*;
+
 
 public class TopBar {
     private PApplet p;
-    private ControlP5 cp5;  // Single ControlP5 instance
-    private Instructions instructions;
-    private Log log;
-
-
-    
+    private ControlP5 cp5;  
    
    
     public TopBar(PApplet p, Instructions instructions, Log log) {
         this.p = p;
         this.cp5 = new ControlP5(p);
-        this.instructions = instructions;
-        this.log = log;
-      
-  
       
 
         cp5.addButton("instructions")
@@ -30,7 +20,7 @@ public class TopBar {
             .setLabel("Instructions")
             .onPress(e -> {
                 instructions.toggle();
-                log.hide();
+                Log.hide();
                 Graph.hide();
             });
 
@@ -40,7 +30,7 @@ public class TopBar {
             .setLabel("Graph")
             .onPress(e -> {
                 Graph.toggle();
-                log.hide();
+                Log.hide();
                 instructions.hide();
             });
 
@@ -49,7 +39,7 @@ public class TopBar {
             .setSize(100,50)
             .setLabel("Log")
             .onPress(e -> {
-                log.toggle();
+                Log.toggle();
                 instructions.hide();
                 Graph.hide();
             });
