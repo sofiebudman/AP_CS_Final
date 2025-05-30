@@ -90,7 +90,11 @@ public class City {
 
 
 
-    //UPDATE Variables
+    /**
+     * @param hasVaccine If a city has a vaccine
+     * @param borderOpen If the cities borders are open to trade
+     * modifies infected and vulnerable population based on population status, border status, and vaccine availability
+     */
 
     public void update(boolean hasVaccine, boolean borderOpen) {
 
@@ -156,7 +160,13 @@ public class City {
         infectionRadius = Math.sqrt(Math.pow(cityRadius + 5, 2) + (8000 - Math.pow(cityRadius + 5, 2)) * (populationInfected / 10_000_000.0));
     }
 
-    //RENDERING
+   
+
+    /**
+     * Renders city
+     * Draws a black circle and white circle proportional to city size
+     * Red circle represents infected, size depends on how many are infected
+     */
 
     public void render() {
         p.noStroke();
