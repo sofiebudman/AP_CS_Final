@@ -66,35 +66,7 @@ public class Virus {
     public static String getStartingCountry () {
         return startingCountry;
     }
-    public static void mutate() {
-        /* 
-         
-        int change = (int) (Math.random()*41)-20;
-        deathRate += change;
-        if (deathRate < 1) {
-            deathRate = 1;
-        }
-        if (deathRate > 100) {
-            deathRate = 100;
-        }
-        change = (int) (Math.random()*41)-20;
-        recoveryRate += change;
-        if (recoveryRate < 1) {
-            recoveryRate = 1;
-        }
-        if (recoveryRate > 100) {
-            recoveryRate = 100;
-        }
-        change = (int) (Math.random()*8)-4;
-        transmissionRate += change;
-        if (transmissionRate < 2) {
-            transmissionRate = 2;
-        }
-        if (transmissionRate > 8) {
-            transmissionRate = 8;
-        }
-        */
-    }
+
     public String toString() {
         return "Virus: " + name + 
                "\nDeath Rate: " + deathRate + 

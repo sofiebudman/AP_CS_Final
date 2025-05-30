@@ -269,7 +269,6 @@ public class Map {
                 //-------------MUTATION----------------//
                 if (Math.random() < (double) Virus.getMutationRate()) {
                     Notification.newNotification("Virus Mutated");
-                    Virus.mutate();
                     for (Country c : countries) {
                         c.setHasVirusInfo(false);
                         c.loseVaccine();
