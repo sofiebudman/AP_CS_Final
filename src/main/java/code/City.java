@@ -26,23 +26,24 @@ public class City {
 
     
 
-   
-
-
     
     public City (String name, int x, int y, int c, PApplet p, boolean isInfected, int pop) {
         this.name = name;
         this.posX = x;
         this.posY = y;
-        //countryNum = c;
+  
         this.countryNum = c;
         this.p = p;
         
-        // Initialize population
-        this.populationVulnerable = pop; // 1 million people min, 10 million max
+       
+        this.populationVulnerable = pop; 
         this.populationInfected = 0;
         this.populationImmune = 0;
+
+        //calculation to scale city radius based on population size
         cityRadius = Math.pow((populationVulnerable+populationImmune+populationInfected) / CITY_RADIUS_DIVIDER, 0.4) * CITY_RADIUS_MULTIPLIER + MIN_CITY_RADIUS;
+       
+        //population to calculate infection radius depending on number of people infected
         infectionRadius= cityRadius+ Math.sqrt(25 + populationInfected * (4500 / CITY_RADIUS_DIVIDER));
 
     }
