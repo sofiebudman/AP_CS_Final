@@ -20,6 +20,7 @@ public class MySketch1 extends PApplet {
     Map map;
     Log log;
     PImage end;
+    private boolean show;
    
 
     private boolean firstNotification = false; // Flag to track if it's the first notification
@@ -41,6 +42,7 @@ public class MySketch1 extends PApplet {
         notification = new Notification(this);
         instructions = new Instructions(this);
         welcomeScreen = new WelcomeScreen(this);
+        show = false;
         log = new Log (this);
 
         end = loadImage(END_IMAGE_PATH);
@@ -84,9 +86,19 @@ public class MySketch1 extends PApplet {
             topBar.draw();
             map.drawCity(); // Draw cities
             Notification.display();
+            
 
 
             Graph.display(map.getCities(), this);
+            int infected = 0;
+            for(City c: map.getCities()){
+                infected += c.getPopulationInfected();
+
+            }
+            if(infected == 0 && show == false) {
+                Notification.newNotification("Epidemic ended. Everyone Survived.");
+                show = true;
+            }
            
       
 
