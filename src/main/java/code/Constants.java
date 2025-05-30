@@ -166,6 +166,24 @@ public class Constants {
        
 
     }
+
+    public static class Graphc{
+        public static final int GRAPH_X = 20; //left
+        public static final int GRAPH_Y = 100;
+        public static final int GRAPH_SIZE = 200;
+        public static final int LEGEND_X = GRAPH_X + 20;
+        public static final int LEGEND_Y = GRAPH_Y + GRAPH_SIZE + 30;
+        public static final int LEGEND_SPACING = 25;
+
+
+        public static final int INFECTED_COLOR = 0xFFE57373;  
+        public static final int IMMUNE_COLOR = 0xFF81C784;  
+        public static final int VULNERABLE_COLOR = 0xFF64B5F6; 
+        public static final int BACKGROUND_COLOR = 0xFFFFB877; 
+        public static final int PANEL_COLOR = 0xFFFFFFFF;   
+        public static final int TEXT_COLOR = 0xFF424242;  
+
+    }
     public static class City{
         public static final int MIN_CITY_RADIUS = 2;
         public static final int CITY_RADIUS_MULTIPLIER = 18;
