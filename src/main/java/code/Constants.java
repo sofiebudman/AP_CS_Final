@@ -165,6 +165,11 @@ public class Constants {
        
 
     }
+    public static class City{
+        public static final int MIN_CITY_RADIUS = 2;
+        public static final int CITY_RADIUS_MULTIPLIER = 18;
+        public static final int CITY_RADIUS_DIVIDER = 10000000;
+    }
     
     
 }

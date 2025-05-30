@@ -321,9 +321,17 @@ public class Map {
                 p.fill(100, 100, 100, 180);
                 int w = 180;
                 int h = 70;
-                p.rect(city.getPosX() , city.getPosY() - 10 - h, w, h);
 
-                int textX = city.getPosX() + 5; 
+                int textX = 0;
+                if (city.getPosX() > 1260) {
+                    p.rect(city.getPosX() - 135, city.getPosY() - 10 - h, w, h);
+                    textX = city.getPosX()-130;
+                } else {
+                    p.rect(city.getPosX() , city.getPosY() - 10 - h, w, h);
+                    textX = city.getPosX()+5;
+                }
+
+                
                 int textY = city.getPosY() -h -2 ;  
 
                 p.textFont(cityInfoFont);
@@ -347,6 +355,7 @@ public class Map {
 
         //Day Counter
         p.fill(255);
+       
         p.textFont(dayCounterFont);
         p.text("Day: "+days, 320, 35);
 

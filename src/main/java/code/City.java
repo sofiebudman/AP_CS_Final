@@ -1,11 +1,12 @@
 package main.java.code;
 
 import processing.core.PApplet;
+import static main.java.code.Constants.City.*;
 
 
 
 public class City {
-    // Population state
+    
     private int populationVulnerable;
     private int populationInfected;
     private int populationImmune;
@@ -14,13 +15,14 @@ public class City {
     private int posY;
     private int countryNum;
 
-    //TODO: notification when virus mutates
+   
 
-    private double cityRadius; //radius that represents the size of a city
-    private double infectionRadius;
+    private double cityRadius; //radius that represents the size of a city (relative to population)
+    private double infectionRadius; // radius that represents how infected a city is
+
     
     private PApplet p;
-    private String name;
+    private String name; 
 
     
 
@@ -40,8 +42,8 @@ public class City {
         this.populationVulnerable = pop; // 1 million people min, 10 million max
         this.populationInfected = 0;
         this.populationImmune = 0;
-        cityRadius = Math.pow((populationVulnerable+populationImmune+populationInfected) / 10_000_000.0, 0.4) * 18 + 2;
-        infectionRadius= cityRadius+ Math.sqrt(25 + populationInfected * (4500 / 10_000_000));
+        cityRadius = Math.pow((populationVulnerable+populationImmune+populationInfected) / CITY_RADIUS_DIVIDER, 0.4) * CITY_RADIUS_MULTIPLIER + MIN_CITY_RADIUS;
+        infectionRadius= cityRadius+ Math.sqrt(25 + populationInfected * (4500 / CITY_RADIUS_DIVIDER));
 
     }
 
