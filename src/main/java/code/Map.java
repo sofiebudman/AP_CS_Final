@@ -267,7 +267,12 @@ public class Map {
                 //------------------------------------//
 
                 //-------------MUTATION----------------//
-                if (Math.random() < (double) Virus.getMutationRate()) {
+                int counterI = 0;
+                for (City ci : cities) {
+                    counterI += ci.getPopulationInfected();
+                }
+
+                if (Math.random() < (double) Virus.getMutationRate() && counterI > 0) {
                     Notification.newNotification("Virus Mutated");
                     for (Country c : countries) {
                         c.setHasVirusInfo(false);
