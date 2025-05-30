@@ -20,7 +20,9 @@ public class Instructions{
     public void toggle() {
         showInstructions = !showInstructions;
     }
-    //
+    /**
+     * Draws the Insturction Screen when applicable
+     */
     public void draw(){
         if (!showInstructions)return;
         p.noStroke();
@@ -32,21 +34,21 @@ public class Instructions{
         p.rect(10,60, 280, 630);
        
         p.fill(0);
-        //p.textSize(5);
+      
         PFont mono = p.createFont(FARRO_REGULAR_FONT_PATH, 18, true);
         p.textFont(mono);
-        p.text("Red Circle = Infection\n" + //
-                "White City = Vulnerable\n" + //
-                "Blue City = Immune\n\n" + //
+        p.text("Red Circle = Infection\n" + 
+                "White City = Vulnerable\n" + 
+                "Blue City = Immune\n\n" + 
                 
                 "Vaccines and immunity\n" +
-                "Lost on virus mutation\n\n" + //
+                "Lost on virus mutation\n\n" + 
 
-                "Click countries toggle border\n\n" + //
-                "Population grows on open \n border\n\n" + //
-                "Population Shrinks on\nClosed Border (no trade)\n\n" + //
+                "Click countries toggle border\n\n" + 
+                "Population grows on open \n border\n\n" + 
+                "Population Shrinks on\nClosed Border (no trade)\n\n" + 
 
-                "Hover over a city to see\nstatistics\n" + //
+                "Hover over a city to see\nstatistics\n" + 
                  "Tip: Use Graph and Log to\nsee information", 20, 120);
 
 
